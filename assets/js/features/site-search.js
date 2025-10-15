@@ -14,8 +14,6 @@
     {"url":"index.html","title":"People First Urgent Care - Quality Healthcare When You Need It Most","description":"People First Urgent Care provides comprehensive medical services for the whole family. Our experienced team is dedicated to delivering exceptional care with minimal wait times."},
     {"url":"insurance.html","title":"Insurance - People First Urgent Care","description":"People First Urgent Care accepts most major insurance plans. Learn about our insurance options, self-pay rates, and payment policies."},
     {"url":"lab-testing.html","title":"Laboratory Testing - People First Urgent Care","description":"People First Urgent Care offers comprehensive laboratory testing services with quick results. On-site lab for your convenience."},
-    {"url":"layout-test.html","title":"Layout Test - People First Urgent Care","description":""},
-    {"url":"mobile-menu-test.html","title":"Mobile Menu Test - People First Urgent Care","description":""},
     {"url":"our-staff.html","title":"Our Staff - People First Urgent Care","description":"Meet the dedicated healthcare professionals at People First Urgent Care. Our experienced team is committed to providing exceptional care for you and your family."},
     {"url":"patient-services.html","title":"Patient Services - People First Urgent Care","description":"Explore the comprehensive patient services offered by People First Urgent Care, including laboratory testing, X-ray imaging, vaccinations, and more."},
     {"url":"payment.html","title":"Make a Payment - People First Urgent Care","description":"Make a secure online payment for your People First Urgent Care services. Choose your location and pay securely through our trusted payment partners."},
@@ -24,31 +22,110 @@
     {"url":"save-your-spot.html","title":"Save Your Spot - People First Urgent Care","description":"Save your spot online at People First Urgent Care and reduce your wait time. Quick and easy scheduling for urgent care and primary care visits."},
     {"url":"services.html","title":"Services - People First Urgent Care","description":"Explore the comprehensive healthcare services offered by People First Urgent Care, including urgent care, primary care, and specialty services."},
     {"url":"telemedicine.html","title":"Telemedicine - People First Urgent Care","description":"Access quality healthcare from the comfort of your home with People First Urgent Care's telemedicine services. Virtual visits available for many non-emergency conditions."},
-    {"url":"test-inline-header.html","title":"Test Inline Header System - People First Urgent Care","description":""},
-    {"url":"unified-header-test.html","title":"Unified Header System Test - People First Urgent Care","description":""},
     {"url":"urgent-care.html","title":"Urgent Care Services - People First Urgent Care","description":"People First Urgent Care provides comprehensive urgent care services for non-life-threatening conditions. Walk-ins welcome, minimal wait times."},
     {"url":"vaccinations.html","title":"Vaccination Services - People First Urgent Care","description":"People First Urgent Care offers comprehensive vaccination services for all ages. Protect yourself and your family with our convenient immunization options."},
     {"url":"weight-loss.html","title":"Weight Loss Services - People First Urgent Care","description":"People First Urgent Care offers personalized weight loss programs to help you achieve your health goals. Medically supervised weight management solutions."},
     {"url":"x-ray.html","title":"X-Ray & Imaging - People First Urgent Care","description":"On-site X-Ray and imaging services at People First Urgent Care. Fast, accurate diagnostics with no need for a separate appointment."}
   ];
 
-  let INDEX = PRELOADED_SEARCH_INDEX;
+  const HIDDEN_URLS = new Set([
+    'layout-test.html',
+    'mobile-menu-test.html',
+    'mobile-nav-test.html',
+    'test-inline-header.html',
+    'unified-header-test.html'
+  ]);
+
+  const HIDDEN_PATTERNS = [
+    /(^|\/)test-[^/]*$/i,
+    /(^|\/)[^/]*-test\.(html?)$/i
+  ];
+
+  function isHiddenUrl(value) {
+    if (!value) return false;
+    if (HIDDEN_URLS.has(value)) return true;
+    return HIDDEN_PATTERNS.some((pattern) => pattern.test(value));
+  }
+
+  const VISIBLE_URLS = new Set();
+
+  function normalizePath(url) {
+    if (!url) return '';
+    let value = String(url).trim();
+    if (!value || value === '#' || /^javascript:/i.test(value) || /^mailto:/i.test(value) || /^tel:/i.test(value)) {
+      return '';
+    }
+    if (typeof window !== 'undefined' && window.location) {
+      try {
+        const parsed = new URL(value, window.location.origin);
+        if (parsed.origin !== window.location.origin) return '';
+        value = parsed.pathname || value;
+      } catch (_) {
+        // Leave value as-is for relative paths
+      }
+    }
+    value = value.split('#')[0].split('?')[0];
+    value = value.replace(/^[./]+/, '');
+    if (!value) return 'index.html';
+    return value;
+  }
+
+  function refreshVisibleUrls() {
+    VISIBLE_URLS.clear();
+    if (typeof document === 'undefined') return 0;
+    const selectors = [
+      '.site-header a[href]',
+      '.nav-container a[href]',
+      '.mobile-menu a[href]',
+      '.mobile-nav a[href]',
+      '.mobile-dropdown a[href]',
+      '.action-buttons a[href]',
+      '.mobile-actions a[href]'
+    ];
+    const anchors = document.querySelectorAll(selectors.join(','));
+    let found = false;
+    anchors.forEach(anchor => {
+      const normalized = normalizePath(anchor.getAttribute('href'));
+      if (normalized) {
+        VISIBLE_URLS.add(normalized);
+        found = true;
+      }
+    });
+    if (found) VISIBLE_URLS.add('index.html');
+    return VISIBLE_URLS.size;
+  }
+
+  function applyVisibilityFilter(data) {
+    if (!Array.isArray(data)) return [];
+    if (!VISIBLE_URLS.size) refreshVisibleUrls();
+    const allowAll = !VISIBLE_URLS.size;
+    return data.filter(item => {
+      const normalized = normalizePath(item && item.url);
+      if (!normalized) return false;
+      if (isHiddenUrl(normalized)) return false;
+      if (!allowAll && !VISIBLE_URLS.has(normalized)) return false;
+      return true;
+    });
+  }
+
+  let RAW_INDEX = PRELOADED_SEARCH_INDEX.slice();
   let loaded = false;
 
   async function loadIndex() {
-    if (loaded) return INDEX;
-    try {
-      const res = await fetch('assets/search/index.json', { cache: 'no-store' });
-      if (res.ok) {
-        const json = await res.json();
-        if (Array.isArray(json) && json.length) INDEX = json;
+    if (!loaded) {
+      try {
+        const res = await fetch('assets/search/index.json', { cache: 'no-store' });
+        if (res.ok) {
+          const json = await res.json();
+          if (Array.isArray(json) && json.length) RAW_INDEX = json;
+        }
+      } catch (_) {
+        // Fallback to preloaded
+      } finally {
+        loaded = true;
       }
-    } catch (_) {
-      // Fallback to preloaded
-    } finally {
-      loaded = true;
     }
-    return INDEX;
+    return applyVisibilityFilter(RAW_INDEX);
   }
 
   function norm(s) { return (s || '').toLowerCase(); }
@@ -271,10 +348,13 @@
   }
 
   function initSearch() {
+    refreshVisibleUrls();
     const inputs = document.querySelectorAll('.mobile-utility .mobile-search input');
     if (!inputs.length) return;
     loadIndex();
     inputs.forEach((input) => {
+      if (input.dataset.pfSearchBound === 'true') return;
+      input.dataset.pfSearchBound = 'true';
       const container = ensureResultsContainer(input);
       if (!container) return;
       bindKeyboard(input, container);
@@ -283,6 +363,7 @@
         const q = (input.value || '').trim();
         if (timer) clearTimeout(timer);
         timer = setTimeout(async () => {
+          refreshVisibleUrls();
           const data = await loadIndex();
           if (!q || q.length < 2) { renderResults(container, q, []); return; }
           const ranked = data
