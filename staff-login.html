@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Portal Login - People First Urgent Care</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/base/variables.css">
+    <link rel="stylesheet" href="assets/css/core/critical.css">
+    <link rel="stylesheet" href="assets/css/staff-login.css">
+</head>
+<body class="login-body">
+    <!-- Background Animation -->
+    <div class="login-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <!-- Logo Section -->
+        <div class="login-header">
+            <img src="assets/images/logo_peoplefirst-01.svg" alt="People First Urgent Care" class="login-logo">
+            <h1 class="login-title">Staff Portal</h1>
+            <p class="login-subtitle">Secure access for healthcare professionals</p>
+        </div>
+
+        <!-- Login Form -->
+        <div class="login-form-container">
+            <form id="staffLoginForm" class="login-form">
+
+                <!-- Username Field -->
+                <div class="form-group">
+                    <label for="username" class="form-label">
+                        <i class="fa-solid fa-user"></i>
+                        Username
+                    </label>
+                    <input type="text" id="username" name="username" class="form-input" placeholder="Enter your username" required>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        <i class="fa-solid fa-lock"></i>
+                        Password
+                    </label>
+                    <div class="password-input-container">
+                        <input type="password" id="password" name="password" class="form-input" placeholder="Enter your password" required>
+                        <button type="button" class="password-toggle" id="passwordToggle">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <span class="checkbox-custom"></span>
+                        Remember me
+                    </label>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="login-btn" id="loginBtn">
+                    <i class="fa-solid fa-sign-in-alt"></i>
+                    <span>Sign In</span>
+                    <div class="btn-loading">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                    </div>
+                </button>
+
+                <!-- Demo Login Button -->
+                <div class="demo-login-section">
+                    <div class="demo-divider">
+                        <span>Demo Access</span>
+                    </div>
+                    <button type="button" class="demo-login-btn" id="demoScribeBtn">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <span>Demo Scribe Login</span>
+                    </button>
+                </div>
+
+                <!-- Error Message -->
+                <div class="error-message" id="errorMessage" style="display: none;">
+                    <i class="fa-solid fa-exclamation-triangle"></i>
+                    <span id="errorText">Invalid credentials. Please try again.</span>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="login-footer">
+            <p>&copy; 2025 People First Urgent Care. All rights reserved.</p>
+            <div class="login-links">
+                <a href="index.html" class="back-link">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal" style="display: none;">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <h3>Welcome!</h3>
+            <p>Login successful. Redirecting to staff portal...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/staff-login.js"></script>
+</body>
+</html>

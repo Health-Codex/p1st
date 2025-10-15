@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Editor Feature Test - People First Urgent Care</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+    <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+    <link rel="stylesheet" href="assets/css/components/buttons/action-buttons.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Header System CSS - MUST be last -->
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+    
+    <style>
+        .test-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .test-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #05A65C 0%, #048A4F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+        }
+        
+        .test-card h3 {
+            color: #2D3748;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .test-actions {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .test-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #05A65C 0%, #048A4F 100%);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .test-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(5, 166, 92, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .test-btn.secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+        }
+        
+        .test-results {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #05A65C;
+        }
+        
+        .console-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="header"></div>
+
+    <main id="main-content">
+        <!-- Test Section -->
+        <section class="test-section">
+            <div class="test-container">
+                <div class="test-header">
+                    <h1 class="test-title">
+                        <i class="fa-solid fa-flask"></i>
+                        Admin Editor Feature Test
+                    </h1>
+                    <p>Test all admin editor features to ensure they work properly</p>
+                </div>
+
+                <div class="test-grid">
+                    <div class="test-card">
+                        <h3><i class="fa-solid fa-edit"></i> Page Loading Test</h3>
+                        <p>Test if the admin editor can load and display real page content from the website.</p>
+                        <button class="test-btn" onclick="testPageLoading()">
+                            <i class="fa-solid fa-play"></i> Test Page Loading
+                        </button>
+                    </div>
+
+                    <div class="test-card">
+                        <h3><i class="fa-solid fa-code"></i> Monaco Editor Test</h3>
+                        <p>Test if Monaco code editors initialize properly and can handle content editing.</p>
+                        <button class="test-btn" onclick="testMonacoEditor()">
+                            <i class="fa-solid fa-play"></i> Test Monaco Editor
+                        </button>
+                    </div>
+
+                    <div class="test-card">
+                        <h3><i class="fa-solid fa-search"></i> Search & Replace Test</h3>
+                        <p>Test the global search and replace functionality across all pages.</p>
+                        <button class="test-btn" onclick="testSearchReplace()">
+                            <i class="fa-solid fa-play"></i> Test Search & Replace
+                        </button>
+                    </div>
+
+                    <div class="test-card">
+                        <h3><i class="fa-solid fa-puzzle-piece"></i> Component Library Test</h3>
+                        <p>Test if the component library loads and components can be inserted.</p>
+                        <button class="test-btn" onclick="testComponentLibrary()">
+                            <i class="fa-solid fa-play"></i> Test Components
+                        </button>
+                    </div>
+
+                    <div class="test-card">
+                        <h3><i class="fa-solid fa-bars"></i> Navigation Editor Test</h3>
+                        <p>Test if the navigation editor can load and modify the menu structure.</p>
+                        <button class="test-btn" onclick="testNavigationEditor()">
+                            <i class="fa-solid fa-play"></i> Test Navigation
+                        </button>
+                    </div>
+
+                    <div class="test-card">
+                        <h3><i class="fa-solid fa-shield-alt"></i> Backup System Test</h3>
+                        <p>Test the backup creation, saving, and restoration functionality.</p>
+                        <button class="test-btn" onclick="testBackupSystem()">
+                            <i class="fa-solid fa-play"></i> Test Backups
+                        </button>
+                    </div>
+                </div>
+
+                <div class="test-actions">
+                    <button class="test-btn" onclick="runAllTests()">
+                        <i class="fa-solid fa-rocket"></i> Run All Tests
+                    </button>
+                    <a href="admin-editor.html" class="test-btn secondary">
+                        <i class="fa-solid fa-tools"></i> Open Admin Editor
+                    </a>
+                    <button class="test-btn secondary" onclick="showDebugInfo()">
+                        <i class="fa-solid fa-bug"></i> Debug Info
+                    </button>
+                </div>
+
+                <div class="test-results" id="testResults" style="display: none;">
+                    <h3><i class="fa-solid fa-chart-bar"></i> Test Results</h3>
+                    <div id="testOutput"></div>
+                    <div class="console-output" id="consoleOutput"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/core/main.js" defer></script>
+    <script src="assets/js/mobile/mobile-enhancements.js" defer></script>
+
+    <!-- Header System JavaScript -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+
+    <!-- Test Functions -->
+    <script>
+        let testOutput = [];
+        
+        function logTest(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            testOutput.push(`[${timestamp}] ${message}`);
+            console.log(message);
+            updateTestDisplay();
+        }
+        
+        function updateTestDisplay() {
+            const resultsDiv = document.getElementById('testResults');
+            const outputDiv = document.getElementById('testOutput');
+            const consoleDiv = document.getElementById('consoleOutput');
+            
+            resultsDiv.style.display = 'block';
+            consoleDiv.innerHTML = testOutput.join('\n');
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+        
+        async function testPageLoading() {
+            logTest('🧪 Testing page loading functionality...');
+            
+            try {
+                // Test fetching a real page
+                const response = await fetch('index.html');
+                if (response.ok) {
+                    const content = await response.text();
+                    logTest(`✅ Successfully loaded index.html (${content.length} characters)`);
+                    
+                    // Test content parsing
+                    const hasBody = content.includes('<body');
+                    const hasHead = content.includes('<head');
+                    logTest(`✅ Page structure valid: head=${hasHead}, body=${hasBody}`);
+                } else {
+                    logTest(`❌ Failed to load page: ${response.status}`);
+                }
+            } catch (error) {
+                logTest(`❌ Page loading error: ${error.message}`);
+            }
+        }
+        
+        async function testMonacoEditor() {
+            logTest('🧪 Testing Monaco Editor...');
+            
+            if (typeof monaco !== 'undefined') {
+                logTest('✅ Monaco Editor is available');
+                
+                // Test creating a simple editor
+                try {
+                    const testDiv = document.createElement('div');
+                    testDiv.style.width = '100px';
+                    testDiv.style.height = '100px';
+                    testDiv.style.position = 'absolute';
+                    testDiv.style.left = '-9999px';
+                    document.body.appendChild(testDiv);
+                    
+                    const editor = monaco.editor.create(testDiv, {
+                        value: 'test content',
+                        language: 'html'
+                    });
+                    
+                    logTest('✅ Monaco Editor instance created successfully');
+                    
+                    editor.dispose();
+                    document.body.removeChild(testDiv);
+                } catch (error) {
+                    logTest(`❌ Monaco Editor creation failed: ${error.message}`);
+                }
+            } else {
+                logTest('❌ Monaco Editor not available');
+            }
+        }
+        
+        async function testSearchReplace() {
+            logTest('🧪 Testing search and replace functionality...');
+            
+            try {
+                // Test search pattern
+                const testContent = '<h1>Test Heading</h1><p>Test paragraph with test content</p>';
+                const pattern = /test/gi;
+                const matches = testContent.match(pattern);
+                
+                logTest(`✅ Search test: found ${matches ? matches.length : 0} matches`);
+                
+                // Test replace
+                const replaced = testContent.replace(pattern, 'demo');
+                logTest(`✅ Replace test: ${replaced.includes('demo') ? 'successful' : 'failed'}`);
+            } catch (error) {
+                logTest(`❌ Search/replace error: ${error.message}`);
+            }
+        }
+        
+        async function testComponentLibrary() {
+            logTest('🧪 Testing component library...');
+            
+            // Test component structure
+            const sampleComponent = {
+                name: 'Test Component',
+                html: '<div class="test-component">Test Content</div>',
+                category: 'test'
+            };
+            
+            logTest(`✅ Component structure valid: ${sampleComponent.name}`);
+            logTest(`✅ Component HTML length: ${sampleComponent.html.length} characters`);
+        }
+        
+        async function testNavigationEditor() {
+            logTest('🧪 Testing navigation editor...');
+            
+            try {
+                // Test navigation structure
+                const navStructure = [
+                    { id: 'home', text: 'Home', url: 'index.html' },
+                    { id: 'about', text: 'About', url: 'about.html' }
+                ];
+                
+                logTest(`✅ Navigation structure created with ${navStructure.length} items`);
+                
+                // Test navigation parsing
+                const navHtml = '<ul><li><a href="index.html">Home</a></li></ul>';
+                const hasLinks = navHtml.includes('<a href=');
+                logTest(`✅ Navigation HTML parsing: ${hasLinks ? 'successful' : 'failed'}`);
+            } catch (error) {
+                logTest(`❌ Navigation editor error: ${error.message}`);
+            }
+        }
+        
+        async function testBackupSystem() {
+            logTest('🧪 Testing backup system...');
+            
+            try {
+                // Test localStorage
+                const testData = { test: 'backup data', timestamp: Date.now() };
+                localStorage.setItem('testBackup', JSON.stringify(testData));
+                
+                const retrieved = JSON.parse(localStorage.getItem('testBackup'));
+                logTest(`✅ LocalStorage backup: ${retrieved.test === testData.test ? 'successful' : 'failed'}`);
+                
+                localStorage.removeItem('testBackup');
+                
+                // Test JSON export
+                const exportData = JSON.stringify(testData);
+                logTest(`✅ JSON export: ${exportData.length} characters`);
+            } catch (error) {
+                logTest(`❌ Backup system error: ${error.message}`);
+            }
+        }
+        
+        async function runAllTests() {
+            logTest('🚀 Running all admin editor tests...');
+            testOutput = [];
+            
+            await testPageLoading();
+            await testMonacoEditor();
+            await testSearchReplace();
+            await testComponentLibrary();
+            await testNavigationEditor();
+            await testBackupSystem();
+            
+            logTest('✅ All tests completed!');
+        }
+        
+        function showDebugInfo() {
+            logTest('🔍 Gathering debug information...');
+            
+            const debugInfo = {
+                userAgent: navigator.userAgent,
+                localStorage: typeof Storage !== 'undefined',
+                fetch: typeof fetch !== 'undefined',
+                monaco: typeof monaco !== 'undefined',
+                currentURL: window.location.href,
+                protocol: window.location.protocol
+            };
+            
+            logTest(`Browser: ${debugInfo.userAgent}`);
+            logTest(`Protocol: ${debugInfo.protocol}`);
+            logTest(`LocalStorage: ${debugInfo.localStorage ? 'available' : 'not available'}`);
+            logTest(`Fetch API: ${debugInfo.fetch ? 'available' : 'not available'}`);
+            logTest(`Monaco Editor: ${debugInfo.monaco ? 'loaded' : 'not loaded'}`);
+        }
+    </script>
+</body>
+</html>

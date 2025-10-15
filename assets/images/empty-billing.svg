@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Empty Billing</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#048749" offset="0%"></stop>
+            <stop stop-color="#036b3a" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Empty-Billing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Background" fill="#F8F8F8" x="0" y="0" width="200" height="200" rx="8"></rect>
+        <g id="Invoice" transform="translate(40.000000, 30.000000)">
+            <rect id="Paper" fill="#FFFFFF" x="0" y="0" width="120" height="140" rx="8"></rect>
+            <rect id="Header" fill="url(#linearGradient-1)" x="0" y="0" width="120" height="20" rx="8"></rect>
+            <g id="Invoice-Lines" transform="translate(20.000000, 40.000000)" fill="#EEEEEE">
+                <rect id="Line-1" x="0" y="0" width="80" height="4" rx="2"></rect>
+                <rect id="Line-2" x="0" y="15" width="80" height="4" rx="2"></rect>
+                <rect id="Line-3" x="0" y="30" width="80" height="4" rx="2"></rect>
+                <rect id="Line-4" x="0" y="45" width="80" height="4" rx="2"></rect>
+                <rect id="Line-5" x="0" y="60" width="40" height="4" rx="2"></rect>
+            </g>
+            <g id="Total-Section" transform="translate(20.000000, 110.000000)">
+                <rect id="Total-Line" fill="#EEEEEE" x="40" y="0" width="40" height="4" rx="2"></rect>
+                <rect id="Total-Amount" fill="#EEEEEE" x="40" y="10" width="40" height="10" rx="2"></rect>
+                <path d="M0,5 L30,5" id="Total-Label" stroke="#CCCCCC" stroke-width="2" stroke-linecap="round"></path>
+            </g>
+            <g id="Paid-Stamp" transform="translate(30.000000, 60.000000)">
+                <circle id="Stamp-Background" fill="#EEEEEE" opacity="0.5" cx="30" cy="30" r="30"></circle>
+                <path d="M15,30 L45,30" id="Stamp-Line-1" stroke="#CCCCCC" stroke-width="4" stroke-linecap="round"></path>
+                <path d="M30,15 L30,45" id="Stamp-Line-2" stroke="#CCCCCC" stroke-width="4" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

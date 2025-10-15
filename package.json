@@ -1,0 +1,26 @@
+{
+  "name": "test1-copy",
+  "version": "1.0.0",
+  "description": "This repository contains the static HTML implementation of the website redesign for People First Urgent Care. The redesign focuses on creating a modern, professional appearance while improving the user experience and maintaining the brand identity.",
+  "main": "bs-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:search-index": "node scripts/build-search-index.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.4"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "sharp": "^0.34.3"
+  }
+}

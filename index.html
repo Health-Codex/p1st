@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>People First Urgent Care - Quality Healthcare When You Need It Most</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+    <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+    <link rel="stylesheet" href="assets/css/components/splash-screen.css">
+    <link rel="stylesheet" href="assets/css/features/urgent-care-assessment.css">
+    <link rel="stylesheet" href="assets/css/features/urgent-care-assessment-modal.css">
+    <link rel="stylesheet" href="assets/css/features/cta-enhanced.css">
+    <link rel="stylesheet" href="assets/css/features/healthcare-cta-green.css">
+    <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+
+    <!-- Meta Tags -->
+    <meta name="description" content="People First Urgent Care provides comprehensive medical services for the whole family. Our experienced team is dedicated to delivering exceptional care with minimal wait times.">
+    <meta name="keywords" content="urgent care, primary care, healthcare, medical services, family medicine, Collierville, Southaven">
+    <meta name="theme-color" content="#1aa060">
+    <link rel="canonical" href="https://www.peoplefirsturgentcare.com/">
+    <meta property="og:title" content="People First Urgent Care - Quality Healthcare When You Need It Most">
+    <meta property="og:description" content="People First Urgent Care provides comprehensive medical services for the whole family. Our experienced team is dedicated to delivering exceptional care with minimal wait times.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.peoplefirsturgentcare.com/">
+    <meta property="og:image" content="https://www.peoplefirsturgentcare.com/assets/images/hero-1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="People First Urgent Care - Quality Healthcare When You Need It Most">
+    <meta name="twitter:description" content="People First Urgent Care provides comprehensive medical services for the whole family. Our experienced team is dedicated to delivering exceptional care with minimal wait times.">
+    <meta name="twitter:image" content="https://www.peoplefirsturgentcare.com/assets/images/hero-1.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "People First Urgent Care",
+      "url": "https://www.peoplefirsturgentcare.com",
+      "logo": "https://www.peoplefirsturgentcare.com/assets/images/logo_peoplefirst-01.svg"
+    }
+    </script>
+
+    <!-- Periodically refresh wait times from NextPatient for accuracy -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextPatientIds = {
+                collierville: 4858,
+                southaven: 5058,
+                millington: 4859,
+                germantown: 2771,
+                bartlett: 4857,
+                cordova: 5563
+            };
+
+            function updateFromWidget(key, id) {
+                const hiddenId = `nextpatient-widget.${id}`;
+                if (!document.getElementById(hiddenId)) {
+                    const hidden = document.createElement('div');
+                    hidden.id = hiddenId;
+                    hidden.style.display = 'none';
+                    hidden.setAttribute('aria-hidden', 'true');
+                    document.body.appendChild(hidden);
+                }
+                const s = document.createElement('script');
+                s.src = `https://nextpatient.co/p/${id}/widget.js?id=${id}&_=${Date.now()}`;
+                s.async = true;
+                s.addEventListener('load', () => {
+                    try {
+                        const wrap = document.getElementById(hiddenId);
+                        if (!wrap) return;
+                        const box = wrap.querySelector('#nextpatient-box');
+                        if (!box) return;
+                        const titleEl = box.querySelector('.wait-title');
+                        const timeEl = box.querySelector('.wait-time');
+                        const title = titleEl ? titleEl.textContent.trim() : 'Current Wait';
+                        const time = timeEl ? timeEl.textContent.trim() : '';
+                        const waitContainer = document.querySelector(`.location-card[data-location="${key}"] .location-wait-time`);
+                        if (waitContainer && (title || time)) {
+                            waitContainer.innerHTML = `<i class=\"fa-solid fa-clock\"></i> ${title}: <span>${time || '—'}</span>`;
+                        }
+                    } catch (e) {
+                        // ignore
+                    } finally {
+                        try { s.remove(); } catch (_) {}
+                    }
+                });
+                document.body.appendChild(s);
+            }
+
+            Object.entries(nextPatientIds).forEach(([key, id]) => {
+                // Refresh every 90 seconds
+                setInterval(() => updateFromWidget(key, id), 90000);
+            });
+        });
+    </script>
+
+    <!-- Additional Styles -->
+    <style>
+        .logo img {
+            height: 50px !important;
+            min-height: 50px !important;
+            max-height: 50px !important;
+            width: auto !important;
+        }
+        .scrolled .logo img {
+            height: 35px !important;
+            min-height: 35px !important;
+            max-height: 35px !important;
+        }
+
+        /* Enhanced Testimonial Styles */
+        .testimonial {
+            background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-green), var(--primary-green-light));
+        }
+
+        .testimonial:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-quote {
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-lg);
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-green);
+            position: absolute;
+            top: -10px;
+            left: -20px;
+            font-family: Georgia, serif;
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-green);
+        }
+
+        .testimonial-info h4 {
+            margin: 0;
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            color: var(--gray-800);
+        }
+
+        .testimonial-info p {
+            margin: 0;
+            font-size: var(--font-size-sm);
+            color: var(--gray-600);
+        }
+
+        /* Enhanced CTA Styles */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            color: var(--white);
+            padding: var(--spacing-3xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-subtitle {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--primary-green);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: var(--gray-50);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--white);
+            color: var(--primary-green);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .cta-title {
+                font-size: var(--font-size-2xl);
+            }
+            
+            .cta-subtitle {
+                font-size: var(--font-size-base);
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Include Hook -->
+    <div data-include="header"></div>
+
+    <main id="main-content">
+        <!-- Hero Carousel Section - Enhanced with advanced effects -->
+        <section class="hero-carousel">
+            <div class="hero-slides">
+                <div class="hero-slide active" style="background-image: url('assets/images/hero-1.jpg')">
+                    <div class="hero-overlay glass-effect"></div>
+                    <div class="hero-content">
+                        <div class="container container-compact">
+                            <div class="hero-text">
+                                <div class="text-reveal text-reveal-1">
+                                    <span>
+                                        <h1 class="heading-compact">WE PUT <span class="people-emphasis gradient-text" style="font-size: 1.2em; font-weight: 700;">PEOPLE</span> FIRST!</h1>
+                                    </span>
+                                </div>
+                                <div class="hero-buttons slide-in-bottom">
+                                    <a href="save-your-spot.html" class="btn btn-gradient btn-compact hover-scale btn-animated">
+                                        <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+                                    </a>
+                                    <a href="about.html" class="btn btn-white btn-compact hover-3d">
+                                        <i class="fa-solid fa-info-circle"></i> Learn More
+                                    </a>
+                                </div>
+                                <div class="hero-features">
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Minimal Wait Times</span>
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Expert Care</span>
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Multiple Locations</span>
+                                </div>
+                                <div class="badge-group">
+                                    <span class="badge badge-primary">Quality Care</span>
+                                    <span class="badge badge-outline">Same-Day Appointments</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-shape-divider">
+                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                            <path d="M0,0V120H1200V0Z" class="shape-fill"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('assets/images/hero-2.jpg')">
+                    <div class="hero-overlay glass-effect"></div>
+                    <div class="hero-content">
+                        <div class="container container-compact">
+                            <div class="hero-text">
+                                <div class="text-reveal text-reveal-1">
+                                    <span>
+                                        <h1 class="heading-compact">EXCEPTIONAL <span class="gradient-text">CARE</span> FOR ALL AGES</h1>
+                                    </span>
+                                </div>
+                                <div class="hero-buttons slide-in-bottom">
+                                    <a href="services.html" class="btn btn-white btn-compact hover-3d">
+                                        <i class="fa-solid fa-list-check"></i> Our Services
+                                    </a>
+                                    <a href="primary-care.html" class="btn btn-gradient btn-compact hover-scale btn-animated">
+                                        <i class="fa-solid fa-user-doctor"></i> Primary Care
+                                    </a>
+                                </div>
+                                <div class="hero-features">
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Pediatric Care</span>
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Adult Medicine</span>
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Senior Health</span>
+                                </div>
+                                <div class="badge-group">
+                                    <span class="badge badge-primary">Family Medicine</span>
+                                    <span class="badge badge-outline">Preventive Care</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-shape-divider">
+                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                            <path d="M0,0V120H1200V0Z" class="shape-fill"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('assets/images/hero-3.jpg')">
+                    <div class="hero-overlay glass-effect"></div>
+                    <div class="hero-content">
+                        <div class="container container-compact">
+                            <div class="hero-text">
+                                <div class="text-reveal text-reveal-1">
+                                    <span>
+                                        <h1 class="heading-compact">CONVENIENT <span class="gradient-text">LOCATIONS</span> NEAR YOU</h1>
+                                    </span>
+                                </div>
+                                <div class="text-reveal text-reveal-2">
+                                    <span>
+                                        <p class="text-compact">Five convenient locations across the Memphis area</p>
+                                    </span>
+                                </div>
+                                <div class="hero-buttons slide-in-bottom">
+                                    <a href="contact.html" class="btn btn-white btn-compact hover-3d">
+                                        <i class="fa-solid fa-location-dot"></i> Find a Location
+                                    </a>
+                                    <a href="telemedicine.html" class="btn btn-gradient btn-compact hover-scale btn-animated">
+                                        <i class="fa-solid fa-video"></i> Telemedicine
+                                    </a>
+                                </div>
+                                <div class="hero-features">
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Extended Hours</span>
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Virtual Visits</span>
+                                    <span class="hero-feature"><i class="fa-solid fa-check-circle"></i> Same-Day Appointments</span>
+                                </div>
+                                <div class="badge-group">
+                                    <span class="badge badge-primary">5 Locations</span>
+                                    <span class="badge badge-outline">Virtual Care</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-shape-divider">
+                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                            <path d="M0,0V120H1200V0Z" class="shape-fill"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Navigation - Enhanced with advanced effects -->
+            <div class="hero-nav">
+                <button class="hero-nav-arrow hero-prev glass-card" aria-label="Previous slide">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="hero-indicators">
+                    <button class="hero-indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="hero-indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="hero-indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                </div>
+                <button class="hero-nav-arrow hero-next glass-card" aria-label="Next slide">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Image Carousel Section -->
+        <section class="section locations-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Experience Our Facility</h2>
+                    <p>Take a visual tour of our state-of-the-art medical center</p>
+                </div>
+                <div class="image-carousel-container">
+                    <div class="image-carousel">
+                        <div class="carousel-slide active">
+                            <div class="carousel-image" style="background-image: url('assets/images/carousel-1.jpg')"></div>
+                            <div class="carousel-caption">
+                                <h2>State-of-the-Art Facilities</h2>
+                                <p>Our modern medical facilities are equipped with the latest technology to provide you with the best care possible. Experience healthcare in a comfortable, welcoming environment.</p>
+                                <a href="gallery.html" class="btn btn-white btn-sm">View Our Facility</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image" style="background-image: url('assets/images/carousel-2.jpg')"></div>
+                            <div class="carousel-caption">
+                                <h2>Experienced Medical Team</h2>
+                                <p>Our team of experienced healthcare professionals is dedicated to providing personalized care for you and your family. We take the time to listen and understand your needs.</p>
+                                <a href="our-staff.html" class="btn btn-white btn-sm">Meet Our Staff</a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="carousel-image" style="background-image: url('assets/images/carousel-3.jpg')"></div>
+                            <div class="carousel-caption">
+                                <h2>Comprehensive Care Services</h2>
+                                <p>From urgent care to primary care, we offer a wide range of services to meet all your healthcare needs. Our comprehensive approach ensures continuity of care for your entire family.</p>
+                                <a href="services.html" class="btn btn-white btn-sm">Explore Our Services</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls">
+                        <button class="carousel-arrow carousel-prev" aria-label="Previous slide">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <div class="carousel-indicators">
+                            <button class="carousel-indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                            <button class="carousel-indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                            <button class="carousel-indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                        </div>
+                        <button class="carousel-arrow carousel-next" aria-label="Next slide">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section - Enhanced -->
+        <section class="section section-services">
+            <div class="services-bg-pattern"></div>
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="gradient-text">Our Healthcare Services</h2>
+                    <p>Comprehensive medical care for you and your family</p>
+                    <div class="section-divider"></div>
+                </div>
+
+                <!-- Service Categories -->
+                <div class="service-categories">
+                    <div class="service-category active" data-category="all">
+                        <i class="fa-solid fa-circle-check"></i> All Services
+                    </div>
+                    <div class="service-category" data-category="urgent">
+                        <i class="fa-solid fa-kit-medical"></i> Urgent Care
+                    </div>
+                    <div class="service-category" data-category="primary">
+                        <i class="fa-solid fa-user-doctor"></i> Primary Care
+                    </div>
+                    <div class="service-category" data-category="specialty">
+                        <i class="fa-solid fa-stethoscope"></i> Specialty Care
+                    </div>
+                </div>
+
+                <!-- Service Cards Grid -->
+                <div class="service-grid">
+                    <!-- Urgent Care -->
+                    <div class="service-card stagger-item hover-lift shadow-soft" data-category="urgent">
+                        <div class="image-zoom-container">
+                            <img src="assets/images/img_urgentcare.jpg" alt="Urgent Care Services - Medical clinic entrance with lit signage" class="service-card-image image-zoom" width="400" height="250" loading="lazy">
+                        </div>
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <i class="fa-solid fa-kit-medical"></i>
+                            </div>
+                            <h3 class="service-card-title">Urgent Care</h3>
+                            <p class="service-card-text">Immediate medical attention for non-life-threatening conditions with shorter wait times and lower costs than emergency rooms.</p>
+                            <div class="service-card-features">
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Walk-ins Welcome</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Same-Day Care</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Extended Hours</span>
+                            </div>
+                            <a href="urgent-care.html" class="btn btn-primary btn-compact hover-scale">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Primary Care -->
+                    <div class="service-card stagger-item hover-lift shadow-soft" data-delay="0.2" data-category="primary">
+                        <div class="image-zoom-container">
+                            <img src="assets/images/img_primarycare.jpg" alt="Primary Care Services - Compassionate caregiver providing support" class="service-card-image image-zoom" width="400" height="250" loading="lazy">
+                        </div>
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <i class="fa-solid fa-user-doctor"></i>
+                            </div>
+                            <h3 class="service-card-title">Primary Care</h3>
+                            <p class="service-card-text">Ongoing healthcare for you and your family focusing on prevention, wellness, and managing chronic conditions.</p>
+                            <div class="service-card-features">
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Preventive Care</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Chronic Disease Management</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Annual Physicals</span>
+                            </div>
+                            <a href="primary-care.html" class="btn btn-primary btn-compact hover-scale">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Lab Testing -->
+                    <div class="service-card stagger-item hover-lift shadow-soft" data-delay="0.3" data-category="specialty">
+                        <div class="image-zoom-container">
+                            <img src="assets/images/lab-testing-new.jpg" alt="Laboratory Testing Services - Scientist using microscope for medical research" class="service-card-image image-zoom" width="400" height="250" loading="lazy">
+                        </div>
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <i class="fa-solid fa-flask-vial"></i>
+                            </div>
+                            <h3 class="service-card-title">Lab Testing</h3>
+                            <p class="service-card-text">Comprehensive laboratory services with quick and accurate results for diagnosis and monitoring of health conditions.</p>
+                            <div class="service-card-features">
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Blood Work</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Rapid Results</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Insurance Accepted</span>
+                            </div>
+                            <a href="lab-testing.html" class="btn btn-primary btn-compact hover-scale">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- X-Ray & Imaging -->
+                    <div class="service-card stagger-item hover-lift shadow-soft" data-delay="0.4" data-category="specialty">
+                        <div class="image-zoom-container">
+                            <img src="assets/images/img_xray.jpg" alt="X-Ray Services - Hand X-ray medical imaging result" class="service-card-image image-zoom" width="400" height="250" loading="lazy">
+                        </div>
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <i class="fa-solid fa-x-ray"></i>
+                            </div>
+                            <h3 class="service-card-title">X-Ray & Imaging</h3>
+                            <p class="service-card-text">On-site diagnostic imaging services with state-of-the-art equipment for accurate diagnosis of injuries and conditions.</p>
+                            <div class="service-card-features">
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Digital X-Rays</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Same-Day Results</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Board-Certified Radiologists</span>
+                            </div>
+                            <a href="x-ray.html" class="btn btn-primary btn-compact hover-scale">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Vaccinations -->
+                    <div class="service-card stagger-item hover-lift shadow-soft" data-delay="0.5" data-category="primary">
+                        <div class="image-zoom-container">
+                            <img src="assets/images/vaccination-new.jpg" alt="Vaccination Services - Medical professional administering injection" class="service-card-image image-zoom" width="400" height="250" loading="lazy">
+                        </div>
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <i class="fa-solid fa-syringe"></i>
+                            </div>
+                            <h3 class="service-card-title">Vaccinations</h3>
+                            <p class="service-card-text">Comprehensive vaccination services for all ages, including seasonal flu shots, travel vaccines, and routine immunizations.</p>
+                            <div class="service-card-features">
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Flu Shots</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Travel Vaccines</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> All Ages Welcome</span>
+                            </div>
+                            <a href="vaccinations.html" class="btn btn-primary btn-compact hover-scale">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Telemedicine -->
+                    <div class="service-card stagger-item hover-lift shadow-soft" data-delay="0.6" data-category="urgent primary">
+                        <div class="image-zoom-container">
+                            <img src="assets/images/telemedicine-new.jpg" alt="Telemedicine Services - Doctor and patient video consultation" class="service-card-image image-zoom" width="400" height="250" loading="lazy">
+                        </div>
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <i class="fa-solid fa-video"></i>
+                            </div>
+                            <h3 class="service-card-title">Telemedicine</h3>
+                            <p class="service-card-text">Virtual healthcare visits from the comfort of your home, providing convenient access to our medical professionals.</p>
+                            <div class="service-card-features">
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> 24/7 Availability</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Secure Platform</span>
+                                <span class="service-feature"><i class="fa-solid fa-check-circle"></i> Insurance Accepted</span>
+                            </div>
+                            <a href="telemedicine.html" class="btn btn-primary btn-compact hover-scale">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All Services Button -->
+                <div class="view-all-services text-center">
+                    <a href="patient-services.html" class="btn btn-gradient btn-lg hover-lift">
+                        Explore All Our Services <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <p class="services-note">We accept most major insurance plans. <a href="insurance.html">View accepted insurance</a></p>
+                </div>
+
+
+
+                <!-- Green Healthcare CTA Section -->
+                <section class="healthcare-cta-green">
+                    <div class="healthcare-cta-particles">
+                        <div class="healthcare-cta-particle"></div>
+                        <div class="healthcare-cta-particle"></div>
+                        <div class="healthcare-cta-particle"></div>
+                        <div class="healthcare-cta-particle"></div>
+                        <div class="healthcare-cta-particle"></div>
+                    </div>
+                    <div class="container">
+                        <div class="healthcare-cta-content">
+                            <div class="healthcare-cta-icon">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <h2>Ready to Experience<br>Better Healthcare?</h2>
+                            <p>Save your spot online and reduce your wait time. We're ready to provide the care you deserve.</p>
+
+                            <div class="healthcare-cta-features">
+                                <div class="healthcare-cta-feature">
+                                    <div class="healthcare-cta-feature-icon">
+                                        <i class="fa-solid fa-check"></i>
+                                    </div>
+                                    <span>Quick Check-In</span>
+                                </div>
+                                <div class="healthcare-cta-feature">
+                                    <div class="healthcare-cta-feature-icon">
+                                        <i class="fa-solid fa-mobile-alt"></i>
+                                    </div>
+                                    <span>Mobile Friendly</span>
+                                </div>
+                                <div class="healthcare-cta-feature">
+                                    <div class="healthcare-cta-feature-icon">
+                                        <i class="fa-solid fa-lock"></i>
+                                    </div>
+                                    <span>Secure Process</span>
+                                </div>
+                            </div>
+
+                            <div class="healthcare-cta-buttons">
+                                <a href="save-your-spot.html" class="btn-white-green">
+                                    <i class="fa-solid fa-check"></i> Save Your Spot Now
+                                </a>
+                                <a href="telemedicine.html" class="btn-outline-white">
+                                    <i class="fa-solid fa-video"></i> Try Telemedicine
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section section-alt section-compact">
+            <div class="container container-compact">
+                <div class="about-grid">
+                    <div class="about-content slide-in-left">
+                        <h2 class="heading-compact">Why Choose People First Urgent Care?</h2>
+                        <p class="text-compact">Our board-certified physicians and dedicated healthcare team provide exceptional urgent care services in a modern, comfortable office environment. We're committed to delivering fast, affordable, and compassionate healthcare when you need it most.</p>
+
+                        <ul class="about-benefits">
+                            <li class="about-benefit">
+                                <span class="about-benefit-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-user-doctor"></i>
+                                </span>
+                                <div class="about-benefit-copy">
+                                    <span class="about-benefit-title">Board-Certified Physicians</span>
+                                    <span class="about-benefit-subtitle">Experienced providers at every location</span>
+                                </div>
+                            </li>
+                            <li class="about-benefit">
+                                <span class="about-benefit-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-clock"></i>
+                                </span>
+                                <div class="about-benefit-copy">
+                                    <span class="about-benefit-title">Average 15-Min Wait Time</span>
+                                    <span class="about-benefit-subtitle">Streamlined check-in keeps visits moving quickly</span>
+                                </div>
+                            </li>
+                            <li class="about-benefit">
+                                <span class="about-benefit-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-shield-heart"></i>
+                                </span>
+                                <div class="about-benefit-copy">
+                                    <span class="about-benefit-title">Comprehensive Care</span>
+                                    <span class="about-benefit-subtitle">Full-service treatment for illnesses and minor injuries</span>
+                                </div>
+                            </li>
+                            <li class="about-benefit">
+                                <span class="about-benefit-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-dollar-sign"></i>
+                                </span>
+                                <div class="about-benefit-copy">
+                                    <span class="about-benefit-title">Transparent Pricing</span>
+                                    <span class="about-benefit-subtitle">Clear visit costs without surprise bills</span>
+                                </div>
+                            </li>
+                            <li class="about-benefit">
+                                <span class="about-benefit-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-map-marker-alt"></i>
+                                </span>
+                                <div class="about-benefit-copy">
+                                    <span class="about-benefit-title">Six Convenient Locations</span>
+                                    <span class="about-benefit-subtitle">Close to home throughout the Mid-South</span>
+                                </div>
+                            </li>
+                            <li class="about-benefit">
+                                <span class="about-benefit-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-building"></i>
+                                </span>
+                                <div class="about-benefit-copy">
+                                    <span class="about-benefit-title">State-of-the-Art Facilities</span>
+                                    <span class="about-benefit-subtitle">Modern clinics with on-site diagnostics</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="about-buttons">
+                            <a href="about.html" class="btn btn-primary btn-compact">Learn About Our Team</a>
+                            <a href="patient-services.html" class="btn btn-outline btn-compact">View All Services</a>
+                        </div>
+                    </div>
+                    <div class="about-image slide-in-right">
+                        <img src="assets/images/doctor-patient-consultation.jpg" alt="Doctor consulting with patient - Primary care examination in medical office" width="600" height="400" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section section-compact">
+            <div class="container container-compact">
+                <div class="section-header section-header-compact">
+                    <h2 class="gradient-text">What Our Patients Say</h2>
+                    <p>Read testimonials from our satisfied patients</p>
+                    <a href="about.html" class="btn-text hover-lift">Learn more about us <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+                <div class="testimonials-grid grid-compact">
+                    <div class="testimonial card-compact hover-lift stagger-item glass-card">
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote-icon">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p class="text-compact">I was seen quickly and treated with respect. The staff was friendly and professional, and the doctor took the time to explain everything to me. Highly recommend!</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <p class="testimonial-author-name">Sarah J.</p>
+                                <p class="testimonial-author-title">Collierville Patient</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-quote"><i class="fa-solid fa-quote-right"></i></div>
+                        <div class="testimonial-service-tag">Urgent Care</div>
+                    </div>
+                    <div class="testimonial card-compact hover-lift stagger-item glass-card" data-delay="0.2">
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote-icon">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p class="text-compact">The online check-in system saved me so much time. I was able to fill out my paperwork before arriving, and I was seen within minutes of walking in the door.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <p class="testimonial-author-name">Michael T.</p>
+                                <p class="testimonial-author-title">Southaven Patient</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-quote"><i class="fa-solid fa-quote-right"></i></div>
+                        <div class="testimonial-service-tag">Primary Care</div>
+                    </div>
+                    <div class="testimonial card-compact hover-lift stagger-item glass-card" data-delay="0.4">
+                        <div class="testimonial-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="testimonial-quote-icon">
+                            <i class="fa-solid fa-quote-left"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p class="text-compact">I've been bringing my family here for years. The staff knows us by name and always provides excellent care. It's like having a doctor in the family!</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div>
+                                <p class="testimonial-author-name">Jennifer R.</p>
+                                <p class="testimonial-author-title">Family of 4</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-quote"><i class="fa-solid fa-quote-right"></i></div>
+                        <div class="testimonial-service-tag">Pediatric Care</div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <a href="testimonials.html" class="btn btn-outline btn-compact hover-lift">
+                        View All Testimonials <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Locations Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="gradient-text">Our Locations</h2>
+                    <p>Convenient care close to home</p>
+                </div>
+
+                <!-- Clinic selector buttons (sticky) -->
+                <div class="map-controls sticky" role="tablist" aria-label="Clinic locations">
+                    <button type="button" class="map-location-button active" data-location="collierville" id="location-tab-collierville" role="tab" aria-selected="true" aria-controls="location-panel-collierville">
+                        <i class="fa-solid fa-map-marker-alt"></i> Collierville
+                    </button>
+                    <button type="button" class="map-location-button" data-location="southaven" id="location-tab-southaven" role="tab" aria-selected="false" aria-controls="location-panel-southaven" tabindex="-1">
+                        <i class="fa-solid fa-map-marker-alt"></i> Southaven
+                    </button>
+                    <button type="button" class="map-location-button" data-location="millington" id="location-tab-millington" role="tab" aria-selected="false" aria-controls="location-panel-millington" tabindex="-1">
+                        <i class="fa-solid fa-map-marker-alt"></i> Millington
+                    </button>
+                    <button type="button" class="map-location-button" data-location="germantown" id="location-tab-germantown" role="tab" aria-selected="false" aria-controls="location-panel-germantown" tabindex="-1">
+                        <i class="fa-solid fa-map-marker-alt"></i> Germantown
+                    </button>
+                    <button type="button" class="map-location-button" data-location="bartlett" id="location-tab-bartlett" role="tab" aria-selected="false" aria-controls="location-panel-bartlett" tabindex="-1">
+                        <i class="fa-solid fa-map-marker-alt"></i> Bartlett
+                    </button>
+                    <button type="button" class="map-location-button" data-location="cordova" id="location-tab-cordova" role="tab" aria-selected="false" aria-controls="location-panel-cordova" tabindex="-1">
+                        <i class="fa-solid fa-map-marker-alt"></i> Cordova
+                    </button>
+                </div>
+
+                <div class="locations-grid" data-view="tabbed">
+                    <div id="location-panel-collierville" class="location-card location-card-compact hover-lift shadow-soft stagger-item visible" data-location="collierville" role="tabpanel" aria-labelledby="location-tab-collierville" aria-hidden="false" tabindex="0">
+                        <div class="location-hero">
+                            <div class="location-hero-map">
+                                <iframe
+                                    src="https://www.google.com/maps?q=853%20West%20Poplar%20Avenue,%20Collierville,%20TN%2038017&output=embed"
+                                    title="Map of Collierville clinic"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="location-status">
+                                <span class="status-open"><i class="fa-solid fa-circle"></i> Open Now</span>
+                            </div>
+                        </div>
+                        
+                        <div class="location-details">
+                            <div class="location-header">
+                                <h3><i class="fa-solid fa-map-marker-alt"></i> Collierville</h3>
+                                <div class="location-wait-time">
+                                    <i class="fa-solid fa-clock"></i> Current Wait: <span>15 min</span>
+                                </div>
+                            </div>
+                            <div class="location-info-wrapper">
+                                <div class="location-info-col">
+                                    <address>
+                                        <i class="fa-solid fa-building"></i> 853 West Poplar Avenue<br>
+                                        Collierville, TN 38017
+                                    </address>
+                                    <p><i class="fa-solid fa-phone"></i> <a href="tel:901-673-1240">901-673-1240</a></p>
+                                </div>
+                                <div class="location-info-col">
+                                    <div class="hours">
+                                        <p><i class="fa-regular fa-clock"></i> <strong>Hours:</strong></p>
+                                        <p>Mon-Fri: 8:00am - 6:00pm</p>
+                                        <p>Sat: 8:00am - 4:00pm</p>
+                                        <p>Sun: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location-services">
+                                <span class="location-service-tag">Urgent Care</span>
+                                <span class="location-service-tag">Primary Care</span>
+                                <span class="location-service-tag">Lab Testing</span>
+                            </div>
+                            <div class="location-buttons">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=35.0460549,-89.6906051" class="btn btn-outline btn-compact hover-lift directions-btn" data-address="853 West Poplar Avenue, Collierville, TN 38017" data-lat="35.0460549" data-lon="-89.6906051" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-directions"></i> Get Directions
+                                </a>
+                                <a href="contact.html" class="btn btn-primary btn-compact hover-scale">
+                                    <i class="fa-solid fa-info-circle"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="location-panel-southaven" class="location-card location-card-compact hover-lift shadow-soft stagger-item" data-location="southaven" data-delay="0.2" role="tabpanel" aria-labelledby="location-tab-southaven" aria-hidden="true" tabindex="-1" hidden>
+                        <div class="location-hero">
+                            <div class="location-hero-map">
+                                <iframe
+                                    src="https://www.google.com/maps?q=176%20Goodman%20Road%20W,%20Southaven,%20MS%2038671&output=embed"
+                                    title="Map of Southaven clinic"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="location-status">
+                                <span class="status-open"><i class="fa-solid fa-circle"></i> Open Now</span>
+                            </div>
+                        </div>
+                        
+                        <div class="location-details">
+                            <div class="location-header">
+                                <h3><i class="fa-solid fa-map-marker-alt"></i> Southaven</h3>
+                                <div class="location-wait-time">
+                                    <i class="fa-solid fa-clock"></i> Current Wait: <span>10 min</span>
+                                </div>
+                            </div>
+                            <div class="location-info-wrapper">
+                                <div class="location-info-col">
+                                    <address>
+                                        <i class="fa-solid fa-building"></i> 176 Goodman Road W<br>
+                                        Southaven, MS 38671
+                                    </address>
+                                    <p><i class="fa-solid fa-phone"></i> <a href="tel:662-683-1440">662-683-1440</a></p>
+                                </div>
+                                <div class="location-info-col">
+                                    <div class="hours">
+                                        <p><i class="fa-regular fa-clock"></i> <strong>Hours:</strong></p>
+                                        <p>Mon-Fri: 8:00am - 6:00pm</p>
+                                        <p>Sat: 8:00am - 4:00pm</p>
+                                        <p>Sun: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location-services">
+                                <span class="location-service-tag">Urgent Care</span>
+                                <span class="location-service-tag">X-Ray</span>
+                                <span class="location-service-tag">Vaccinations</span>
+                            </div>
+                            <div class="location-buttons">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=34.9627192,-89.9940497" class="btn btn-outline btn-compact hover-lift directions-btn" data-address="176 Goodman Road W, Southaven, MS 38671" data-lat="34.9627192" data-lon="-89.9940497" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-directions"></i> Get Directions
+                                </a>
+                                <a href="contact.html" class="btn btn-primary btn-compact hover-scale">
+                                    <i class="fa-solid fa-info-circle"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Millington -->
+                    <div id="location-panel-millington" class="location-card location-card-compact hover-lift shadow-soft stagger-item" data-location="millington" role="tabpanel" aria-labelledby="location-tab-millington" aria-hidden="true" tabindex="-1" hidden>
+                        <div class="location-hero">
+                            <div class="location-hero-map">
+                                <iframe
+                                    src="https://www.google.com/maps?q=4772%20Navy%20Road,%20Millington,%20TN%2038053&output=embed"
+                                    title="Map of Millington clinic"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="location-status">
+                                <span class="status-open"><i class="fa-solid fa-circle"></i> Open Now</span>
+                            </div>
+                        </div>
+                        <div class="location-details">
+                            <div class="location-header">
+                                <h3><i class="fa-solid fa-map-marker-alt"></i> Millington</h3>
+                                <div class="location-wait-time">
+                                    <i class="fa-solid fa-clock"></i> Current Wait: <span>12 min</span>
+                                </div>
+                            </div>
+                            <div class="location-info-wrapper">
+                                <div class="location-info-col">
+                                    <address>
+                                        <i class="fa-solid fa-building"></i> 4772 Navy Road<br>
+                                        Millington, TN 38053
+                                    </address>
+                                    <p><i class="fa-solid fa-phone"></i> <a href="tel:901-873-0930">901-873-0930</a></p>
+                                </div>
+                                <div class="location-info-col">
+                                    <div class="hours">
+                                        <p><i class="fa-regular fa-clock"></i> <strong>Hours:</strong></p>
+                                        <p>Mon-Fri: 8:00am - 6:00pm</p>
+                                        <p>Sat: 8:00am - 4:00pm</p>
+                                        <p>Sun: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location-services">
+                                <span class="location-service-tag">Urgent Care</span>
+                                <span class="location-service-tag">Primary Care</span>
+                                <span class="location-service-tag">Lab Testing</span>
+                            </div>
+                            <div class="location-buttons">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=35.3414514,-89.9042603" class="btn btn-outline btn-compact hover-lift directions-btn" data-address="4772 Navy Road, Millington, TN 38053" data-lat="35.3414514" data-lon="-89.9042603" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-directions"></i> Get Directions
+                                </a>
+                                <a href="contact.html" class="btn btn-primary btn-compact hover-scale">
+                                    <i class="fa-solid fa-info-circle"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Germantown -->
+                    <div id="location-panel-germantown" class="location-card location-card-compact hover-lift shadow-soft stagger-item" data-location="germantown" role="tabpanel" aria-labelledby="location-tab-germantown" aria-hidden="true" tabindex="-1" hidden>
+                        <div class="location-hero">
+                            <div class="location-hero-map">
+                                <iframe
+                                    src="https://www.google.com/maps?q=9301%20Poplar%20Avenue,%20Germantown,%20TN%2038138&output=embed"
+                                    title="Map of Germantown clinic"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="location-status">
+                                <span class="status-open"><i class="fa-solid fa-circle"></i> Open Now</span>
+                            </div>
+                        </div>
+                        <div class="location-details">
+                            <div class="location-header">
+                                <h3><i class="fa-solid fa-map-marker-alt"></i> Germantown</h3>
+                                <div class="location-wait-time">
+                                    <i class="fa-solid fa-clock"></i> Current Wait: <span>20 min</span>
+                                </div>
+                            </div>
+                            <div class="location-info-wrapper">
+                                <div class="location-info-col">
+                                    <address>
+                                        <i class="fa-solid fa-building"></i> 9301 Poplar Avenue<br>
+                                        Germantown, TN 38138
+                                    </address>
+                                    <p><i class="fa-solid fa-phone"></i> <a href="tel:901-567-6100">901-567-6100</a></p>
+                                </div>
+                                <div class="location-info-col">
+                                    <div class="hours">
+                                        <p><i class="fa-regular fa-clock"></i> <strong>Hours:</strong></p>
+                                        <p>Mon-Fri: 8:00am - 6:00pm</p>
+                                        <p>Sat: 8:00am - 4:00pm</p>
+                                        <p>Sun: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location-services">
+                                <span class="location-service-tag">Urgent Care</span>
+                                <span class="location-service-tag">X-Ray</span>
+                                <span class="location-service-tag">Vaccinations</span>
+                            </div>
+                            <div class="location-buttons">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=35.0648883,-89.7529658" class="btn btn-outline btn-compact hover-lift directions-btn" data-address="9301 Poplar Avenue, Germantown, TN 38138" data-lat="35.0648883" data-lon="-89.7529658" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-directions"></i> Get Directions
+                                </a>
+                                <a href="contact.html" class="btn btn-primary btn-compact hover-scale">
+                                    <i class="fa-solid fa-info-circle"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bartlett -->
+                    <div id="location-panel-bartlett" class="location-card location-card-compact hover-lift shadow-soft stagger-item" data-location="bartlett" role="tabpanel" aria-labelledby="location-tab-bartlett" aria-hidden="true" tabindex="-1" hidden>
+                        <div class="location-hero">
+                            <div class="location-hero-map">
+                                <iframe
+                                    src="https://www.google.com/maps?q=6490%20Memphis%20Arlington%20Road,%20Bartlett,%20TN%2038135&output=embed"
+                                    title="Map of Bartlett clinic"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="location-status">
+                                <span class="status-open"><i class="fa-solid fa-circle"></i> Open Now</span>
+                            </div>
+                        </div>
+                        <div class="location-details">
+                            <div class="location-header">
+                                <h3><i class="fa-solid fa-map-marker-alt"></i> Bartlett</h3>
+                                <div class="location-wait-time">
+                                    <i class="fa-solid fa-clock"></i> Current Wait: <span>18 min</span>
+                                </div>
+                            </div>
+                            <div class="location-info-wrapper">
+                                <div class="location-info-col">
+                                    <address>
+                                        <i class="fa-solid fa-building"></i> 6490 Memphis Arlington Road #106<br>
+                                        Bartlett, TN 38135
+                                    </address>
+                                    <p><i class="fa-solid fa-phone"></i> <a href="tel:901-762-1531">901-762-1531</a></p>
+                                </div>
+                                <div class="location-info-col">
+                                    <div class="hours">
+                                        <p><i class="fa-regular fa-clock"></i> <strong>Hours:</strong></p>
+                                        <p>Mon-Fri: 8:00am - 6:00pm</p>
+                                        <p>Sat: 8:00am - 4:00pm</p>
+                                        <p>Sun: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location-services">
+                                <span class="location-service-tag">Urgent Care</span>
+                                <span class="location-service-tag">Primary Care</span>
+                                <span class="location-service-tag">Lab Testing</span>
+                            </div>
+                            <div class="location-buttons">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=35.2258760,-89.8484171" class="btn btn-outline btn-compact hover-lift directions-btn" data-address="6490 Memphis Arlington Road Suite 106, Bartlett, TN 38135" data-lat="35.2258760" data-lon="-89.8484171" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-directions"></i> Get Directions
+                                </a>
+                                <a href="contact.html" class="btn btn-primary btn-compact hover-scale">
+                                    <i class="fa-solid fa-info-circle"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cordova -->
+                    <div id="location-panel-cordova" class="location-card location-card-compact hover-lift shadow-soft stagger-item" data-location="cordova" role="tabpanel" aria-labelledby="location-tab-cordova" aria-hidden="true" tabindex="-1" hidden>
+                        <div class="location-hero">
+                            <div class="location-hero-map">
+                                <iframe
+                                    src="https://www.google.com/maps?q=1645%20N%20Germantown%20Parkway,%20Cordova,%20TN%2038016&output=embed"
+                                    title="Map of Cordova clinic"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                            <div class="location-status">
+                                <span class="status-open"><i class="fa-solid fa-circle"></i> Open Now</span>
+                            </div>
+                        </div>
+                        <div class="location-details">
+                            <div class="location-header">
+                                <h3><i class="fa-solid fa-map-marker-alt"></i> Cordova</h3>
+                                <div class="location-wait-time">
+                                    <i class="fa-solid fa-clock"></i> Current Wait: <span>14 min</span>
+                                </div>
+                            </div>
+                            <div class="location-info-wrapper">
+                                <div class="location-info-col">
+                                    <address>
+                                        <i class="fa-solid fa-building"></i> 1645 N Germantown Parkway<br>
+                                        Cordova, TN 38016
+                                    </address>
+                                    <p><i class="fa-solid fa-phone"></i> <a href="tel:901-625-5360">901-625-5360</a></p>
+                                </div>
+                                <div class="location-info-col">
+                                    <div class="hours">
+                                        <p><i class="fa-regular fa-clock"></i> <strong>Hours:</strong></p>
+                                        <p>Mon-Fri: 8:00am - 6:00pm</p>
+                                        <p>Sat: 8:00am - 4:00pm</p>
+                                        <p>Sun: Closed</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="location-services">
+                                <span class="location-service-tag">Urgent Care</span>
+                                <span class="location-service-tag">Primary Care</span>
+                                <span class="location-service-tag">Lab Testing</span>
+                            </div>
+                            <div class="location-buttons">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=35.1693126,-89.7933064" class="btn btn-outline btn-compact hover-lift directions-btn" data-address="1645 N Germantown Parkway, Cordova, TN 38016" data-lat="35.1693126" data-lon="-89.7933064" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa-solid fa-directions"></i> Get Directions
+                                </a>
+                                <a href="contact.html" class="btn btn-primary btn-compact hover-scale">
+                                    <i class="fa-solid fa-info-circle"></i> View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-all-locations">
+                    <a href="contact.html" class="btn btn-outline btn-compact hover-lift">
+                        View All Locations <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- Fixed Save Your Spot Button for Mobile -->
+    <a href="save-your-spot.html" class="fixed-cta-button">
+        <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+    </a>
+
+    <!-- Three.js for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/core/main.js" defer></script>
+    <script src="assets/js/mobile/mobile-enhancements.js" defer></script>
+    <script src="assets/js/features/back-to-top.js"></script>
+    <script src="assets/js/interactions/advanced-interactions.js"></script>
+    <script src="assets/js/features/splash-animation.js"></script>
+    <script src="assets/js/features/splash-screen.js"></script>
+    <script src="assets/js/features/urgent-care-assessment.js"></script>
+    <script src="assets/js/features/cta-animations.js"></script>
+
+    <!-- Header Inline System (File:// Compatible) -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+
+    <!-- Make home page maps interactive and fix directions links -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle interactive map mode on tap/click
+            document.querySelectorAll('.location-hero').forEach(hero => {
+                const mapWrap = hero.querySelector('.location-hero-map');
+                if (!mapWrap) return;
+
+                // Toggle interactivity on click/tap
+                hero.addEventListener('click', function(e) {
+                    // If user clicked a button/link below, ignore
+                    if (e.target.closest('.location-buttons')) return;
+                    this.classList.toggle('map-interactive');
+                });
+
+                // Disable interactivity when pointer leaves (desktop)
+                hero.addEventListener('mouseleave', function() {
+                    this.classList.remove('map-interactive');
+                });
+            });
+
+            // Build platform-appropriate directions links on homepage
+            const isIOS = /iP(hone|od|ad)/.test(navigator.platform) ||
+                          (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+
+            document.querySelectorAll('.location-card .directions-btn').forEach(button => {
+                const address = button.getAttribute('data-address') || '';
+                const lat = button.getAttribute('data-lat');
+                const lon = button.getAttribute('data-lon');
+
+                let destination = '';
+                if (lat && lon) {
+                    destination = encodeURIComponent(`${lat},${lon}`);
+                } else if (address) {
+                    destination = encodeURIComponent(address);
+                } else {
+                    return;
+                }
+
+                const url = isIOS
+                    ? `https://maps.apple.com/?daddr=${destination}`
+                    : `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
+                button.setAttribute('href', url);
+            });
+
+            // Location tab interactions
+            const mapControls = document.querySelector('.map-controls');
+            const locationButtons = mapControls ? Array.from(mapControls.querySelectorAll('.map-location-button')) : [];
+            const locationCards = Array.from(document.querySelectorAll('.locations-grid .location-card'));
+
+            if (mapControls && locationButtons.length && locationCards.length) {
+                const cardsByLocation = new Map();
+                locationCards.forEach(card => {
+                    const key = card.getAttribute('data-location');
+                    if (!key) return;
+                    cardsByLocation.set(key, card);
+                });
+
+                const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+                let activeButton = locationButtons.find(btn => btn.classList.contains('active')) || locationButtons[0];
+                let activeCard = activeButton ? cardsByLocation.get(activeButton.getAttribute('data-location')) : null;
+
+                if (!activeCard) {
+                    activeCard = locationCards[0];
+                    if (activeCard) {
+                        const matchingButton = locationButtons.find(btn => btn.getAttribute('data-location') === activeCard.getAttribute('data-location'));
+                        if (matchingButton) {
+                            activeButton = matchingButton;
+                        }
+                    }
+                }
+
+                function setActiveButton(button) {
+                    locationButtons.forEach(btn => {
+                        const isCurrent = btn === button;
+                        btn.classList.toggle('active', isCurrent);
+                        btn.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+                        btn.setAttribute('tabindex', isCurrent ? '0' : '-1');
+                    });
+                    activeButton = button;
+                }
+
+                function hideCard(card, { animate = true } = {}) {
+                    if (!card) return;
+
+                    const completeHide = () => {
+                        card.classList.remove('visible', 'animate-out', 'animate-in');
+                        card.setAttribute('hidden', '');
+                        card.setAttribute('aria-hidden', 'true');
+                        card.setAttribute('tabindex', '-1');
+                        delete card.dataset.closing;
+                    };
+
+                    if (!card.classList.contains('visible')) {
+                        completeHide();
+                        return;
+                    }
+
+                    if (animate) {
+                        card.dataset.closing = 'true';
+                        card.classList.add('animate-out');
+                        card.addEventListener('animationend', () => {
+                            if (card.dataset.closing === 'true') {
+                                completeHide();
+                            }
+                        }, { once: true });
+                    } else {
+                        completeHide();
+                    }
+                }
+
+                function showCard(card, { animate = true } = {}) {
+                    if (!card) return;
+                    delete card.dataset.closing;
+                    card.classList.remove('animate-out');
+                    card.removeAttribute('hidden');
+                    card.setAttribute('aria-hidden', 'false');
+                    card.setAttribute('tabindex', '0');
+
+                    if (animate) {
+                        requestAnimationFrame(() => {
+                            card.classList.add('visible', 'animate-in');
+                        });
+                        card.addEventListener('animationend', () => {
+                            card.classList.remove('animate-in');
+                        }, { once: true });
+                    } else {
+                        card.classList.add('visible');
+                        card.classList.remove('animate-in');
+                    }
+
+                    activeCard = card;
+                }
+
+                locationCards.forEach(card => {
+                    delete card.dataset.closing;
+                    if (card === activeCard) {
+                        card.classList.add('visible');
+                        card.removeAttribute('hidden');
+                        card.setAttribute('aria-hidden', 'false');
+                        card.setAttribute('tabindex', '0');
+                    } else {
+                        card.classList.remove('visible', 'animate-in', 'animate-out');
+                        card.setAttribute('hidden', '');
+                        card.setAttribute('aria-hidden', 'true');
+                        card.setAttribute('tabindex', '-1');
+                    }
+                });
+
+                if (activeButton) {
+                    setActiveButton(activeButton);
+                }
+
+                function activateLocation(button, { animate = true } = {}) {
+                    if (!button) return;
+                    const key = button.getAttribute('data-location');
+                    const nextCard = key ? cardsByLocation.get(key) : null;
+
+                    if (!nextCard) return;
+                    if (button === activeButton && nextCard === activeCard) return;
+
+                    const animateTransitions = animate && !prefersReducedMotion;
+                    const previousCard = activeCard;
+                    setActiveButton(button);
+                    hideCard(previousCard, { animate: animateTransitions });
+                    showCard(nextCard, { animate: animateTransitions });
+                }
+
+                locationButtons.forEach(button => {
+                    button.addEventListener('click', event => {
+                        event.preventDefault();
+                        activateLocation(button);
+                    });
+                });
+
+                mapControls.addEventListener('keydown', event => {
+                    const { key } = event;
+                    const currentButton = event.target.closest('.map-location-button');
+                    if (!currentButton) return;
+                    const currentIndex = locationButtons.indexOf(currentButton);
+                    if (currentIndex === -1) return;
+
+                    let nextIndex;
+                    if (key === 'ArrowRight' || key === 'ArrowDown') {
+                        nextIndex = (currentIndex + 1) % locationButtons.length;
+                    } else if (key === 'ArrowLeft' || key === 'ArrowUp') {
+                        nextIndex = (currentIndex - 1 + locationButtons.length) % locationButtons.length;
+                    } else if (key === 'Home') {
+                        nextIndex = 0;
+                    } else if (key === 'End') {
+                        nextIndex = locationButtons.length - 1;
+                    } else {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const targetButton = locationButtons[nextIndex];
+                    activateLocation(targetButton);
+                    targetButton.focus();
+                });
+            }
+        });
+    </script>
+
+    <!-- Preload Key Images -->
+    <link rel="preload" href="assets/images/hero-1.jpg" as="image">
+    <link rel="preload" href="assets/images/hero-2.jpg" as="image">
+    <link rel="preload" href="assets/images/hero-3.jpg" as="image">
+    <script>
+        // Advanced Animation Features - No mobile menu code here to avoid conflicts
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Home page animations initialized');
+
+            // Advanced Animation Features
+
+            // Scroll Animation Observer
+            const scrollElements = document.querySelectorAll('.animate-on-scroll');
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+
+            // Ensure badges are visible in hero section
+            const heroBadges = document.querySelectorAll('.hero-text .badge');
+            heroBadges.forEach(badge => {
+                badge.style.opacity = '1';
+            });
+
+            // Initialize on load
+            handleScrollAnimation();
+
+            // Add scroll event listener
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+
+            // Parallax Effect
+            const parallaxElements = document.querySelectorAll('.parallax-element');
+
+            window.addEventListener('mousemove', (e) => {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+
+                parallaxElements.forEach(element => {
+                    const speed = element.getAttribute('data-speed') || 0.05;
+                    const x = (mouseX - 0.5) * speed * 100;
+                    const y = (mouseY - 0.5) * speed * 100;
+
+                    element.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            });
+
+            // 3D Hover Effect
+            const hover3dElements = document.querySelectorAll('.hover-3d');
+
+            hover3dElements.forEach(element => {
+                element.addEventListener('mousemove', (e) => {
+                    const { left, top, width, height } = element.getBoundingClientRect();
+                    const x = (e.clientX - left) / width - 0.5;
+                    const y = (e.clientY - top) / height - 0.5;
+
+                    const inner = element.querySelector('.hover-3d-inner') || element;
+                    inner.style.transform = `rotateY(${x * 10}deg) rotateX(${y * -10}deg)`;
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    const inner = element.querySelector('.hover-3d-inner') || element;
+                    inner.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                });
+            });
+
+            // Magnetic Effect
+            const magneticElements = document.querySelectorAll('.magnetic');
+
+            magneticElements.forEach(element => {
+                element.addEventListener('mousemove', (e) => {
+                    const { left, top, width, height } = element.getBoundingClientRect();
+                    const x = (e.clientX - left) / width - 0.5;
+                    const y = (e.clientY - top) / height - 0.5;
+
+                    element.style.transform = `translate(${x * 20}px, ${y * 20}px)`;
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    element.style.transform = 'translate(0, 0)';
+                });
+            });
+        });
+    </script>
+
+    <!-- Enhanced Interactive Map Script with Conditional Visibility -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced interactive card visibility with clinic selector
+            const locationButtons = document.querySelectorAll('.map-location-button');
+            const mapControls = document.querySelector('.map-controls');
+            const locationCards = document.querySelectorAll('.location-card');
+            const locationsGrid = document.querySelector('.locations-grid');
+
+            // Enhanced location data with map URLs and details
+            const locations = {
+                collierville: { name: 'Collierville', waitTime: '15 min', status: 'Open Now' },
+                southaven:   { name: 'Southaven',   waitTime: '10 min', status: 'Open Now' },
+                millington:  { name: 'Millington',  waitTime: '12 min', status: 'Open Now' },
+                germantown:  { name: 'Germantown',  waitTime: '20 min', status: 'Open Now' },
+                bartlett:    { name: 'Bartlett',    waitTime: '18 min', status: 'Open Now' },
+                cordova:     { name: 'Cordova',     waitTime: '14 min', status: 'Open Now' }
+            };
+
+            // Operating schedules for each location (24-hour format, local time)
+            // 0 = Sunday, 1 = Monday, ... 6 = Saturday
+            const schedules = {
+                collierville: { hours: { 0: null, 1: ['08:00','18:00'], 2: ['08:00','18:00'], 3: ['08:00','18:00'], 4: ['08:00','18:00'], 5: ['08:00','18:00'], 6: ['08:00','16:00'] } },
+                southaven:   { hours: { 0: null, 1: ['08:00','18:00'], 2: ['08:00','18:00'], 3: ['08:00','18:00'], 4: ['08:00','18:00'], 5: ['08:00','18:00'], 6: ['08:00','16:00'] } },
+                millington:  { hours: { 0: null, 1: ['08:00','18:00'], 2: ['08:00','18:00'], 3: ['08:00','18:00'], 4: ['08:00','18:00'], 5: ['08:00','18:00'], 6: ['08:00','16:00'] } },
+                germantown:  { hours: { 0: null, 1: ['08:00','18:00'], 2: ['08:00','18:00'], 3: ['08:00','18:00'], 4: ['08:00','18:00'], 5: ['08:00','18:00'], 6: ['08:00','16:00'] } },
+                bartlett:    { hours: { 0: null, 1: ['08:00','18:00'], 2: ['08:00','18:00'], 3: ['08:00','18:00'], 4: ['08:00','18:00'], 5: ['08:00','18:00'], 6: ['08:00','16:00'] } },
+                cordova:     { hours: { 0: null, 1: ['08:00','18:00'], 2: ['08:00','18:00'], 3: ['08:00','18:00'], 4: ['08:00','18:00'], 5: ['08:00','18:00'], 6: ['08:00','16:00'] } }
+            };
+
+            function timeStrToMinutes(t) {
+                if (!t) return null;
+                const [h, m] = t.split(':').map(Number);
+                return h * 60 + (m || 0);
+            }
+
+            // Robust visibility: upgrade sticky selector to fixed while section is in view
+            function getHeaderOffset() {
+                const header = document.querySelector('.site-header');
+                if (!header) return 64;
+                const rect = header.getBoundingClientRect();
+                const style = window.getComputedStyle(header);
+                const mb = parseInt(style.marginBottom || '0', 10);
+                return Math.max(56, Math.min(96, Math.round((rect.height || 64) + mb)));
+            }
+
+            // Keep clinic selector in normal flow; no sticky/fixed upgrades
+            function ensureControlsFixed() { /* disabled by design */ }
+
+            // Listeners kept to avoid refactor; they now no-op
+            window.addEventListener('scroll', ensureControlsFixed, { passive: true });
+            window.addEventListener('resize', ensureControlsFixed);
+            ensureControlsFixed();
+
+            function isOpenNow(schedule, now = new Date()) {
+                if (!schedule || !schedule.hours) return false;
+                const day = now.getDay();
+                const range = schedule.hours[day];
+                if (!range || !Array.isArray(range)) return false; // Closed
+                const [openStr, closeStr] = range;
+                const openM = timeStrToMinutes(openStr);
+                const closeM = timeStrToMinutes(closeStr);
+                const nowM = now.getHours() * 60 + now.getMinutes();
+                return nowM >= openM && nowM < closeM;
+            }
+
+            function updateClinicStatuses() {
+                locationCards.forEach(card => {
+                    const loc = card.getAttribute('data-location');
+                    const statusWrap = card.querySelector('.location-status span');
+                    if (!statusWrap) return;
+                    const open = isOpenNow(schedules[loc]);
+                    statusWrap.classList.remove('status-open', 'status-closed');
+                    if (open) {
+                        statusWrap.classList.add('status-open');
+                        statusWrap.innerHTML = '<i class="fa-solid fa-circle"></i> Open Now';
+                        statusWrap.setAttribute('aria-label', 'Open Now');
+                    } else {
+                        statusWrap.classList.add('status-closed');
+                        statusWrap.innerHTML = '<i class="fa-solid fa-circle"></i> Closed';
+                        statusWrap.setAttribute('aria-label', 'Closed');
+                    }
+                });
+            }
+
+            // Track currently visible card
+            let currentlyVisibleCard = null;
+
+            // Initialize: Hide all cards on page load
+            function initializeCardVisibility() {
+                locationCards.forEach(card => {
+                    card.classList.remove('visible', 'animate-in');
+                    card.setAttribute('aria-hidden', 'true');
+                });
+                updateGridState();
+            }
+
+            // Show specific location card with animation
+            function showLocationCard(location) {
+                // Ensure we select the location card, not the button
+                const targetCard = document.querySelector(`.location-card[data-location="${location}"]`);
+                if (!targetCard) return;
+
+                // Hide currently visible card first
+                if (currentlyVisibleCard && currentlyVisibleCard !== targetCard) {
+                    hideLocationCard(currentlyVisibleCard, false);
+                }
+
+                // Show the target card with animation (no auto-scroll to keep selector visible)
+                setTimeout(() => {
+                    targetCard.classList.add('visible', 'animate-in');
+                    targetCard.setAttribute('aria-hidden', 'false');
+                    currentlyVisibleCard = targetCard;
+                    updateGridState();
+
+                    // Announce for screen readers
+                    announceCardChange(locations[location].name, 'shown');
+                }, currentlyVisibleCard ? 200 : 0);
+            }
+
+            // Hide location card with animation
+            function hideLocationCard(card, updateGrid = true) {
+                if (!card) return;
+
+                card.classList.add('animate-out');
+                card.classList.remove('animate-in');
+
+                setTimeout(() => {
+                    card.classList.remove('visible', 'animate-out');
+                    card.setAttribute('aria-hidden', 'true');
+                    if (card === currentlyVisibleCard) {
+                        currentlyVisibleCard = null;
+                    }
+                    if (updateGrid) updateGridState();
+                }, 400);
+            }
+
+            // Update grid state for CSS styling
+            function updateGridState() {
+                const hasVisibleCard = document.querySelector('.location-card.visible');
+                if (hasVisibleCard) {
+                    locationsGrid.classList.add('has-visible-card');
+                    locationsGrid.classList.remove('no-visible-cards');
+                } else {
+                    locationsGrid.classList.remove('has-visible-card');
+                    locationsGrid.classList.add('no-visible-cards');
+                }
+            }
+
+            // Map switching removed: each card contains its own embedded map
+
+            function announceCardChange(locationName, action) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.className = 'sr-only';
+                announcement.textContent = `${locationName} location details ${action}`;
+                document.body.appendChild(announcement);
+
+                setTimeout(() => {
+                    document.body.removeChild(announcement);
+                }, 1000);
+            }
+
+            // Enhanced location button event handlers with card visibility
+            locationButtons.forEach(button => {
+                // Click handler
+                button.addEventListener('click', function() {
+                    const location = this.getAttribute('data-location');
+
+                    // Update active button with ARIA
+                    locationButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                        btn.setAttribute('aria-expanded', 'false');
+                    });
+                    this.classList.add('active');
+                    this.setAttribute('aria-pressed', 'true');
+                    this.setAttribute('aria-expanded', 'true');
+
+                    // Show corresponding card; each card has its own embedded map
+                    showLocationCard(location);
+
+                    // Keep selector visible via fixed upgrade recalculation
+                    ensureControlsFixed();
+
+                    // Remove visual scale effect to avoid layout shift
+                });
+
+                // Keyboard accessibility
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+
+                // Set initial ARIA states
+                button.setAttribute('role', 'button');
+                button.setAttribute('aria-pressed', 'false');
+                button.setAttribute('aria-expanded', 'false');
+                button.setAttribute('aria-controls', `location-card-${button.getAttribute('data-location')}`);
+                button.setAttribute('aria-describedby', 'location-instructions');
+            });
+
+            // Enhanced location card interactions
+            locationCards.forEach(card => {
+                // Add ID for ARIA controls
+                const location = card.getAttribute('data-location');
+                card.setAttribute('id', `location-card-${location}`);
+
+                const expandBtn = card.querySelector('.location-expand-btn');
+                if (expandBtn) {
+                    expandBtn.addEventListener('click', function() {
+                        // Toggle expanded state
+                        card.classList.toggle('expanded');
+
+                        // Update ARIA
+                        const isExpanded = card.classList.contains('expanded');
+                        this.setAttribute('aria-expanded', isExpanded);
+
+                        // Smooth scroll to card if expanding
+                        if (isExpanded) {
+                            card.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }
+                    });
+
+                    // Set initial ARIA
+                    expandBtn.setAttribute('aria-expanded', 'false');
+                    expandBtn.setAttribute('aria-label', 'Expand location details');
+                }
+            });
+
+            // Initialize the conditional visibility system
+            initializeCardVisibility();
+
+            // Update status badges immediately and every minute
+            updateClinicStatuses();
+            setInterval(updateClinicStatuses, 60000);
+
+            // Add instructions for screen readers
+            const instructions = document.createElement('div');
+            instructions.id = 'location-instructions';
+            instructions.className = 'sr-only';
+            instructions.textContent = 'Select a location button to view detailed information for that location';
+            document.body.appendChild(instructions);
+
+            // Show the default location card on load (based on the active button)
+            const initialButton = document.querySelector('.map-location-button.active') || document.querySelector('.map-location-button');
+            if (initialButton) {
+                const initialLocation = initialButton.getAttribute('data-location');
+                showLocationCard(initialLocation);
+                initialButton.setAttribute('aria-pressed', 'true');
+                initialButton.setAttribute('aria-expanded', 'true');
+            }
+
+            // Disable simulated wait times; real data loaded from NextPatient
+            const USE_SIMULATED_WAIT_TIMES = false;
+            if (USE_SIMULATED_WAIT_TIMES) {
+                function updateWaitTimes() {
+                    const waitTimeElements = document.querySelectorAll('.location-wait-time span');
+                    waitTimeElements.forEach(element => {
+                        const currentTime = parseInt(element.textContent);
+                        const variation = Math.floor(Math.random() * 6) - 3; // ±3 minutes
+                        const newTime = Math.max(5, currentTime + variation);
+                        element.textContent = newTime + ' min';
+                    });
+                }
+                setInterval(updateWaitTimes, 120000);
+            }
+
+            // Enhanced animations and styles for conditional visibility
+            const style = document.createElement('style');
+            style.textContent = `
+                .sr-only {
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border: 0;
+                }
+
+                .location-card.expanded {
+                    transform: scale(1.02);
+                    z-index: 10;
+                }
+
+                /* Enhanced responsive behavior for conditional visibility */
+                @media (max-width: 768px) {
+                    .location-card.visible {
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .locations-grid.no-visible-cards::after {
+                        padding: 2rem 1rem;
+                        font-size: 1rem;
+                    }
+                }
+
+                @media (min-width: 769px) {
+                    .location-card.visible {
+                        margin-bottom: 2.5rem;
+                    }
+
+                    .locations-grid.no-visible-cards::after {
+                        padding: 3.5rem 2rem;
+                        font-size: 1.2rem;
+                    }
+                }
+
+                /* Smooth transitions for all interactive elements */
+                .map-location-button {
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+
+                .map-location-button.active {
+                    position: relative;
+                }
+
+                .map-location-button.active::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -8px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 8px;
+                    height: 8px;
+                    background: var(--primary-green);
+                    border-radius: 50%;
+                    animation: pulse-dot 2s infinite;
+                }
+
+                @keyframes pulse-dot {
+                    0%, 100% {
+                        opacity: 1;
+                        transform: translateX(-50%) scale(1);
+                    }
+                    50% {
+                        opacity: 0.6;
+                        transform: translateX(-50%) scale(1.2);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    .location-card,
+                    .map-location-button,
+                    .location-buttons .btn {
+                        transition: none;
+                    }
+
+                    .slideInUp,
+                    .slideOutDown,
+                    .pulse-dot {
+                        animation: none;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+    <!-- Sync home page wait times with NextPatient (same sources as Save Your Spot) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextPatientIds = {
+                collierville: 4858,
+                southaven: 5058,
+                millington: 4859,
+                germantown: 2771,
+                bartlett: 4857,
+                cordova: 5563
+            };
+
+            Object.entries(nextPatientIds).forEach(([key, id]) => {
+                const hiddenId = `nextpatient-widget.${id}`;
+
+                // Ensure hidden container exists for widget injection
+                if (!document.getElementById(hiddenId)) {
+                    const hidden = document.createElement('div');
+                    hidden.id = hiddenId;
+                    hidden.style.display = 'none';
+                    hidden.setAttribute('aria-hidden', 'true');
+                    document.body.appendChild(hidden);
+                }
+
+                // Load NextPatient widget script (same as Save Your Spot)
+                const s = document.createElement('script');
+                s.src = `https://nextpatient.co/p/${id}/widget.js?id=${id}`;
+                s.async = true;
+                s.addEventListener('load', () => {
+                    try {
+                        const wrap = document.getElementById(hiddenId);
+                        if (!wrap) return;
+                        const box = wrap.querySelector('#nextpatient-box');
+                        if (!box) return;
+                        const titleEl = box.querySelector('.wait-title');
+                        const timeEl = box.querySelector('.wait-time');
+                        const title = titleEl ? titleEl.textContent.trim() : 'Current Wait';
+                        const time = timeEl ? timeEl.textContent.trim() : '';
+
+                        const waitContainer = document.querySelector(`.location-card[data-location="${key}"] .location-wait-time`);
+                        if (waitContainer && time) {
+                            waitContainer.innerHTML = `<i class="fa-solid fa-clock"></i> ${title}: <span>${time}</span>`;
+                        }
+                    } catch (err) {
+                        // Silently ignore errors; existing content remains
+                    }
+                });
+                document.body.appendChild(s);
+            });
+        });
+    </script>
+
+</body>
+</html>

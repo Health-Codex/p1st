@@ -1,0 +1,56 @@
+<!-- 
+STANDARD HEADER IMPLEMENTATION TEMPLATE
+Copy this exact implementation to every HTML page for consistent mobile navigation
+
+This template ensures:
+1. Consistent CSS loading order
+2. Proper header injection point
+3. Standardized JavaScript loading
+4. File:// protocol compatibility
+-->
+
+<!-- ===== CSS SECTION (in <head>) ===== -->
+<!-- Load header-system-complete.css LAST for proper CSS cascade -->
+<link rel="stylesheet" href="assets/css/header-system-complete.css">
+
+<!-- ===== BODY SECTION ===== -->
+<!-- Header injection point - MUST be first element in <body> -->
+<div data-include="header"></div>
+
+<!-- Your page content goes here -->
+<main id="main-content">
+    <!-- Page content -->
+</main>
+
+<!-- Footer injection point -->
+<div data-include="footer"></div>
+
+<!-- Back to Top Button (optional but recommended) -->
+<a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+<!-- Fixed Save Your Spot Button for Mobile (optional) -->
+<a href="save-your-spot.html" class="fixed-cta-button">
+    <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+</a>
+
+<!-- ===== JAVASCRIPT SECTION (before closing </body>) ===== -->
+<!-- CRITICAL: Load these scripts in EXACT order with defer attribute -->
+<script src="assets/js/header-inline.js" defer></script>
+<script src="assets/js/footer-inline.js" defer></script>
+<script src="assets/js/core/header-system-new.js" defer></script>
+
+<!-- 
+IMPLEMENTATION CHECKLIST:
+□ header-system-complete.css loaded in <head>
+□ <div data-include="header"></div> in <body>
+□ <div data-include="footer"></div> before scripts
+□ Three JavaScript files in exact order with defer
+□ Font Awesome CSS loaded for icons
+□ All file paths are relative (for file:// compatibility)
+
+MAINTENANCE NOTES:
+- To update navigation: Edit assets/js/header-inline.js
+- To update styling: Edit assets/css/header-system-complete.css  
+- To update functionality: Edit assets/js/core/header-system-new.js
+- Changes automatically apply to ALL pages using this system
+-->

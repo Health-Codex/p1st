@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Care Navigator - People First Urgent Care</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Base & Layout --- */
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f4f7fa 0%, #e9eafc 100%);
+            color: #222;
+            letter-spacing: 0.01em;
+        }
+        .container {
+            max-width: 1100px; /* Increased width to show more content */
+            margin: 30px auto; /* Reduced top/bottom margin */
+            padding: 30px 32px 25px 32px; /* Reduced padding */
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 12px 32px rgba(30,77,140,0.10), 0 1.5px 4px rgba(30,77,140,0.04);
+            border-radius: 22px;
+            position: relative;
+            overflow: visible;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -5px; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, #1e4d8c, #3498db 60%, #00bfff 100%);
+            border-radius: 8px 8px 0 0;
+        }
+
+        /* --- Header & Titles --- */
+        .header-logo { text-align: center; margin-bottom: 20px; }
+        .header-logo img {
+            max-width: 220px;
+            filter: drop-shadow(0 2px 8px rgba(30,77,140,0.08));
+        }
+        h1 {
+            font-size: 2.4em; /* Slightly smaller */
+            font-weight: 800;
+            background: linear-gradient(90deg, #1e4d8c 30%, #3498db 70%, #00bfff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px; /* Reduced margin */
+        }
+        .subtitle {
+            color: #3a4a6b;
+            font-size: 1.1em; /* Slightly smaller */
+            margin-bottom: 20px; /* Reduced margin */
+            font-weight: 500;
+        }
+        .welcome-panel {
+            background: linear-gradient(120deg, #fafdff 60%, #eaf1fb 100%);
+            border-radius: 18px;
+            box-shadow: 0 6px 24px rgba(30,77,140,0.08);
+            margin: 20px 0 0 0; /* Reduced margin */
+            overflow: visible;
+            border: 1.5px solid #e3eaf7;
+        }
+        .welcome-content {
+            padding: 25px 28px 22px 28px; /* Reduced padding */
+        }
+        .welcome-icon i {
+            font-size: 48px; /* Smaller icon */
+            color: #1e4d8c;
+            filter: drop-shadow(0 2px 8px rgba(30,77,140,0.10));
+        }
+        .welcome-panel h2 {
+            font-size: 1.8em; /* Smaller heading */
+            font-weight: 700;
+            margin-bottom: 12px; /* Reduced margin */
+        }
+        .welcome-description {
+            font-size: 1.05em; /* Smaller text */
+            color: #3a4a6b;
+            margin-bottom: 22px; /* Reduced margin */
+            line-height: 1.5; /* Tighter line height */
+        }
+        .care-levels-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller minimum width */
+            gap: 16px; /* Reduced gap */
+            margin: 24px 0 0 0; /* Reduced margin */
+        }
+        .care-level {
+            background: #f7fafd;
+            padding: 18px 16px 16px 16px; /* Reduced padding */
+            border-radius: 12px; /* Smaller radius */
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(30,77,140,0.06);
+            border: 1.5px solid #e3eaf7;
+            transition: all 0.25s cubic-bezier(.4,0,.2,1);
+            position: relative;
+        }
+        .care-level:hover {
+            transform: translateY(-3px) scale(1.02); /* Smaller hover effect */
+            box-shadow: 0 8px 24px rgba(30,144,255,0.13);
+            border-color: #b3d1f7;
+        }
+        .care-level i {
+            font-size: 30px; /* Smaller icon */
+            margin-bottom: 12px; /* Reduced margin */
+        }
+        .care-level h3 {
+            font-size: 1.15em; /* Smaller heading */
+            font-weight: 700;
+            margin-bottom: 6px; /* Reduced margin */
+            color: #1e4d8c;
+        }
+        .care-level p {
+            font-size: 0.95em; /* Smaller text */
+            color: #4a5a7a;
+            line-height: 1.4; /* Tighter line height */
+        }
+        .care-level.covid-box {
+            border: 2.5px solid #1e90ff;
+            background: linear-gradient(120deg, #e6f2ff 60%, #fafdff 100%);
+            box-shadow: 0 4px 16px rgba(30,144,255,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .care-level.covid-box .covid-btn-pro {
+            margin-top: 18px;
+            margin-bottom: 0;
+            align-self: center;
+            display: flex;
+            justify-content: center;
+            min-width: 0;
+            width: 100%;
+            max-width: 320px;
+        }
+        .covid-btn-pro {
+            background: linear-gradient(90deg,#1e90ff,#00bfff);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 36px;
+            font-size: 1.13em;
+            margin-top: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 12px rgba(30,144,255,0.13);
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .covid-btn-pro:hover, .covid-btn-pro:focus {
+            background: linear-gradient(90deg,#00bfff,#1e90ff);
+            box-shadow: 0 8px 24px rgba(30,144,255,0.18);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .start-assessment-button {
+            background: linear-gradient(90deg, #f05a28 0%, #ffb347 100%);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 22px 48px;
+            font-size: 1.35em;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 32px rgba(240,90,40,0.18), 0 2px 8px rgba(30,77,140,0.08);
+            margin: 38px auto 0 auto;
+            display: block;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            outline: 3px solid transparent;
+            outline-offset: 2px;
+            position: relative;
+            z-index: 2;
+            animation: bounceBtn 1.6s cubic-bezier(.4,0,.2,1) 1.2s 2;
+        }
+        .start-assessment-button:focus {
+            outline: 3px solid #f05a28;
+            background: linear-gradient(90deg, #ffb347 0%, #f05a28 100%);
+        }
+        .start-assessment-button:hover {
+            background: linear-gradient(90deg, #ffb347 0%, #f05a28 100%);
+            box-shadow: 0 12px 36px rgba(240,90,40,0.22), 0 2px 8px rgba(30,77,140,0.10);
+            transform: translateY(-2px) scale(1.04);
+        }
+        @keyframes bounceBtn {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.08); }
+            40% { transform: scale(0.98); }
+            60% { transform: scale(1.04); }
+            80% { transform: scale(0.97); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 900px) {
+            .container { padding: 18px 2vw; }
+            .welcome-content { padding: 22px 6vw; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 8px 0; }
+            .welcome-content { padding: 12px 2vw; }
+            .care-levels-overview { grid-template-columns: 1fr; gap: 18px; }
+            .instructions { padding: 14px 6px; }
+            .care-level.covid-box .covid-btn-pro {
+                width: 100%;
+                max-width: 100%;
+                font-size: 1em;
+                padding: 13px 8px;
+            }
+        }
+
+        /* --- Notices & Warnings --- */
+        .urgent-warning { background-color: #ff4444; color: white; padding: 15px; border-radius: 8px; margin: 20px 0; text-align: center; font-weight: bold; display: none; }
+        .covid-notice, .disclaimer { background: #e8f4fd; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 5px solid #3498db; font-size: 0.95em; }
+        .covid-notice i, .disclaimer i { margin-right: 10px; color: #1e4d8c; }
+
+        /* --- Buttons --- */
+        .button-group { display: flex; justify-content: space-around; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
+        button, .button-like { padding: 12px 25px; font-size: 16px; background: linear-gradient(90deg, #1e4d8c, #3498db); color: #fff; border: none; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex-grow: 1; min-width: 180px; text-align: center; text-decoration: none; }
+        button:hover, .button-like:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        button:disabled, button.deemphasized { background: #adb5bd; border-color: #adb5bd; cursor: not-allowed; transform: none; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .schedule-button { background: linear-gradient(90deg, #f05a28, #e04a18); }
+        .emergency-button { background: linear-gradient(90deg, #dc3545, #c82333); }
+
+        /* --- Questionnaire Flow --- */
+        #questionnaireArea, #results {
+            background: linear-gradient(120deg, #fafdff 60%, #eaf1fb 100%);
+            border-radius: 14px; /* Smaller radius */
+            box-shadow: 0 4px 16px rgba(30,77,140,0.08);
+            border: 1.5px solid #e3eaf7;
+            padding: 15px; /* Add padding to container */
+        }
+        .question-step { display: none; }
+        .question-step.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .question-step-title {
+            font-size: 1.25em; /* Smaller title */
+            font-weight: 700;
+            color: #1e4d8c;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px; /* Reduced padding */
+            margin-bottom: 8px; /* Add margin */
+        }
+        .question-step-instruction { margin-bottom: 15px; font-size: 0.95em; color: #333; } /* Smaller text and margin */
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Smaller minimum width */
+            gap: 10px; /* Reduced gap */
+        }
+        .options-list li {
+            background: #fafdff;
+            border-radius: 6px; /* Smaller radius */
+            box-shadow: 0 2px 8px rgba(30,77,140,0.04);
+            border: 1.5px solid #e3eaf7;
+            font-size: 0.95em; /* Smaller text */
+            transition: all 0.18s cubic-bezier(.4,0,.2,1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8px 10px; /* Add padding */
+        }
+        .options-list li:hover, .options-list li:focus-within { border-color: #3498db; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .options-list li.selected {
+            background: linear-gradient(90deg, #eaf1fb 60%, #d6eaf8 100%);
+            border-left: 5px solid #1e4d8c;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(30,77,140,0.10);
+        }
+        .options-list li.selected label { color: #153762; }
+        .options-list input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); accent-color: #1e4d8c; cursor: pointer; }
+        .options-list label { flex-grow: 1; cursor: pointer; font-size: 0.9em; } /* Smaller text */
+        .options-list li.none-option {
+            background: #f3f6fa;
+            border-style: dashed;
+        }
+        .options-list li.none-option.selected {
+            background: #e9ecef;
+            border-left-color: #6c757d;
+        }
+        .options-list li.none-option.selected label { color: #495057; }
+
+        .navigation-buttons button, .results-actions button {
+            border-radius: 18px; /* Smaller radius */
+            font-weight: 600;
+            font-size: 1em; /* Smaller text */
+            box-shadow: 0 2px 8px rgba(30,77,140,0.06);
+            padding: 8px 16px; /* Smaller padding */
+        }
+        .progress-bar-container {
+            background: #e3eaf7;
+            border-radius: 4px; /* Smaller radius */
+            height: 8px; /* Smaller height */
+            margin: 10px 0; /* Add margin */
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #1e4d8c, #3498db 60%, #00bfff 100%);
+            border-radius: 4px; /* Smaller radius */
+            height: 8px; /* Smaller height */
+        }
+        .result-card {
+            background: linear-gradient(120deg, #fafdff 60%, #eaf1fb 100%);
+            border-radius: 10px; /* Smaller radius */
+            box-shadow: 0 4px 16px rgba(30,77,140,0.08);
+            border: 1.5px solid #e3eaf7;
+            font-size: 1em; /* Smaller text */
+            padding: 15px; /* Add padding */
+            margin-bottom: 15px; /* Add margin */
+        }
+        .result-card h4 {
+            font-size: 1.1em; /* Smaller heading */
+            font-weight: 700;
+            color: #1e4d8c;
+            margin-bottom: 8px; /* Add margin */
+        }
+        .result-card.emergency h4 { color: #dc3545; }
+        .result-card.urgent-care h4 { color: #f0ad4e; }
+        .result-card.pcp h4 { color: #5cb85c; }
+        .wait-time-indicator {
+            background: linear-gradient(90deg, #e8f4fd 60%, #fafdff 100%);
+            border-radius: 8px; /* Smaller radius */
+            border: 1.5px solid #b3d1f7;
+            color: #1e4d8c;
+            font-weight: 600;
+            padding: 10px; /* Add padding */
+            margin-bottom: 15px; /* Add margin */
+            font-size: 0.95em; /* Smaller text */
+        }
+        /* --- Enhanced Modern Aesthetics --- */
+
+        /* --- COVID-19 Box Styles */
+        .care-level.covid-box {
+            border: 2.5px solid #1e90ff;
+            background: linear-gradient(120deg, #e6f2ff 60%, #fafdff 100%);
+            box-shadow: 0 4px 16px rgba(30,144,255,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .care-level.covid-box .covid-btn-pro {
+            margin-top: 18px;
+            margin-bottom: 0;
+            align-self: center;
+            display: flex;
+            justify-content: center;
+            min-width: 0;
+            width: 100%;
+            max-width: 320px;
+        }
+        .covid-btn {
+            background: linear-gradient(90deg,#1e90ff,#00bfff);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 36px;
+            font-size: 1.13em;
+            margin-top: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 12px rgba(30,144,255,0.13);
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .covid-btn:hover {
+            background: linear-gradient(90deg,#00bfff,#1e90ff);
+            box-shadow: 0 8px 24px rgba(30,144,255,0.18);
+            transform: translateY(-2px) scale(1.04);
+        }
+        /* COVID Questionnaire Styles */
+        #covidQuestionnairePanel {
+            background: linear-gradient(120deg, #fafdff 60%, #eaf1fb 100%);
+            border-radius: 18px; /* Smaller radius */
+            box-shadow: 0 8px 32px rgba(30,144,255,0.13);
+            border: 2.5px solid #1e90ff;
+            padding: 30px 25px 25px 25px; /* Reduced padding */
+            margin: 30px 0 0 0; /* Reduced margin */
+            max-width: 800px; /* Wider panel */
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+        #covidQuestionnairePanel h2 {
+            font-size: 1.7em; /* Smaller heading */
+            font-weight: 800;
+            color: #1e90ff;
+            margin-bottom: 20px; /* Reduced margin */
+            letter-spacing: -0.01em;
+            text-align: center;
+        }
+        #covidQuestionnairePanel .covid-q-step label {
+            font-size: 1.05em; /* Smaller text */
+            font-weight: 600;
+            color: #1e4d8c;
+            margin-bottom: 8px; /* Reduced margin */
+        }
+        #covidQuestionnairePanel .covid-q-options label {
+            font-size: 0.95em; /* Smaller text */
+            color: #3a4a6b;
+            font-weight: 500;
+            background: #fafdff;
+            border-radius: 6px; /* Smaller radius */
+            padding: 8px 12px; /* Reduced padding */
+            margin-bottom: 6px; /* Reduced margin */
+            display: flex;
+            align-items: center;
+            transition: background 0.18s cubic-bezier(.4,0,.2,1);
+            cursor: pointer;
+        }
+        #covidQuestionnairePanel .covid-q-options label:hover {
+            background: #e6f2ff;
+        }
+        #covidQuestionnairePanel input[type="checkbox"],
+        #covidQuestionnairePanel input[type="radio"] {
+            accent-color: #1e90ff;
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        #covidQuestionnairePanel .covid-q-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+            gap: 18px;
+        }
+        #covidQuestionnairePanel .covid-q-nav button {
+            min-width: 140px;
+            font-size: 1.08em;
+            border-radius: 22px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+        }
+        #covidQuestionnairePanel .covid-q-result {
+            background: linear-gradient(90deg, #e6f2ff 60%, #fafdff 100%);
+            border-radius: 12px;
+            border-left: 6px solid #1e90ff;
+            font-size: 1.13em;
+            margin-top: 32px;
+            padding: 24px 20px;
+            box-shadow: 0 2px 8px rgba(30,144,255,0.08);
+        }
+        #covidQuestionnairePanel .covid-q-result.urgent {
+            background: #fff3f3;
+            border-left-color: #dc3545;
+        }
+        #covidQuestionnairePanel .covid-q-result.urgent h4 {
+            color: #dc3545;
+        }
+        #covidQuestionnairePanel .covid-q-result.reassure {
+            background: #f0f9f0;
+            border-left-color: #5cb85c;
+        }
+        #covidQuestionnairePanel .covid-q-result.reassure h4 {
+            color: #5cb85c;
+        }
+        #covidQuestionnairePanel .covid-q-result p {
+            margin-bottom: 0;
+        }
+        #covidQuestionnairePanel .covid-q-result ul {
+            margin-left: 18px;
+            margin-bottom: 10px;
+        }
+        #covidQuestionnairePanel .covid-q-result li {
+            margin-bottom: 8px;
+        }
+        #covidQuestionnairePanel .covid-q-result button {
+            margin-top: 18px;
+        }
+        @media (max-width: 700px) {
+            #covidQuestionnairePanel { padding: 18px 4vw; }
+        }
+        @media (max-width: 500px) {
+            #covidQuestionnairePanel { padding: 8px 2vw; }
+            #covidQuestionnairePanel h2 { font-size: 1.3em; }
+        }
+
+        /* --- COVID Modal Overlay --- */
+        #covidModalOverlay {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(30,77,140,0.18);
+            backdrop-filter: blur(2px);
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.2s;
+        }
+        #covidModalOverlay.active { display: flex; }
+        #covidModal {
+            background: #fff;
+            border-radius: 18px; /* Smaller radius */
+            box-shadow: 0 12px 48px rgba(30,77,140,0.18);
+            max-width: 800px; /* Wider modal */
+            width: 96vw;
+            padding: 0;
+            position: relative;
+            animation: fadeInModal 0.3s cubic-bezier(.4,0,.2,1);
+            max-height: 90vh; /* Limit height */
+            overflow-y: auto; /* Add scrolling */
+        }
+        @keyframes fadeInModal { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+        #covidModalClose {
+            position: absolute;
+            top: 15px; right: 15px; /* Adjusted position */
+            background: none;
+            border: none;
+            font-size: 1.5em; /* Smaller icon */
+            color: #1e90ff;
+            cursor: pointer;
+            z-index: 2;
+            transition: color 0.2s;
+        }
+        #covidModalClose:hover { color: #dc3545; }
+        #covidModalContent {
+            padding: 30px 25px 25px 25px; /* Reduced padding */
+            font-size: 0.95em; /* Smaller text */
+        }
+        @media (max-width: 600px) {
+            #covidModalContent { padding: 15px 2vw; }
+        }
+
+        /* --- Start Assessment Button --- */
+        .start-assessment-button {
+            background: linear-gradient(90deg, #f05a28 0%, #ffb347 100%);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 22px 48px;
+            font-size: 1.35em;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 32px rgba(240,90,40,0.18), 0 2px 8px rgba(30,77,140,0.08);
+            margin: 38px auto 0 auto;
+            display: block;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            outline: 3px solid transparent;
+            outline-offset: 2px;
+            position: relative;
+            z-index: 2;
+            animation: bounceBtn 1.6s cubic-bezier(.4,0,.2,1) 1.2s 2;
+        }
+        .start-assessment-button:focus {
+            outline: 3px solid #f05a28;
+            background: linear-gradient(90deg, #ffb347 0%, #f05a28 100%);
+        }
+        .start-assessment-button:hover {
+            background: linear-gradient(90deg, #ffb347 0%, #f05a28 100%);
+            box-shadow: 0 12px 36px rgba(240,90,40,0.22), 0 2px 8px rgba(30,77,140,0.10);
+            transform: translateY(-2px) scale(1.04);
+        }
+        @keyframes bounceBtn {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.08); }
+            40% { transform: scale(0.98); }
+            60% { transform: scale(1.04); }
+            80% { transform: scale(0.97); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 600px) {
+            .start-assessment-button {
+                font-size: 1.05em;
+                padding: 15px 8px;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-logo" style="margin-bottom: 20px;">
+            <img src="images/logo_peoplefirst-01.svg" alt="People First Urgent Care Logo" style="max-width: 250px; height: auto; display: block; margin: 0 auto;">
+        </div>
+
+        <h1>Symptom Care Navigator</h1>
+        <p class="subtitle">Answer a few questions to help determine the most appropriate level of care for your symptoms.</p>
+
+        <div class="urgent-warning" id="emergencyWarningGlobal">
+            <i class="fas fa-exclamation-triangle"></i>
+            Based on your selections, your symptoms may indicate a life-threatening emergency. Please call 911 or go to the nearest emergency room immediately.
+        </div>
+
+        <div class="covid-notice">
+            <i class="fas fa-virus"></i>
+            <strong>COVID-19 Services:</strong> People First Urgent Care offers Rapid Antigen and PCR testing for COVID-19. Please wear a mask if you have respiratory symptoms.
+        </div>
+
+        <!-- Welcome Panel: Inserted here -->
+        <div id="welcomePanel" class="welcome-panel" style="display:none;">
+            <div class="welcome-content">
+                <div class="welcome-icon">
+                    <i class="fas fa-heartbeat pulse"></i>
+                </div>
+                <h2>Welcome to the Symptom Care Navigator</h2>
+                <p class="welcome-description">
+                    This interactive tool will help guide you to the most appropriate level of care based on your symptoms.
+                </p>
+                <div class="care-levels-overview">
+                    <div class="care-level">
+                        <i class="fas fa-hospital-alt"></i>
+                        <h3>Emergency Care</h3>
+                        <p>Life-threatening conditions requiring immediate medical attention</p>
+                    </div>
+                    <div class="care-level">
+                        <i class="fas fa-first-aid"></i>
+                        <h3>Urgent Care</h3>
+                        <p>Non-life-threatening but prompt medical care needed</p>
+                    </div>
+                    <div class="care-level">
+                        <i class="fas fa-user-md"></i>
+                        <h3>Primary Care</h3>
+                        <p>Routine medical care and ongoing health management</p>
+                    </div>
+                    <div class="care-level covid-box" style="border: 2px solid #1e90ff; background: #e6f2ff;">
+                        <i class="fas fa-virus" style="color:#1e90ff;"></i>
+                        <h3>COVID-19</h3>
+                        <p>Worried about COVID-19 symptoms or exposure?</p>
+                        <button class="covid-btn-pro" onclick="openCovidModal()">
+                            <i class="fas fa-virus"></i> COVID-19 Symptom & Exposure Assessment
+                        </button>
+                    </div>
+                </div>
+                <div class="instructions">
+                    <h3><i class="fas fa-info-circle"></i> How It Works</h3>
+                    <ol>
+                        <li>Answer questions about your symptoms</li>
+                        <li>Receive a recommended level of care</li>
+                        <li>Get guidance on next steps</li>
+                    </ol>
+                </div>
+                <button id="startAssessmentBtn" class="start-assessment-button" onclick="startAssessment()">
+                    <i class="fas fa-play-circle"></i> Begin Symptom Assessment
+                </button>
+            </div>
+        </div>
+
+        <div id="questionnaireArea">
+            <div id="resumePrompt">
+                <p>It looks like you have a previous session in progress.</p>
+                <button id="resumeConfirmButton" onclick="confirmResume(true)"><i class="fas fa-play"></i> Resume</button>
+                <button id="resumeDeclineButton" onclick="confirmResume(false)"><i class="fas fa-times"></i> Start New</button>
+            </div>
+            <div class="utility-buttons">
+                <button id="startOverButton" onclick="startOver()"><i class="fas fa-redo"></i> Start Over</button>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <!-- Steps will be dynamically inserted here by JavaScript -->
+            <div id="stepNoticeArea"></div>
+            <div class="navigation-buttons">
+                <button id="prevButton" onclick="prevStep()" style="display: none;"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button id="nextButton" onclick="nextStep()">Next <i class="fas fa-arrow-right"></i></button>
+                <button id="getRecommendationButton" onclick="getFinalRecommendation()" style="display: none;"><i class="fas fa-check-circle"></i> Get Recommendation</button>
+            </div>
+        </div>
+
+        <div id="results" aria-live="polite">
+             <div class="wait-time-indicator" id="waitTimeSection" style="display:none;">
+                <i class="fas fa-clock"></i>
+                People First Urgent Care - Current Estimated Wait Time: <span id="waitTime">15-25 minutes</span>
+                <p style="font-size:0.8em; margin-top:5px;">(Wait times are estimates and can change.)</p>
+            </div>
+            <div id="recommendations"></div>
+            <div class="results-actions" style="display:none;">
+                <button id="printRecommendationButton" onclick="printRecommendation()"><i class="fas fa-print"></i> Print Recommendation</button>
+            </div>
+        </div>
+
+        <div class="button-group" style="margin-top: 40px;">
+            <button onclick="scheduleVisit()" class="schedule-button checkin-online-btn">
+                <i class="fas fa-calendar-alt"></i> Check-In Online (Urgent Care)
+            </button>
+            <button onclick="callEmergency()" class="emergency-button">
+                <i class="fas fa-phone-alt"></i> Call 911 / Go to ER
+            </button>
+        </div>
+        <div class="locations-section" style="margin-top: 30px;"> <!-- ... content ... --> </div>
+        <div class="insurance-section"> <!-- ... content ... --> </div>
+        <div class="disclaimer"> <!-- ... content ... --> </div>
+
+        <!-- COVID Modal Overlay -->
+        <div id="covidModalOverlay" aria-modal="true" role="dialog" tabindex="-1">
+            <div id="covidModal">
+                <button id="covidModalClose" aria-label="Close COVID-19 Assessment" onclick="closeCovidModal()">&times;</button>
+                <div id="covidModalContent">
+                    <!-- Dynamic COVID-19 questionnaire will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questionnaireDOM = document.getElementById('questionnaireArea');
+        const progressBar = document.getElementById('progressBar');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const getRecommendationButton = document.getElementById('getRecommendationButton');
+        const stepNoticeArea = document.getElementById('stepNoticeArea');
+        const resumePromptDiv = document.getElementById('resumePrompt');
+
+        const globalEmergencyWarningDiv = document.getElementById('emergencyWarningGlobal');
+        const resultsDiv = document.getElementById('results');
+        const recommendationsDiv = document.getElementById('recommendations');
+        const waitTimeSection = document.getElementById('waitTimeSection');
+        const resultsActionsDiv = document.querySelector('.results-actions');
+
+        const LS_PREFIX = 'pfucSymptomChecker_v2_'; // Updated prefix for new structure
+        const LS_CURRENT_STEP = LS_PREFIX + 'currentStep';
+        const LS_USER_SELECTIONS = LS_PREFIX + 'userSelections';
+        const LS_EMERGENCY_S1_FLAG = LS_PREFIX + 'emergencyS1Flag';
+
+        const quizSteps = [
+            {
+                id: "step1",
+                title: "Are you having any of these urgent warning signs?",
+                instruction: "Please let us know if you are experiencing any of the following. If none apply, select 'None of these apply to me.'",
+                options: [
+                    { id: 'chest-pain', label: 'Chest pain, pressure, or discomfort', careLevel: 'emergency' },
+                    { id: 'difficulty-breathing', label: 'Severe trouble breathing or shortness of breath', careLevel: 'emergency' },
+                    { id: 'severe-bleeding', label: 'Heavy bleeding that will not stop', careLevel: 'emergency' },
+                    { id: 'loss-of-consciousness', label: 'Fainting, passing out, or not waking up', careLevel: 'emergency' },
+                    { id: 'sudden-weakness-numbness', label: 'Sudden weakness, numbness, trouble speaking, or vision changes', careLevel: 'emergency' },
+                    { id: 'severe-head-injury', label: 'Head injury with confusion, vomiting, or loss of consciousness', careLevel: 'emergency' },
+                    { id: 'severe-allergic-reaction', label: 'Swelling of lips/tongue or trouble breathing after a possible allergy', careLevel: 'emergency' },
+                    { id: 'severe-abdominal-pain', label: 'Sudden, severe belly pain', careLevel: 'emergency' },
+                    { id: 'high-fever-unresponsive', label: 'Very high fever with confusion, stiff neck, or rash', careLevel: 'emergency' },
+                    { id: 'seizures', label: 'Seizure or convulsions', careLevel: 'emergency' },
+                    { id: 'none-step1', label: 'None of these apply to me', careLevel: 'none', isNoneOption: true }
+                ]
+            },
+            {
+                id: "step2",
+                title: "Are you having any of these symptoms today?",
+                instruction: "Select any that you are experiencing, or choose 'None of these apply to me.'",
+                options: [
+                    { id: 'fever', label: 'Fever (feeling hot, chills, or measured temperature over 100.4°F)', careLevel: 'urgent' },
+                    { id: 'sore-throat', label: 'Sore throat that makes it hard to swallow or is very painful', careLevel: 'urgent' },
+                    { id: 'cough', label: 'Cough that is new or getting worse', careLevel: 'urgent' },
+                    { id: 'body-aches', label: 'Body aches, chills, or feeling very tired suddenly', careLevel: 'urgent' },
+                    { id: 'ear-pain', label: 'Ear pain or pulling at the ear', careLevel: 'urgent' },
+                    { id: 'painful-urination', label: 'Pain or burning when urinating', careLevel: 'urgent' },
+                    { id: 'eye-redness-discharge', label: 'Red or pink eye with discharge', careLevel: 'urgent' },
+                    { id: 'joint-injury', label: 'Recent injury with swelling or trouble moving a joint', careLevel: 'urgent' },
+                    { id: 'cut-wont-stop-bleeding', label: 'Cut that may need stitches (bleeding controlled)', careLevel: 'urgent' },
+                    { id: 'burn', label: 'Burn that is painful or blistering', careLevel: 'urgent' },
+                    { id: 'nausea-vomiting', label: 'Vomiting or diarrhea that will not stop or can’t keep fluids down', careLevel: 'urgent' },
+                    { id: 'none-step2', label: 'None of these apply to me', careLevel: 'none', isNoneOption: true }
+                ]
+            },
+            {
+                id: "step3",
+                title: "Are you having any of these other symptoms or concerns?",
+                instruction: "Let us know if you have any of these, or select 'None of these apply to me.'",
+                options: [
+                    { id: 'sinus-congestion', label: 'Stuffy or runny nose with facial pressure', careLevel: 'uc_pcp' },
+                    { id: 'mild-nausea', label: 'Mild nausea, vomiting, or diarrhea (a few episodes)', careLevel: 'uc_pcp' },
+                    { id: 'allergy-symptoms', label: 'Sneezing, itchy or watery eyes, or runny nose (allergy symptoms)', careLevel: 'uc_pcp' },
+                    { id: 'insect-bite', label: 'Bug bite or sting with redness or swelling (not severe)', careLevel: 'uc_pcp' },
+                    { id: 'mild-rash', label: 'New or bothersome rash or skin irritation', careLevel: 'uc_pcp' },
+                    { id: 'none-step3', label: 'None of these apply to me', careLevel: 'none', isNoneOption: true }
+                ]
+            },
+            {
+                id: "step4",
+                title: "Are you looking for help with any of these routine or mild issues?",
+                instruction: "Select any that apply, or choose 'None of these apply to me.'",
+                options: [
+                    { id: 'mild-cold', label: 'Mild cold symptoms (runny nose, mild cough, no fever)', careLevel: 'pcp' },
+                    { id: 'chronic-condition-followup', label: 'Follow-up for a long-term condition (like diabetes or high blood pressure)', careLevel: 'pcp' },
+                    { id: 'medication-refill', label: 'Need a refill of a regular medication (not urgent)', careLevel: 'pcp' },
+                    { id: 'wellness-check', label: 'Routine check-up, physical, or vaccinations', careLevel: 'pcp' },
+                    { id: 'mild-symptoms-days', label: 'Mild symptoms that have lasted several days (not getting worse)', careLevel: 'pcp' },
+                    { id: 'health-question', label: 'General health question or advice (not urgent)', careLevel: 'pcp' },
+                    { id: 'none-step4', label: 'None of these apply to me', careLevel: 'none', isNoneOption: true }
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+        let userSelections = {};
+        let emergencySymptomSelectedInStep1 = false;
+
+        function saveProgress() {
+            localStorage.setItem(LS_CURRENT_STEP, currentStep);
+            localStorage.setItem(LS_USER_SELECTIONS, JSON.stringify(userSelections));
+            localStorage.setItem(LS_EMERGENCY_S1_FLAG, emergencySymptomSelectedInStep1);
+        }
+
+        function loadProgress() {
+            const savedStep = localStorage.getItem(LS_CURRENT_STEP);
+            const savedSelections = localStorage.getItem(LS_USER_SELECTIONS);
+            const savedEmergencyFlag = localStorage.getItem(LS_EMERGENCY_S1_FLAG);
+
+            if (savedStep !== null && savedSelections !== null) {
+                if (parseInt(savedStep, 10) >= quizSteps.length) {
+                    clearProgress();
+                    document.getElementById('welcomePanel').style.display = 'block';
+                    document.getElementById('questionnaireArea').style.display = 'none';
+                    return false;
+                }
+                document.getElementById('welcomePanel').style.display = 'none';
+                document.getElementById('questionnaireArea').style.display = 'block';
+                resumePromptDiv.style.display = 'block';
+                return true;
+            }
+            return false;
+        }
+
+        function confirmResume(shouldResume) {
+            resumePromptDiv.style.display = 'none';
+            if (shouldResume) {
+                const savedStep = localStorage.getItem(LS_CURRENT_STEP);
+                const savedSelections = localStorage.getItem(LS_USER_SELECTIONS);
+                const savedEmergencyFlag = localStorage.getItem(LS_EMERGENCY_S1_FLAG);
+
+                currentStep = parseInt(savedStep, 10);
+                userSelections = JSON.parse(savedSelections);
+                emergencySymptomSelectedInStep1 = savedEmergencyFlag === 'true';
+
+                resetUIForQuestionnaire();
+                renderStep(currentStep);
+            } else {
+                clearProgress();
+                startOver(false); // Start over without scrolling
+            }
+        }
+
+        function clearProgress() {
+            localStorage.removeItem(LS_CURRENT_STEP);
+            localStorage.removeItem(LS_USER_SELECTIONS);
+            localStorage.removeItem(LS_EMERGENCY_S1_FLAG);
+        }
+
+        function renderStep(stepIndex) {
+            const existingStepDOM = questionnaireDOM.querySelector('.question-step');
+            if (existingStepDOM) existingStepDOM.remove();
+            stepNoticeArea.innerHTML = '';
+
+            const stepData = quizSteps[stepIndex];
+            const stepDiv = document.createElement('div');
+            stepDiv.className = 'question-step active';
+            stepDiv.setAttribute('role', 'region');
+            stepDiv.setAttribute('aria-labelledby', `step-title-${stepData.id}`);
+
+            const searchInputHTML = `
+                <div class="step-search-container">
+                    <input type="search" id="stepSearchInput-${stepData.id}" class="step-search-input"
+                           placeholder="Search symptoms in this step..." aria-label="Search symptoms in this step for ${stepData.title}">
+                    <button class="search-clear-button" aria-label="Clear search" onclick="clearSearch(this, '${stepData.id}')">&times;</button>
+                </div>`;
+
+            let optionsHTML = `<ul class="options-list" aria-labelledby="step-title-${stepData.id}">`;
+            stepData.options.forEach(opt => {
+                const isSelected = userSelections[opt.id];
+                const checkedAttr = isSelected ? 'checked' : '';
+                let liClass = isSelected ? 'selected' : '';
+                if (opt.isNoneOption) liClass += ' none-option';
+
+                optionsHTML += `
+                    <li class="${liClass.trim()}" onclick="toggleCheckbox('${opt.id}', ${stepIndex})" role="option" aria-selected="${!!isSelected}" tabindex="0" onkeydown="handleOptionKeydown(event, '${opt.id}', ${stepIndex})">
+                        <input type="checkbox" id="${opt.id}" value="${opt.id}" data-care-level="${opt.careLevel}" data-label="${opt.label}" ${opt.isNoneOption ? 'data-is-none="true"' : ''} ${checkedAttr} onchange="updateSelection(event, ${stepIndex})" tabindex="-1">
+                        <label for="${opt.id}">${opt.label}</label>
+                    </li>
+                `;
+            });
+            optionsHTML += '</ul>';
+
+            stepDiv.innerHTML = `
+                <h3 class="question-step-title" id="step-title-${stepData.id}">${stepData.title}</h3>
+                <p class="question-step-instruction">${stepData.instruction || ''}</p>
+                ${searchInputHTML}
+                ${optionsHTML}
+            `;
+            questionnaireDOM.insertBefore(stepDiv, stepNoticeArea);
+
+            const searchInput = stepDiv.querySelector(`#stepSearchInput-${stepData.id}`);
+            const clearButton = stepDiv.querySelector('.search-clear-button');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    filterStepOptions(e.target.value, stepDiv);
+                    clearButton.style.display = e.target.value ? 'block' : 'none';
+                });
+            }
+
+            updateNavigationButtons();
+            updateProgressBar();
+            checkEmergencySelectionInStep1(); // This will also handle disabling Next button
+            saveProgress();
+        }
+
+        function handleOptionKeydown(event, checkboxId, stepIndex) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleCheckbox(checkboxId, stepIndex);
+            }
+        }
+
+        function clearSearch(button, stepId) {
+            const searchInput = document.getElementById(`stepSearchInput-${stepId}`);
+            const stepDiv = button.closest('.question-step');
+            if (searchInput) {
+                searchInput.value = '';
+                filterStepOptions('', stepDiv);
+                button.style.display = 'none';
+                searchInput.focus();
+            }
+        }
+
+        function filterStepOptions(searchTerm, stepDiv) {
+            const term = searchTerm.toLowerCase().trim();
+            const optionsList = stepDiv.querySelector('.options-list');
+            if (!optionsList) return;
+            const items = optionsList.querySelectorAll('li');
+            let visibleCount = 0;
+
+            const noResultsMessageId = `no-search-results-${stepDiv.querySelector('.question-step-title').id}`;
+            let noResultsDiv = stepDiv.querySelector(`#${noResultsMessageId}`);
+            if (noResultsDiv) noResultsDiv.remove();
+
+            items.forEach(item => {
+                const label = item.querySelector('label');
+                if (label && label.textContent.toLowerCase().includes(term)) {
+                    item.style.display = ''; // Use default display (flex)
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0 && term.length > 0) {
+                noResultsDiv = document.createElement('p');
+                noResultsDiv.id = noResultsMessageId;
+                noResultsDiv.className = 'step-notice info';
+                noResultsDiv.textContent = 'No symptoms match your search in this step.';
+                optionsList.parentNode.insertBefore(noResultsDiv, optionsList);
+            }
+        }
+
+        function toggleCheckbox(checkboxId, stepIndex) {
+            const checkbox = document.getElementById(checkboxId);
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                const event = new Event('change', { bubbles: true });
+                checkbox.dispatchEvent(event); // This will trigger updateSelection
+            }
+        }
+
+        function updateSelection(event, stepIndex) {
+            const checkbox = event.target;
+            const listItem = checkbox.closest('li');
+            const stepOptions = quizSteps[stepIndex].options;
+
+            if (checkbox.checked) {
+                userSelections[checkbox.value] = {
+                    id: checkbox.value,
+                    label: checkbox.dataset.label,
+                    careLevel: checkbox.dataset.careLevel,
+                    isNoneOption: checkbox.dataset.isNone === 'true'
+                };
+                listItem.classList.add('selected');
+                listItem.setAttribute('aria-selected', 'true');
+
+                if (checkbox.dataset.isNone === 'true') { // If "None" option is selected
+                    stepOptions.forEach(opt => {
+                        if (opt.id !== checkbox.value && !opt.isNoneOption && userSelections[opt.id]) {
+                            delete userSelections[opt.id];
+                            const otherCheckbox = document.getElementById(opt.id);
+                            if (otherCheckbox) {
+                                otherCheckbox.checked = false;
+                                otherCheckbox.closest('li').classList.remove('selected');
+                                otherCheckbox.closest('li').setAttribute('aria-selected', 'false');
+                            }
+                        }
+                    });
+                } else { // If a regular option is selected, deselect "None" for this step
+                    const noneOptionInStep = stepOptions.find(opt => opt.isNoneOption);
+                    if (noneOptionInStep && userSelections[noneOptionInStep.id]) {
+                        delete userSelections[noneOptionInStep.id];
+                        const noneCheckbox = document.getElementById(noneOptionInStep.id);
+                        if (noneCheckbox) {
+                            noneCheckbox.checked = false;
+                            noneCheckbox.closest('li').classList.remove('selected');
+                            noneCheckbox.closest('li').setAttribute('aria-selected', 'false');
+                        }
+                    }
+                }
+
+                if (currentStep === 0 && checkbox.dataset.careLevel === 'emergency') {
+                    emergencySymptomSelectedInStep1 = true;
+                }
+
+            } else { // Checkbox unchecked
+                delete userSelections[checkbox.value];
+                listItem.classList.remove('selected');
+                listItem.setAttribute('aria-selected', 'false');
+                if (currentStep === 0 && checkbox.dataset.careLevel === 'emergency') {
+                    // Re-check if any other emergency symptom is still selected in step 1
+                    emergencySymptomSelectedInStep1 = quizSteps[0].options.some(opt =>
+                        opt.careLevel === 'emergency' && userSelections[opt.id]
+                    );
+                }
+            }
+            checkEmergencySelectionInStep1();
+            saveProgress();
+        }
+
+        function checkEmergencySelectionInStep1() {
+            stepNoticeArea.innerHTML = '';
+            nextButton.disabled = false;
+            nextButton.classList.remove('deemphasized'); // Not strictly needed if using disabled
+            nextButton.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+
+
+            if (currentStep === 0 && emergencySymptomSelectedInStep1) {
+                stepNoticeArea.innerHTML = `
+                    <div class="step-notice critical">
+                        <i class="fas fa-exclamation-triangle"></i> An emergency symptom has been selected. We strongly advise seeking immediate emergency care.
+                        <button onclick="getFinalRecommendation()" class="critical-action button-like" style="margin-left:0; margin-top:10px; width:auto;">See Recommendation Now</button>
+                        <p style="font-size:0.9em; margin-top:10px;">Continuing to answer other questions is <strong>not recommended</strong> if an emergency is suspected.</p>
+                    </div>`;
+                nextButton.disabled = true; // Disable the main "Next" button
+                // nextButton.classList.add('deemphasized'); // Visually indicate it's not the preferred path
+                // nextButton.innerHTML = 'Continue Answering (Not Recommended) <i class="fas fa-arrow-right"></i>';
+            }
+        }
+
+        function updateNavigationButtons() {
+            prevButton.style.display = currentStep > 0 ? 'inline-block' : 'none';
+            const isLastStep = currentStep === quizSteps.length - 1;
+            nextButton.style.display = !isLastStep ? 'inline-block' : 'none';
+            getRecommendationButton.style.display = isLastStep ? 'inline-block' : 'none';
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentStep + 1) / quizSteps.length) * 100;
+            progressBar.style.width = progress + '%';
+            progressBar.setAttribute('aria-valuenow', Math.round(progress));
+            progressBar.setAttribute('aria-valuetext', `Step ${currentStep + 1} of ${quizSteps.length}`);
+        }
+
+        function nextStep() {
+            // Check if any actual symptom (not "none") is selected OR if "none" is selected for the current step
+            const currentStepSelections = Object.values(userSelections).filter(sel => {
+                const optionInCurrentStep = quizSteps[currentStep].options.find(opt => opt.id === sel.id);
+                return !!optionInCurrentStep; // Ensure selection belongs to current step
+            });
+
+            const hasMeaningfulSelectionInCurrentStep = currentStepSelections.some(sel => !sel.isNoneOption || sel.isNoneOption);
+
+            if (!hasMeaningfulSelectionInCurrentStep && currentStep < quizSteps.length -1 && currentStep > 0) { // Step 0 (emergency) has its own critical notice
+                 stepNoticeArea.innerHTML = `<div class="step-notice info">Please select at least one option, or choose "None of the above apply to me for this step" to continue.</div>`;
+                 return; // Don't advance
+            } else {
+                 stepNoticeArea.innerHTML = '';
+            }
+
+            if (currentStep < quizSteps.length - 1) {
+                currentStep++;
+                renderStep(currentStep);
+                questionnaireDOM.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            saveProgress();
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                renderStep(currentStep);
+                questionnaireDOM.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            saveProgress();
+        }
+
+        function getFinalRecommendation() {
+            resetUIForResults();
+
+            const actualSelections = Object.values(userSelections).filter(sel => !sel.isNoneOption);
+
+            if (actualSelections.length === 0) {
+                recommendationsDiv.innerHTML = `
+                    <div class="result-card">
+                        <h4>No Symptoms Selected</h4>
+                        <p>You haven't selected any specific symptoms. If you are feeling unwell, please consider your symptoms again or consult a healthcare professional.</p>
+                        <p>You can use the "Start Over" button to begin again.</p>
+                    </div>
+                `;
+            } else {
+                let hasEmergencySymptom = actualSelections.some(s => s.careLevel === 'emergency');
+                let hasUrgentSymptom = actualSelections.some(s => s.careLevel === 'urgent');
+                let hasUcPcpSymptom = actualSelections.some(s => s.careLevel === 'uc_pcp');
+                let hasPcpSymptom = actualSelections.some(s => s.careLevel === 'pcp');
+
+                let recommendationHTML = '';
+                const selectedEmergencySymptoms = actualSelections.filter(s => s.careLevel === 'emergency').map(s => s.label);
+                const selectedUrgentSymptoms = actualSelections.filter(s => s.careLevel === 'urgent').map(s => s.label);
+                const selectedUcPcpSymptoms = actualSelections.filter(s => s.careLevel === 'uc_pcp').map(s => s.label);
+                const selectedPcpSymptoms = actualSelections.filter(s => s.careLevel === 'pcp').map(s => s.label);
+
+                let symptomsListHTML = "<h4>Based on your selections:</h4><ul>";
+                if (selectedEmergencySymptoms.length > 0) symptomsListHTML += `<li><strong>Potentially life-threatening:</strong> ${selectedEmergencySymptoms.join(', ')}</li>`;
+                if (selectedUrgentSymptoms.length > 0) symptomsListHTML += `<li><strong>Urgent Care Symptoms:</strong> ${selectedUrgentSymptoms.join(', ')}</li>`;
+                if (selectedUcPcpSymptoms.length > 0) symptomsListHTML += `<li><strong>Symptoms that could be Urgent Care or PCP:</strong> ${selectedUcPcpSymptoms.join(', ')}</li>`;
+                if (selectedPcpSymptoms.length > 0) symptomsListHTML += `<li><strong>Primary Care (PCP) Symptoms:</strong> ${selectedPcpSymptoms.join(', ')}</li>`;
+                symptomsListHTML += "</ul>";
+
+                if (hasEmergencySymptom) {
+                    globalEmergencyWarningDiv.style.display = 'block';
+                    globalEmergencyWarningDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    recommendationHTML = `
+                        <div class="result-card emergency">
+                            <h4><i class="fas fa-hospital-symbol"></i> Recommendation: Seek Emergency Care (ER / Call 911)</h4>
+                            ${symptomsListHTML}
+                            <p>The selection of symptoms such as <strong>${selectedEmergencySymptoms.join(', ')}</strong> suggests a potentially serious or life-threatening condition that requires immediate medical attention at an Emergency Room.</p>
+                            <p><strong>Please call 911 or go to the nearest Emergency Room immediately.</strong> Do not delay seeking care.</p>
+                        </div>
+                    `;
+                } else if (hasUrgentSymptom) {
+                    waitTimeSection.style.display = 'block';
+                    recommendationHTML = `
+                        <div class="result-card urgent-care">
+                            <h4><i class="fas fa-first-aid"></i> Recommendation: Visit People First Urgent Care</h4>
+                            ${symptomsListHTML}
+                            <p><strong>Urgent Care is recommended</strong> for symptoms like <strong>${selectedUrgentSymptoms.join(', ')}</strong>. Our team can evaluate and treat these acute, non-life-threatening issues quickly and compassionately.</p>
+                            <p>You can <a href="https://peoplefirsturgentcare.com/check-in-online/" target="_blank" rel="noopener noreferrer" class="button-like" style="display:inline-block; min-width:auto; margin-top:10px;">Check-In Online</a> or walk in.</p>
+                            <p>If symptoms worsen significantly, seek emergency care.</p>
+                        </div>
+                    `;
+                } else if (hasUcPcpSymptom) {
+                    waitTimeSection.style.display = 'block';
+                    recommendationHTML = `
+                        <div class="result-card urgent-care">
+                            <h4><i class="fas fa-clinic-medical"></i> Recommendation: Urgent Care or Primary Care</h4>
+                            ${symptomsListHTML}
+                            <p>For concerns such as <strong>${selectedUcPcpSymptoms.join(', ')}</strong>, <strong>either Urgent Care or your Primary Care Physician (PCP)</strong> may be appropriate. If you want prompt attention, visit Urgent Care. For ongoing or less acute issues, follow up with your PCP for continuity of care.</p>
+                            <p>For urgent care, <a href="https://peoplefirsturgentcare.com/check-in-online/" target="_blank" rel="noopener noreferrer" class="button-like" style="display:inline-block; min-width:auto; margin-top:10px;">Check-In Online</a>.</p>
+                            <p>If symptoms worsen significantly, seek emergency care.</p>
+                        </div>
+                    `;
+                } else if (hasPcpSymptom) {
+                    recommendationHTML = `
+                        <div class="result-card pcp">
+                            <h4><i class="fas fa-user-md"></i> Recommendation: Follow Up with Your Primary Care Physician (PCP)</h4>
+                            ${symptomsListHTML}
+                            <p><strong>Primary Care is recommended</strong> for concerns like <strong>${selectedPcpSymptoms.join(', ')}</strong>. Your PCP is best equipped to help with these routine or ongoing health needs.</p>
+                            <p>Please contact your Primary Care Physician's office to schedule an appointment or discuss your concerns.</p>
+                            <button class="button-like schedule-button" style="margin-top:15px;" onclick="window.open('https://peoplefirsturgentcare.com/primary-care/', '_blank', 'noopener,noreferrer'); return false;">
+                                <i class="fas fa-calendar-check"></i> Request a Primary Care Appointment
+                            </button>
+                            <p style="margin-top:15px;">If symptoms worsen acutely, consider urgent care or, if severe, emergency care.</p>
+                        </div>
+                    `;
+                }
+                 recommendationsDiv.innerHTML = recommendationHTML;
+                 resultsActionsDiv.style.display = 'block';
+            }
+
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            questionnaireDOM.style.display = 'none';
+            currentStep = quizSteps.length; // Mark as completed
+            saveProgress();
+        }
+
+        function resetUIForQuestionnaire() {
+            globalEmergencyWarningDiv.style.display = 'none';
+            resultsDiv.style.display = 'none';
+            recommendationsDiv.innerHTML = '';
+            resultsActionsDiv.style.display = 'none';
+            questionnaireDOM.style.display = 'block';
+            stepNoticeArea.innerHTML = '';
+            nextButton.disabled = false; // Re-enable next button
+        }
+
+        function resetUIForResults() {
+            globalEmergencyWarningDiv.style.display = 'none';
+            resultsDiv.style.display = 'none';
+            recommendationsDiv.innerHTML = '';
+            waitTimeSection.style.display = 'none';
+            stepNoticeArea.innerHTML = '';
+            resultsActionsDiv.style.display = 'none';
+        }
+
+
+        function startOver(shouldScroll = true) {
+            clearProgress();
+            currentStep = 0;
+            userSelections = {};
+            emergencySymptomSelectedInStep1 = false;
+            resetUIForQuestionnaire();
+            renderStep(currentStep);
+            if (shouldScroll) {
+                questionnaireDOM.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function printRecommendation() { window.print(); }
+        function scheduleVisit() { window.location.href = "save-your-spot.html"; }
+        function callEmergency() { window.location.href = "tel:911"; }
+
+        // Initialize Wait Time (example)
+        (() => {
+            const baseTime = 15 + Math.floor(Math.random() * 20);
+            const range = 5 + Math.floor(Math.random() * 10);
+            document.getElementById('waitTime').textContent = `${baseTime}-${baseTime + range} minutes`;
+            setInterval(() => {
+                const baseTimeNew = 15 + Math.floor(Math.random() * 20);
+                const rangeNew = 5 + Math.floor(Math.random() * 10);
+                document.getElementById('waitTime').textContent = `${baseTimeNew}-${baseTimeNew + rangeNew} minutes`;
+            }, 300000);
+        })();
+
+        progressBar.setAttribute('role', 'progressbar');
+        progressBar.setAttribute('aria-valuemin', '0');
+        progressBar.setAttribute('aria-valuemax', '100');
+
+        // Initial setup
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('welcomePanel').style.display = 'block';
+            document.getElementById('questionnaireArea').style.display = 'none';
+        });
+
+        function startAssessment() {
+            document.getElementById('welcomePanel').style.display = 'none';
+            document.getElementById('questionnaireArea').style.display = 'block';
+            currentStep = 0;
+            userSelections = {};
+            emergencySymptomSelectedInStep1 = false;
+            resetUIForQuestionnaire();
+            renderStep(currentStep);
+            questionnaireArea.scrollIntoView({ behavior: 'smooth' });
+        }
+        // If loadProgress() returned true, the resume prompt is shown, and user action will call confirmResume().
+
+        function showCovidQuestionnaire() {
+            document.getElementById('covidQuestionnairePanel').style.display = 'block';
+            document.getElementById('questionnaireArea').style.display = 'none';
+        }
+
+        function closeCovidQuestionnaire() {
+            document.getElementById('covidQuestionnairePanel').style.display = 'none';
+            document.getElementById('welcomePanel').style.display = 'none';
+            document.getElementById('questionnaireArea').style.display = 'block';
+            currentStep = 0;
+            userSelections = {};
+            emergencySymptomSelectedInStep1 = false;
+            resetUIForQuestionnaire();
+            renderStep(currentStep);
+        }
+
+        function submitCovidQuestionnaire() {
+            const form = document.getElementById('covidForm');
+            const formData = new FormData(form);
+
+            let symptoms = formData.getAll('covidSymptoms');
+            let contact = formData.get('covidContact');
+            let vaccination = formData.get('covidVax');
+
+            let resultHTML = '<h4>COVID-19 Guidance Based on Your Responses:</h4><ul>';
+
+            if (symptoms.includes('none')) {
+                resultHTML += `<li>No COVID-19 symptoms reported. Continue to monitor your health and follow general guidelines.</li>`;
+            } else {
+                resultHTML += `<li>Symptoms reported: ${symptoms.join(', ')}.</li>`;
+                resultHTML += `<li>It is advised to consult with a healthcare provider for an accurate diagnosis and guidance.</li>`;
+            }
+
+            if (contact === 'yes') {
+                resultHTML += `<li>Close contact with a confirmed COVID-19 case reported. It is recommended to get tested for COVID-19, monitor for symptoms, and follow quarantine guidelines.</li>`;
+            } else if (contact === 'no') {
+                resultHTML += `<li>No known close contact with a COVID-19 case. Continue to monitor your health and follow general guidelines.</li>`;
+            } else {
+                resultHTML += `<li>Contact history with a COVID-19 case is unclear. Consider getting tested if symptoms develop, and follow general guidelines.</li>`;
+            }
+
+            if (vaccination === 'yes') {
+                resultHTML += `<li>Fully vaccinated against COVID-19. Breakthrough infections can occur, but the risk of severe illness is significantly reduced.</li>`;
+            } else if (vaccination === 'no') {
+                resultHTML += `<li>Not vaccinated against COVID-19. Vaccination is strongly recommended to reduce the risk of severe illness.</li>`;
+            } else {
+                resultHTML += `<li>Vaccination status not disclosed. Consider getting vaccinated to protect against COVID-19.</li>`;
+            }
+
+            resultHTML += '</ul><p>For any urgent symptoms or concerns, please seek medical attention immediately.</p>';
+
+            const covidResultDiv = document.getElementById('covidResult');
+            covidResultDiv.innerHTML = resultHTML;
+            covidResultDiv.style.display = 'block';
+
+            // Optionally, you can also navigate to the results section
+            covidResultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Accessibility: Focus trap for modal
+        function trapCovidModalFocus() {
+            const modal = document.getElementById('covidModal');
+            const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            modal.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) { // Shift + Tab
+                        if (document.activeElement === first) {
+                            e.preventDefault();
+                            last.focus();
+                        }
+                    } else { // Tab
+                        if (document.activeElement === last) {
+                            e.preventDefault();
+                            first.focus();
+                        }
+                    }
+                } else if (e.key === 'Escape') {
+                    closeCovidModal();
+                }
+            });
+            setTimeout(() => first.focus(), 100);
+        }
+
+        function openCovidModal() {
+            const modalOverlay = document.getElementById('covidModalOverlay');
+            const modalContent = document.getElementById('covidModalContent');
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            modalContent.innerHTML = covidModalQuestionnaireHTML();
+            trapCovidModalFocus();
+        }
+
+        function closeCovidModal() {
+            const modalOverlay = document.getElementById('covidModalOverlay');
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                const modalContent = document.getElementById('covidModalContent');
+                modalContent.innerHTML = '';
+            }, 200);
+        }
+
+        function covidModalQuestionnaireHTML() {
+            return `
+                <h2 style="color:#1e90ff; text-align:center;">COVID-19 Symptom & Exposure Assessment</h2>
+                <form id="modalCovidForm" onsubmit="event.preventDefault(); submitModalCovidQuestionnaire();">
+                    <div class="covid-q-step">
+                        <label><strong>1. Are you currently experiencing any of the following symptoms?</strong></label>
+                        <div class="covid-q-options">
+                            <label><input type="checkbox" name="covidSymptoms" value="fever"> Fever or chills</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="cough"> Cough</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="shortness"> Shortness of breath or difficulty breathing</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="fatigue"> Fatigue</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="aches"> Muscle or body aches</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="headache"> Headache</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="loss-taste-smell"> New loss of taste or smell</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="sore-throat"> Sore throat</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="congestion"> Congestion or runny nose</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="nausea"> Nausea or vomiting</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="diarrhea"> Diarrhea</label>
+                            <label><input type="checkbox" name="covidSymptoms" value="none"> None of these</label>
+                        </div>
+                    </div>
+                    <div class="covid-q-step">
+                        <label><strong>2. Have you had close contact (within 6 feet for 15 minutes or more) with someone diagnosed with COVID-19 in the past 10 days?</strong></label>
+                        <div class="covid-q-options">
+                            <label><input type="radio" name="covidContact" value="yes" required> Yes</label>
+                            <label><input type="radio" name="covidContact" value="no"> No</label>
+                            <label><input type="radio" name="covidContact" value="unsure"> Not sure</label>
+                        </div>
+                    </div>
+                    <div class="covid-q-step">
+                        <label><strong>3. Are you fully vaccinated against COVID-19?</strong></label>
+                        <div class="covid-q-options">
+                            <label><input type="radio" name="covidVax" value="yes" required> Yes</label>
+                            <label><input type="radio" name="covidVax" value="no"> No</label>
+                            <label><input type="radio" name="covidVax" value="prefer-not"> Prefer not to say</label>
+                        </div>
+                    </div>
+                    <div class="covid-q-nav">
+                        <button type="submit" class="button-like covid-btn"><i class="fas fa-check"></i> Get COVID-19 Guidance</button>
+                        <button type="button" class="button-like" style="background:#adb5bd;" onclick="closeCovidModal()"><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </form>
+                <div id="modalCovidResult" class="covid-q-result" style="display:none;"></div>
+            `;
+        }
+
+        function submitModalCovidQuestionnaire() {
+            const form = document.getElementById('modalCovidForm');
+            const formData = new FormData(form);
+            let symptoms = formData.getAll('covidSymptoms');
+            let contact = formData.get('covidContact');
+            let vaccination = formData.get('covidVax');
+            let resultHTML = '<h4>COVID-19 Guidance Based on Your Responses:</h4><ul>';
+            if (symptoms.includes('none')) {
+                resultHTML += `<li>No COVID-19 symptoms reported. Continue to monitor your health and follow general guidelines.</li>`;
+            } else {
+                resultHTML += `<li>Symptoms reported: ${symptoms.join(', ')}.</li>`;
+                resultHTML += `<li>It is advised to consult with a healthcare provider for an accurate diagnosis and guidance.</li>`;
+            }
+            if (contact === 'yes') {
+                resultHTML += `<li>Close contact with a confirmed COVID-19 case reported. It is recommended to get tested for COVID-19, monitor for symptoms, and follow quarantine guidelines.</li>`;
+            } else if (contact === 'no') {
+                resultHTML += `<li>No known close contact with a COVID-19 case. Continue to monitor your health and follow general guidelines.</li>`;
+            } else {
+                resultHTML += `<li>Contact history with a COVID-19 case is unclear. Consider getting tested if symptoms develop, and follow general guidelines.</li>`;
+                       }
+            if (vaccination === 'yes') {
+                resultHTML += `<li>Fully vaccinated against COVID-19. Breakthrough infections can occur, but the risk of severe illness is significantly reduced.</li>`;
+            } else if (vaccination === 'no') {
+                resultHTML += `<li>Not vaccinated against COVID-19. Vaccination is strongly recommended to reduce the risk of severe illness.</li>`;
+            } else {
+                resultHTML += `<li>Vaccination status not disclosed. Consider getting vaccinated to protect against COVID-19.</li>`;
+            }
+            resultHTML += '</ul><p>For any urgent symptoms or concerns, please seek medical attention immediately.</p>';
+            const covidResultDiv = document.getElementById('modalCovidResult');
+            covidResultDiv.innerHTML = resultHTML;
+            covidResultDiv.style.display = 'block';
+            covidResultDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+<!-- Fixed Save Your Spot Button for Mobile -->
+    <a href="save-your-spot.html" class="fixed-cta-button">
+        <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Admin Editor - People First Urgent Care</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+    <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+    <link rel="stylesheet" href="assets/css/components/buttons/action-buttons.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Header System CSS - MUST be last -->
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+    
+    <!-- Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    
+    <!-- Admin Editor Styles -->
+    <link rel="stylesheet" href="assets/css/admin-editor.css">
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="header"></div>
+
+    <main id="main-content">
+        <!-- Admin Header -->
+        <section class="admin-header">
+            <div class="container">
+                <div class="admin-header-content">
+                    <div class="admin-title-section">
+                        <h1 class="admin-title">
+                            <i class="fa-solid fa-tools"></i>
+                            Website Admin Editor
+                        </h1>
+                        <p class="admin-subtitle">Complete website management and content editing system</p>
+                    </div>
+                    <div class="admin-actions">
+                        <button class="btn btn-secondary" onclick="adminEditor.exportSiteData()">
+                            <i class="fa-solid fa-download"></i> Export Site Data
+                        </button>
+                        <button class="btn btn-primary" onclick="adminEditor.showHelp()">
+                            <i class="fa-solid fa-question-circle"></i> Help
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard -->
+        <section class="admin-dashboard">
+            <div class="container">
+                <!-- Quick Stats -->
+                <div class="admin-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="totalPages">0</div>
+                            <div class="stat-label">Total Pages</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="totalProviders">0</div>
+                            <div class="stat-label">Staff Members</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-images"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="totalImages">0</div>
+                            <div class="stat-label">Images</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="lastModified">--</div>
+                            <div class="stat-label">Last Modified</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Admin Tabs -->
+                <div class="admin-tabs">
+                    <div class="tab-nav">
+                        <button class="tab-btn active" data-tab="page-editor">
+                            <i class="fa-solid fa-edit"></i> Page Editor
+                        </button>
+                        <button class="tab-btn" data-tab="global-editor">
+                            <i class="fa-solid fa-globe"></i> Global Editor
+                        </button>
+                        <button class="tab-btn" data-tab="template-editor">
+                            <i class="fa-solid fa-layer-group"></i> Templates
+                        </button>
+                        <button class="tab-btn" data-tab="navigation-editor">
+                            <i class="fa-solid fa-bars"></i> Navigation
+                        </button>
+                        <button class="tab-btn" data-tab="provider-manager">
+                            <i class="fa-solid fa-user-plus"></i> Staff Manager
+                        </button>
+                        <button class="tab-btn" data-tab="content-manager">
+                            <i class="fa-solid fa-folder-open"></i> Content Manager
+                        </button>
+                        <button class="tab-btn" data-tab="component-library">
+                            <i class="fa-solid fa-puzzle-piece"></i> Components
+                        </button>
+                        <button class="tab-btn" data-tab="backup-manager">
+                            <i class="fa-solid fa-shield-alt"></i> Backups
+                        </button>
+                        <button class="tab-btn" data-tab="site-settings">
+                            <i class="fa-solid fa-cog"></i> Site Settings
+                        </button>
+                    </div>
+
+                    <!-- Page Editor Tab -->
+                    <div class="tab-content active" id="page-editor">
+                        <div class="editor-section">
+                            <div class="editor-header">
+                                <h3><i class="fa-solid fa-edit"></i> Page Content Editor</h3>
+                                <p>Select any page to edit its content, HTML, or styling</p>
+                            </div>
+                            
+                            <div class="page-selector">
+                                <div class="selector-group">
+                                    <label for="pageSelect">Select Page to Edit:</label>
+                                    <select id="pageSelect" class="page-select">
+                                        <option value="">Choose a page...</option>
+                                        <option value="index.html">🏠 Home Page</option>
+                                        <option value="urgent-care.html">🚑 Urgent Care</option>
+                                        <option value="primary-care.html">👨‍⚕️ Primary Care</option>
+                                        <option value="telemedicine.html">💻 Telemedicine</option>
+                                        <option value="about.html">ℹ️ About Us</option>
+                                        <option value="contact.html">📞 Contact</option>
+                                        <option value="locations.html">📍 Locations</option>
+                                        <option value="services.html">🏥 Services</option>
+                                        <option value="providers.html">👩‍⚕️ Providers</option>
+                                        <option value="insurance.html">💳 Insurance</option>
+                                    </select>
+                                    <button class="btn btn-primary" onclick="adminEditor.loadPage()">
+                                        <i class="fa-solid fa-folder-open"></i> Load Page
+                                    </button>
+                                <button class="btn btn-secondary" onclick="adminEditor.forceRefreshPage()">
+                                    <i class="fa-solid fa-sync"></i> Force Refresh
+                                </button>
+                                </div>
+                                <div class="editor-actions">
+                                    <button class="btn btn-success" onclick="adminEditor.savePage()" disabled id="savePageBtn">
+                                        <i class="fa-solid fa-save"></i> Save Changes
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="adminEditor.previewPage()" disabled id="previewPageBtn">
+                                        <i class="fa-solid fa-eye"></i> Preview
+                                    </button>
+                                    <button class="btn btn-warning" onclick="adminEditor.resetPage()" disabled id="resetPageBtn">
+                                        <i class="fa-solid fa-undo"></i> Reset
+                                    </button>
+                                    <button class="btn btn-primary" onclick="adminEditor.extractContent()" disabled id="extractContentBtn">
+                                        <i class="fa-solid fa-magic"></i> Smart Extract
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="adminEditor.downloadPage()" disabled id="downloadPageBtn">
+                                        <i class="fa-solid fa-download"></i> Download
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="adminEditor.debugCurrentPage()" disabled id="debugPageBtn">
+                                        <i class="fa-solid fa-bug"></i> Debug
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="editor-workspace" id="editorWorkspace" style="display: none;">
+                                <div class="editor-tabs">
+                                    <button class="editor-tab-btn active" data-editor="visual">
+                                        <i class="fa-solid fa-eye"></i> Visual Editor
+                                    </button>
+                                    <button class="editor-tab-btn" data-editor="html">
+                                        <i class="fa-solid fa-code"></i> HTML Editor
+                                    </button>
+                                    <button class="editor-tab-btn" data-editor="css">
+                                        <i class="fa-solid fa-paint-brush"></i> CSS Editor
+                                    </button>
+                                </div>
+
+                                <div class="editor-container">
+                                    <div class="editor-panel active" id="visual-editor">
+                                        <div class="visual-editor-toolbar">
+                                            <div class="toolbar-group">
+                                                <label>Text Format:</label>
+                                                <button class="toolbar-btn" onclick="adminEditor.formatText('bold')" title="Make text bold">
+                                                    <i class="fa-solid fa-bold"></i>
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.formatText('italic')" title="Make text italic">
+                                                    <i class="fa-solid fa-italic"></i>
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.formatText('underline')" title="Underline text">
+                                                    <i class="fa-solid fa-underline"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="toolbar-group">
+                                                <label>Headings:</label>
+                                                <button class="toolbar-btn" onclick="adminEditor.formatHeading('h1')" title="Large Heading">
+                                                    H1
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.formatHeading('h2')" title="Medium Heading">
+                                                    H2
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.formatHeading('h3')" title="Small Heading">
+                                                    H3
+                                                </button>
+                                            </div>
+
+                                            <div class="toolbar-group">
+                                                <label>Insert:</label>
+                                                <button class="toolbar-btn" onclick="adminEditor.insertImage()" title="Add an image">
+                                                    <i class="fa-solid fa-image"></i> Image
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.insertLink()" title="Add a link">
+                                                    <i class="fa-solid fa-link"></i> Link
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.insertButton()" title="Add a button">
+                                                    <i class="fa-solid fa-square"></i> Button
+                                                </button>
+                                            </div>
+
+                                            <div class="toolbar-group">
+                                                <label>Quick Add:</label>
+                                                <button class="toolbar-btn" onclick="adminEditor.addServiceCard()" title="Add a service card">
+                                                    <i class="fa-solid fa-plus"></i> Service
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.addContactInfo()" title="Add contact information">
+                                                    <i class="fa-solid fa-phone"></i> Contact
+                                                </button>
+                                            </div>
+
+                                            <div class="toolbar-group">
+                                                <label>Actions:</label>
+                                                <button class="toolbar-btn" onclick="adminEditor.undoVisualEdit()" title="Undo last change (Ctrl+Z)">
+                                                    <i class="fa-solid fa-undo"></i> Undo
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.redoVisualEdit()" title="Redo last undone change (Ctrl+Y)">
+                                                    <i class="fa-solid fa-redo"></i> Redo
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.clearVisualEditor()" title="Clear all content">
+                                                    <i class="fa-solid fa-trash"></i> Clear
+                                                </button>
+                                            </div>
+
+                                            <div class="toolbar-group">
+                                                <label>Templates:</label>
+                                                <button class="toolbar-btn" onclick="adminEditor.insertTemplate('hero')" title="Add hero section">
+                                                    <i class="fa-solid fa-star"></i> Hero
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.insertTemplate('features')" title="Add features section">
+                                                    <i class="fa-solid fa-list"></i> Features
+                                                </button>
+                                                <button class="toolbar-btn" onclick="adminEditor.insertTemplate('testimonial')" title="Add testimonial">
+                                                    <i class="fa-solid fa-quote-left"></i> Quote
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="visual-editor-help">
+                                            <div class="help-content">
+                                                <p><strong>🌐 REAL WEBSITE EDITOR:</strong> This shows your actual website exactly as visitors see it - real colors, fonts, layout, and styling. Click on any text to edit it directly!</p>
+                                                <div class="help-shortcuts">
+                                                    <strong>⌨️ Shortcuts:</strong>
+                                                    <span>Ctrl+S (Save)</span> •
+                                                    <span>Ctrl+B (Bold)</span> •
+                                                    <span>Ctrl+I (Italic)</span> •
+                                                    <span>Right-click (Context Menu)</span>
+                                                </div>
+                                                <div class="help-actions">
+                                                    <button class="help-btn" onclick="adminEditor.toggleWYSIWYGMode()" title="Switch between visual and HTML editing">
+                                                        <i class="fa-solid fa-code"></i> <span id="wysiwyg-toggle-text">HTML Mode</span>
+                                                    </button>
+                                                    <button class="help-btn" onclick="adminEditor.refreshWYSIWYG()" title="Refresh visual preview">
+                                                        <i class="fa-solid fa-sync"></i> Refresh
+                                                    </button>
+                                                    <button class="help-btn" onclick="adminEditor.showContentValidation()" title="Check content quality">
+                                                        <i class="fa-solid fa-check-circle"></i> Validate
+                                                    </button>
+                                                    <button class="help-btn" onclick="adminEditor.showVisualEditorHelp()" title="Show detailed help">
+                                                        <i class="fa-solid fa-question-circle"></i> Help
+                                                    </button>
+                                                    <button class="help-btn" onclick="adminEditor.testRealWebsiteEditor()" title="Test real website editor functionality">
+                                                        <i class="fa-solid fa-flask"></i> Test Real Website
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="visual-editor-content" id="visualEditorContent" contenteditable="true">
+                                            <div class="editor-placeholder">
+                                                <div class="placeholder-content">
+                                                    <i class="fa-solid fa-arrow-up"></i>
+                                                    <h3>Ready to Edit!</h3>
+                                                    <p>Select a page above and click "Load Page" to start editing your website content.</p>
+                                                    <p>Once loaded, you can click on any text to edit it directly.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="editor-panel" id="html-editor">
+                                        <div id="htmlEditor" class="code-editor"></div>
+                                    </div>
+
+                                    <div class="editor-panel" id="css-editor">
+                                        <div id="cssEditor" class="code-editor"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Content Extraction Panel -->
+                                <div class="content-extraction" id="contentExtraction" style="display: none;">
+                                    <h4><i class="fa-solid fa-magic"></i> Smart Content Extraction</h4>
+                                    <p>Automatically detected editable content blocks:</p>
+                                    <div class="extracted-content" id="extractedContent">
+                                        <!-- Extracted content blocks will appear here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Provider Manager Tab -->
+                    <div class="tab-content" id="provider-manager">
+                        <div class="provider-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-user-plus"></i> Staff & Provider Management</h3>
+                                <p>Add, edit, and manage all staff members and medical providers</p>
+                                <div class="section-actions">
+                                    <button class="btn btn-primary" onclick="adminEditor.openProviderPage()">
+                                        <i class="fa-solid fa-external-link-alt"></i> Open Full Provider Manager
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Add Provider Form -->
+                            <div class="quick-add-provider">
+                                <h4>Quick Add Staff Member</h4>
+                                <form class="quick-provider-form" id="quickProviderForm">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="quickStaffType">Staff Type</label>
+                                            <select id="quickStaffType" name="staffType" required>
+                                                <option value="">Select Type</option>
+                                                <option value="medical">Medical Provider</option>
+                                                <option value="support">Support Staff</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="quickProviderName">Full Name</label>
+                                            <input type="text" id="quickProviderName" name="providerName" placeholder="Dr. John Smith" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="quickProviderTitle">Title/Position</label>
+                                            <input type="text" id="quickProviderTitle" name="providerTitle" placeholder="Medical Director" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fa-solid fa-plus"></i> Add Staff Member
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Current Staff Overview -->
+                            <div class="staff-overview">
+                                <h4>Current Staff Overview</h4>
+                                <div class="staff-grid" id="staffOverviewGrid">
+                                    <!-- Staff cards will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Manager Tab -->
+                    <div class="tab-content" id="content-manager">
+                        <div class="content-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-folder-open"></i> Content & Media Manager</h3>
+                                <p>Manage images, documents, and other media files</p>
+                            </div>
+                            
+                            <div class="content-tools">
+                                <div class="upload-area">
+                                    <h4>Upload New Content</h4>
+                                    <div class="upload-zone" id="uploadZone">
+                                        <i class="fa-solid fa-cloud-upload-alt"></i>
+                                        <p>Drag and drop files here or click to browse</p>
+                                        <input type="file" id="fileUpload" multiple accept="image/*,.pdf,.doc,.docx">
+                                    </div>
+                                </div>
+                                
+                                <div class="content-browser">
+                                    <h4>Browse Content</h4>
+                                    <div class="content-grid" id="contentGrid">
+                                        <!-- Content items will be populated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Global Editor Tab -->
+                    <div class="tab-content" id="global-editor">
+                        <div class="global-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-globe"></i> Global Site Editor</h3>
+                                <p>Make site-wide changes, find and replace content across all pages</p>
+                            </div>
+
+                            <div class="global-tools">
+                                <div class="find-replace-tool">
+                                    <h4><i class="fa-solid fa-search"></i> Find & Replace Across Site</h4>
+                                    <div class="find-replace-form">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label for="findText">Find Text</label>
+                                                <input type="text" id="findText" placeholder="Enter text to find...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="replaceText">Replace With</label>
+                                                <input type="text" id="replaceText" placeholder="Enter replacement text...">
+                                            </div>
+                                        </div>
+                                        <div class="form-options">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="caseSensitive"> Case Sensitive
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="wholeWords"> Whole Words Only
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="useRegex"> Use Regular Expressions
+                                            </label>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button class="btn btn-secondary" onclick="adminEditor.findInSite()">
+                                                <i class="fa-solid fa-search"></i> Find All
+                                            </button>
+                                            <button class="btn btn-warning" onclick="adminEditor.replaceInSite()">
+                                                <i class="fa-solid fa-exchange-alt"></i> Replace All
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="search-results" id="searchResults">
+                                        <!-- Search results will appear here -->
+                                    </div>
+                                </div>
+
+                                <div class="bulk-operations">
+                                    <h4><i class="fa-solid fa-tasks"></i> Bulk Operations</h4>
+                                    <div class="bulk-tools">
+                                        <button class="btn btn-primary" onclick="adminEditor.updateAllHeaders()">
+                                            <i class="fa-solid fa-sync"></i> Update All Headers
+                                        </button>
+                                        <button class="btn btn-primary" onclick="adminEditor.updateAllFooters()">
+                                            <i class="fa-solid fa-sync"></i> Update All Footers
+                                        </button>
+                                        <button class="btn btn-secondary" onclick="adminEditor.optimizeAllImages()">
+                                            <i class="fa-solid fa-image"></i> Optimize Images
+                                        </button>
+                                        <button class="btn btn-secondary" onclick="adminEditor.validateAllPages()">
+                                            <i class="fa-solid fa-check-circle"></i> Validate Pages
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Template Editor Tab -->
+                    <div class="tab-content" id="template-editor">
+                        <div class="template-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-layer-group"></i> Template Editor</h3>
+                                <p>Edit shared components like headers, footers, and reusable sections</p>
+                            </div>
+
+                            <div class="template-selector">
+                                <label for="templateSelect">Select Template to Edit:</label>
+                                <select id="templateSelect" class="template-select">
+                                    <option value="">Choose a template...</option>
+                                    <option value="header">Header Template</option>
+                                    <option value="footer">Footer Template</option>
+                                    <option value="navigation">Navigation Menu</option>
+                                    <option value="hero-section">Hero Section Template</option>
+                                    <option value="service-card">Service Card Template</option>
+                                    <option value="contact-info">Contact Information</option>
+                                </select>
+                                <button class="btn btn-primary" onclick="adminEditor.loadTemplate()">
+                                    <i class="fa-solid fa-folder-open"></i> Load Template
+                                </button>
+                            </div>
+
+                            <div class="template-editor-workspace" id="templateEditorWorkspace" style="display: none;">
+                                <div class="template-preview">
+                                    <h4>Template Preview</h4>
+                                    <div class="template-preview-area" id="templatePreview">
+                                        <!-- Template preview will appear here -->
+                                    </div>
+                                </div>
+
+                                <div class="template-code-editor">
+                                    <h4>Template Code</h4>
+                                    <div id="templateCodeEditor" class="code-editor"></div>
+                                </div>
+
+                                <div class="template-actions">
+                                    <button class="btn btn-success" onclick="adminEditor.saveTemplate()">
+                                        <i class="fa-solid fa-save"></i> Save Template
+                                    </button>
+                                    <button class="btn btn-warning" onclick="adminEditor.applyToAllPages()">
+                                        <i class="fa-solid fa-sync-alt"></i> Apply to All Pages
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="adminEditor.previewTemplate()">
+                                        <i class="fa-solid fa-eye"></i> Preview Changes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Editor Tab -->
+                    <div class="tab-content" id="navigation-editor">
+                        <div class="navigation-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-bars"></i> Navigation Menu Editor</h3>
+                                <p>Visually edit the website navigation menu structure</p>
+                            </div>
+
+                            <div class="nav-editor-tools">
+                                <div class="nav-structure">
+                                    <h4>Current Navigation Structure</h4>
+                                    <div class="nav-tree" id="navTree">
+                                        <!-- Navigation tree will be populated here -->
+                                    </div>
+                                </div>
+
+                                <div class="nav-item-editor">
+                                    <h4>Edit Navigation Item</h4>
+                                    <form class="nav-item-form" id="navItemForm">
+                                        <div class="form-group">
+                                            <label for="navItemText">Menu Text</label>
+                                            <input type="text" id="navItemText" placeholder="Menu item text">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="navItemUrl">URL/Link</label>
+                                            <input type="text" id="navItemUrl" placeholder="page.html or external URL">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="navItemIcon">Icon (optional)</label>
+                                            <input type="text" id="navItemIcon" placeholder="fa-solid fa-home">
+                                        </div>
+                                        <div class="form-options">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="navItemNewTab"> Open in new tab
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="navItemDropdown"> Has dropdown
+                                            </label>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-success" onclick="adminEditor.saveNavItem()">
+                                                <i class="fa-solid fa-save"></i> Save Item
+                                            </button>
+                                            <button type="button" class="btn btn-primary" onclick="adminEditor.addNavItem()">
+                                                <i class="fa-solid fa-plus"></i> Add New Item
+                                            </button>
+                                            <button type="button" class="btn btn-danger" onclick="adminEditor.deleteNavItem()">
+                                                <i class="fa-solid fa-trash"></i> Delete Item
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Component Library Tab -->
+                    <div class="tab-content" id="component-library">
+                        <div class="component-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-puzzle-piece"></i> Component Library</h3>
+                                <p>Pre-built components you can insert into any page</p>
+                            </div>
+
+                            <div class="component-categories">
+                                <div class="category-nav">
+                                    <button class="category-btn active" data-category="hero">
+                                        <i class="fa-solid fa-star"></i> Hero Sections
+                                    </button>
+                                    <button class="category-btn" data-category="services">
+                                        <i class="fa-solid fa-th-large"></i> Service Cards
+                                    </button>
+                                    <button class="category-btn" data-category="contact">
+                                        <i class="fa-solid fa-phone"></i> Contact Forms
+                                    </button>
+                                    <button class="category-btn" data-category="testimonials">
+                                        <i class="fa-solid fa-quote-left"></i> Testimonials
+                                    </button>
+                                    <button class="category-btn" data-category="cta">
+                                        <i class="fa-solid fa-bullhorn"></i> Call-to-Action
+                                    </button>
+                                </div>
+
+                                <div class="component-grid" id="componentGrid">
+                                    <!-- Components will be populated here -->
+                                </div>
+                            </div>
+
+                            <div class="component-preview" id="componentPreview" style="display: none;">
+                                <h4>Component Preview</h4>
+                                <div class="preview-area" id="previewArea">
+                                    <!-- Component preview will appear here -->
+                                </div>
+                                <div class="preview-actions">
+                                    <button class="btn btn-primary" onclick="adminEditor.insertComponent()">
+                                        <i class="fa-solid fa-plus"></i> Insert Component
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="adminEditor.customizeComponent()">
+                                        <i class="fa-solid fa-edit"></i> Customize
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="adminEditor.closePreview()">
+                                        <i class="fa-solid fa-times"></i> Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backup Manager Tab -->
+                    <div class="tab-content" id="backup-manager">
+                        <div class="backup-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-shield-alt"></i> Backup Manager</h3>
+                                <p>Create, manage, and restore website backups</p>
+                            </div>
+
+                            <div class="backup-tools">
+                                <div class="create-backup">
+                                    <h4><i class="fa-solid fa-plus-circle"></i> Create New Backup</h4>
+                                    <div class="backup-form">
+                                        <div class="form-group">
+                                            <label for="backupName">Backup Name</label>
+                                            <input type="text" id="backupName" placeholder="Enter backup name...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="backupDescription">Description (optional)</label>
+                                            <textarea id="backupDescription" rows="3" placeholder="Describe what changes this backup includes..."></textarea>
+                                        </div>
+                                        <div class="backup-options">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="includePages" checked> Include all pages
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="includeImages" checked> Include images
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="includeSettings" checked> Include settings
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="includeProviders" checked> Include staff data
+                                            </label>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button class="btn btn-success" onclick="adminEditor.createBackup()">
+                                                <i class="fa-solid fa-save"></i> Create Backup
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="backup-list">
+                                    <h4><i class="fa-solid fa-history"></i> Available Backups</h4>
+                                    <div class="backup-grid" id="backupGrid">
+                                        <!-- Backup items will be populated here -->
+                                    </div>
+                                </div>
+
+                                <div class="backup-actions">
+                                    <h4><i class="fa-solid fa-upload"></i> Import/Export</h4>
+                                    <div class="import-export-tools">
+                                        <button class="btn btn-primary" onclick="adminEditor.exportFullSite()">
+                                            <i class="fa-solid fa-download"></i> Export Full Site
+                                        </button>
+                                        <label for="importBackup" class="btn btn-secondary">
+                                            <i class="fa-solid fa-upload"></i> Import Backup
+                                            <input type="file" id="importBackup" accept=".zip,.json" style="display: none;">
+                                        </label>
+                                        <button class="btn btn-warning" onclick="adminEditor.resetToDefaults()">
+                                            <i class="fa-solid fa-undo"></i> Reset to Defaults
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Site Settings Tab -->
+                    <div class="tab-content" id="site-settings">
+                        <div class="settings-section">
+                            <div class="section-header">
+                                <h3><i class="fa-solid fa-cog"></i> Site Settings</h3>
+                                <p>Configure global site settings and preferences</p>
+                            </div>
+                            
+                            <div class="settings-grid">
+                                <div class="settings-card">
+                                    <h4><i class="fa-solid fa-palette"></i> Theme Settings</h4>
+                                    <div class="setting-item">
+                                        <label for="primaryColor">Primary Color</label>
+                                        <input type="color" id="primaryColor" value="#05A65C">
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="secondaryColor">Secondary Color</label>
+                                        <input type="color" id="secondaryColor" value="#048A4F">
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-card">
+                                    <h4><i class="fa-solid fa-info-circle"></i> Site Information</h4>
+                                    <div class="setting-item">
+                                        <label for="siteTitle">Site Title</label>
+                                        <input type="text" id="siteTitle" value="People First Urgent Care">
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="siteDescription">Site Description</label>
+                                        <textarea id="siteDescription" rows="3">Quality urgent care and primary care services</textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-card">
+                                    <h4><i class="fa-solid fa-phone"></i> Contact Information</h4>
+                                    <div class="setting-item">
+                                        <label for="phoneNumber">Phone Number</label>
+                                        <input type="tel" id="phoneNumber" value="901-473-0582">
+                                    </div>
+                                    <div class="setting-item">
+                                        <label for="emailAddress">Email Address</label>
+                                        <input type="email" id="emailAddress" value="info@peoplefirstcare.com">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-actions">
+                                <button class="btn btn-success" onclick="adminEditor.saveSettings()">
+                                    <i class="fa-solid fa-save"></i> Save Settings
+                                </button>
+                                <button class="btn btn-secondary" onclick="adminEditor.resetSettings()">
+                                    <i class="fa-solid fa-undo"></i> Reset to Defaults
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- Monaco Editor -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs/loader.js"></script>
+    <script>
+        require.config({ paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.44.0/min/vs' } });
+        require(['vs/editor/editor.main'], function () {
+            console.log('✅ Monaco Editor loaded successfully');
+        });
+    </script>
+
+    <!-- JavaScript -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/core/main.js" defer></script>
+    <script src="assets/js/mobile/mobile-enhancements.js" defer></script>
+    <script src="assets/js/shared-provider-data.js"></script>
+    <script src="assets/js/admin-editor.js"></script>
+
+    <!-- Header System JavaScript -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+</body>
+</html>

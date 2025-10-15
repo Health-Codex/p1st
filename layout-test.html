@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Test - People First Urgent Care</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .test-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .test-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        
+        .test-hero {
+            background: linear-gradient(135deg, #05A65C, #038B4D);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .test-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .test-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .status {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .checklist li:before {
+            content: "✅ ";
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Include -->
+    <div data-include="header"></div>
+    
+    <main class="test-content">
+        <h1>Layout & Header Test Page</h1>
+        
+        <div id="header-status" class="status error">
+            ❌ Checking header status...
+        </div>
+
+        <div id="mobile-toggle-status" class="status error">
+            ❌ Checking mobile toggle status...
+        </div>
+
+        <div id="hero-position-status" class="status error">
+            ❌ Checking hero section positioning...
+        </div>
+        
+        <div class="test-section">
+            <h2>Header Layout Test</h2>
+            <p>This section tests if the header displays correctly with proper layout and positioning.</p>
+            
+            <ul class="checklist">
+                <li>Header loads without "Include Error"</li>
+                <li>Top bar displays contact information</li>
+                <li>Logo is visible and properly sized</li>
+                <li>Navigation menu is centered</li>
+                <li>Action buttons are right-aligned</li>
+                <li>Mobile toggle button is visible on small screens</li>
+            </ul>
+        </div>
+        
+        <div class="test-hero">
+            <h1>Hero Section Test</h1>
+            <p>This hero section tests if content is properly visible and not cut off by the header.</p>
+            <div class="info status">
+                📏 Check that this entire hero section is visible within the viewport
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Content Positioning Test</h2>
+            <p>This section should be properly spaced below the hero section without overlapping.</p>
+            
+            <div class="info status">
+                ℹ️ Scroll to the top of the page. The header should stick to the top, and no content should be hidden behind it.
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Responsive Test</h2>
+            <p>Resize your browser window to test responsive behavior:</p>
+            
+            <ul class="checklist">
+                <li>Desktop (>768px): Grid layout with logo, nav, and buttons</li>
+                <li>Mobile (≤768px): Flex layout with logo and mobile toggle</li>
+                <li>Navigation menu hidden on mobile</li>
+                <li>Mobile menu accessible via toggle button</li>
+            </ul>
+        </div>
+        
+        <div class="test-section">
+            <h2>Functionality Test</h2>
+            <p>Test these interactive elements:</p>
+            
+            <ul class="checklist">
+                <li>Click navigation links (should navigate to pages)</li>
+                <li>Hover over dropdown menus (Patient Services, Locations)</li>
+                <li>Click mobile menu toggle on small screens</li>
+                <li>Click action buttons (Pay Now, Save Your Spot)</li>
+            </ul>
+        </div>
+    </main>
+    
+    <!-- Header Inline System (File:// Compatible) -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/header-inline.js" defer></script>
+    
+    <script>
+        // Test script to verify header loaded and layout is correct
+        function checkHeaderStatus() {
+            const header = document.querySelector('.site-header');
+            const topBar = document.querySelector('.top-bar');
+            const logo = document.querySelector('.logo img');
+            const navMenu = document.querySelector('.nav-menu');
+            const actionButtons = document.querySelector('.action-buttons');
+            const statusDiv = document.getElementById('header-status');
+
+            let issues = [];
+            let successes = [];
+
+            if (!header) {
+                issues.push("Header not found");
+            } else {
+                successes.push("Header element loaded");
+            }
+
+            if (!topBar) {
+                issues.push("Top bar not found");
+            } else {
+                successes.push("Top bar loaded");
+            }
+
+            if (!logo) {
+                issues.push("Logo not found");
+            } else {
+                successes.push("Logo loaded");
+            }
+
+            if (!navMenu) {
+                issues.push("Navigation menu not found");
+            } else {
+                successes.push("Navigation menu loaded");
+            }
+
+            if (!actionButtons) {
+                issues.push("Action buttons not found");
+            } else {
+                successes.push("Action buttons loaded");
+            }
+
+            if (issues.length === 0) {
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = `✅ Header loaded successfully!<br><small>${successes.join(', ')}</small>`;
+            } else {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `❌ Header issues found:<br><small>${issues.join(', ')}</small>`;
+            }
+        }
+
+        // Test mobile toggle visibility
+        function checkMobileToggle() {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const statusDiv = document.getElementById('mobile-toggle-status');
+
+            if (!mobileToggle) {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = '❌ Mobile toggle button not found in DOM';
+                return;
+            }
+
+            // Check if mobile toggle is visible on current screen size
+            const computedStyle = window.getComputedStyle(mobileToggle);
+            const isVisible = computedStyle.display !== 'none';
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth <= 768) {
+                // Should be visible on mobile
+                if (isVisible) {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `✅ Mobile toggle visible on mobile screen (${screenWidth}px)`;
+                } else {
+                    statusDiv.className = 'status error';
+                    statusDiv.innerHTML = `❌ Mobile toggle hidden on mobile screen (${screenWidth}px)`;
+                }
+            } else {
+                // Should be hidden on desktop
+                if (!isVisible) {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `✅ Mobile toggle hidden on desktop screen (${screenWidth}px)`;
+                } else {
+                    statusDiv.className = 'status info';
+                    statusDiv.innerHTML = `ℹ️ Mobile toggle visible on desktop screen (${screenWidth}px) - resize to test mobile`;
+                }
+            }
+        }
+
+        // Test hero section positioning
+        function checkHeroPosition() {
+            const header = document.querySelector('.site-header');
+            const heroSection = document.querySelector('.test-hero');
+            const statusDiv = document.getElementById('hero-position-status');
+
+            if (!header || !heroSection) {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = '❌ Header or hero section not found';
+                return;
+            }
+
+            const headerRect = header.getBoundingClientRect();
+            const heroRect = heroSection.getBoundingClientRect();
+
+            // Check if hero section starts below the header
+            const headerBottom = headerRect.bottom;
+            const heroTop = heroRect.top;
+            const gap = heroTop - headerBottom;
+
+            if (gap >= -10) { // Allow small overlap tolerance
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = `✅ Hero section positioned correctly (${gap.toFixed(1)}px below header)`;
+            } else {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `❌ Hero section overlapping header (${Math.abs(gap).toFixed(1)}px overlap)`;
+            }
+        }
+        
+        // Check all statuses after a delay
+        setTimeout(function() {
+            checkHeaderStatus();
+            checkMobileToggle();
+            checkHeroPosition();
+        }, 1000);
+
+        // Re-check mobile toggle on window resize
+        window.addEventListener('resize', function() {
+            setTimeout(checkMobileToggle, 100);
+            setTimeout(checkHeroPosition, 100);
+        });
+
+        // Add scroll test
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.site-header');
+            if (header) {
+                console.log('Header position:', header.getBoundingClientRect().top);
+            }
+        });
+    </script>
+</body>
+</html>

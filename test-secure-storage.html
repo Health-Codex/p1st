@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Secure Storage System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-result {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .login-section {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Secure File Storage System Test</h1>
+    
+    <div class="login-section">
+        <h3>Authentication Test</h3>
+        <p>First, simulate login to test secure storage:</p>
+        <button onclick="simulateLogin()">Simulate Admin Login</button>
+        <button onclick="clearSession()">Clear Session</button>
+        <div id="authStatus" class="test-result info">Not authenticated</div>
+    </div>
+
+    <div class="test-container">
+        <h3>Storage System Tests</h3>
+        <button onclick="testLoadData()">Test Load Data</button>
+        <button onclick="testSaveData()">Test Save Data</button>
+        <button onclick="testEncryption()">Test Encryption</button>
+        <div id="testResults"></div>
+    </div>
+
+    <div class="test-container">
+        <h3>Current Staff Data</h3>
+        <button onclick="displayCurrentData()">Display Current Data</button>
+        <div id="currentData"></div>
+    </div>
+
+    <!-- Include the secure storage system -->
+    <script src="assets/js/secure-file-storage.js"></script>
+    <script src="assets/js/shared-provider-data.js"></script>
+
+    <script>
+        let testResults = document.getElementById('testResults');
+        let authStatus = document.getElementById('authStatus');
+        let currentData = document.getElementById('currentData');
+
+        function addResult(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = message;
+            testResults.appendChild(div);
+        }
+
+        function simulateLogin() {
+            // Simulate the login session that would be created by staff-login.js
+            const sessionData = {
+                username: 'ashin97',
+                userType: 'provider-admin',
+                name: 'Admin User',
+                permissions: ['admin', 'provider', 'staff-management'],
+                loginTime: new Date().toISOString(),
+                rememberMe: true
+            };
+
+            localStorage.setItem('staffSession', JSON.stringify(sessionData));
+            
+            // Reinitialize secure storage
+            if (window.secureFileStorage) {
+                window.secureFileStorage.init();
+            }
+            
+            updateAuthStatus();
+            addResult('Admin login simulated successfully', 'success');
+        }
+
+        function clearSession() {
+            localStorage.removeItem('staffSession');
+            sessionStorage.removeItem('staffSession');
+            
+            // Reinitialize secure storage
+            if (window.secureFileStorage) {
+                window.secureFileStorage.init();
+            }
+            
+            updateAuthStatus();
+            addResult('Session cleared', 'info');
+        }
+
+        function updateAuthStatus() {
+            const session = localStorage.getItem('staffSession') || sessionStorage.getItem('staffSession');
+            if (session) {
+                const sessionData = JSON.parse(session);
+                authStatus.textContent = `Authenticated as: ${sessionData.name} (${sessionData.username})`;
+                authStatus.className = 'test-result success';
+            } else {
+                authStatus.textContent = 'Not authenticated';
+                authStatus.className = 'test-result info';
+            }
+        }
+
+        async function testLoadData() {
+            try {
+                if (!window.secureFileStorage) {
+                    addResult('SecureFileStorage not available', 'error');
+                    return;
+                }
+
+                const data = await window.secureFileStorage.loadStaffData();
+                addResult(`Data loaded successfully. Found ${data.staff ? data.staff.length : 0} staff members`, 'success');
+                console.log('Loaded data:', data);
+            } catch (error) {
+                addResult(`Error loading data: ${error.message}`, 'error');
+                console.error('Load error:', error);
+            }
+        }
+
+        async function testSaveData() {
+            try {
+                if (!window.secureFileStorage) {
+                    addResult('SecureFileStorage not available', 'error');
+                    return;
+                }
+
+                if (!window.secureFileStorage.isSecureStorageAvailable()) {
+                    addResult('Authentication required for saving data', 'error');
+                    return;
+                }
+
+                // Test data
+                const testStaff = [
+                    {
+                        id: 'test_1',
+                        name: 'Test Provider',
+                        title: 'Test Position',
+                        specialty: 'Testing',
+                        staffType: 'medical',
+                        dateAdded: new Date().toISOString()
+                    }
+                ];
+
+                await window.secureFileStorage.saveStaffData(testStaff);
+                addResult('Test data saved successfully', 'success');
+            } catch (error) {
+                addResult(`Error saving data: ${error.message}`, 'error');
+                console.error('Save error:', error);
+            }
+        }
+
+        function testEncryption() {
+            try {
+                if (!window.secureFileStorage) {
+                    addResult('SecureFileStorage not available', 'error');
+                    return;
+                }
+
+                const testData = { test: 'Hello World', number: 123 };
+                const encrypted = window.secureFileStorage.encrypt(testData);
+                const decrypted = window.secureFileStorage.decrypt(encrypted);
+
+                if (JSON.stringify(testData) === JSON.stringify(decrypted)) {
+                    addResult('Encryption/decryption test passed', 'success');
+                } else {
+                    addResult('Encryption/decryption test failed', 'error');
+                }
+            } catch (error) {
+                addResult(`Encryption test error: ${error.message}`, 'error');
+            }
+        }
+
+        async function displayCurrentData() {
+            try {
+                if (window.sharedProviderData) {
+                    const providers = await window.sharedProviderData.getAllProviders();
+                    currentData.innerHTML = `
+                        <h4>Current Staff (${providers.length} members):</h4>
+                        <pre>${JSON.stringify(providers, null, 2)}</pre>
+                    `;
+                } else {
+                    currentData.innerHTML = '<p>SharedProviderData not available</p>';
+                }
+            } catch (error) {
+                currentData.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            updateAuthStatus();
+            addResult('Test page loaded', 'info');
+            
+            // Wait for systems to initialize
+            setTimeout(() => {
+                if (window.secureFileStorage) {
+                    addResult('SecureFileStorage system available', 'success');
+                } else {
+                    addResult('SecureFileStorage system not available', 'error');
+                }
+                
+                if (window.sharedProviderData) {
+                    addResult('SharedProviderData system available', 'success');
+                } else {
+                    addResult('SharedProviderData system not available', 'error');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

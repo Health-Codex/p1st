@@ -1,0 +1,311 @@
+/*
+People First Urgent Care - Employee Portal Styles
+Professional dashboard for staff members
+*/
+
+/* ===== MAIN LAYOUT ===== */
+.employee-portal-main {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fffe 0%, #f0f9f6 100%);
+}
+
+/* ===== HERO SECTION ===== */
+.portal-hero {
+    background: linear-gradient(135deg, var(--primary-green, #05a65c) 0%, #048654 100%);
+    color: white;
+    padding: 3rem 0 2rem 0;
+    margin-top: var(--header-height, 80px);
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.portal-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.portal-subtitle {
+    font-size: 1.2rem;
+    margin: 0 0 1.5rem 0;
+    opacity: 0.9;
+}
+
+.user-welcome {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.user-welcome i {
+    font-size: 1.3rem;
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ===== PORTAL NAVIGATION ===== */
+.portal-navigation {
+    padding: 3rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gray-800, #2d3748);
+    margin: 0 0 2rem 0;
+    text-align: center;
+}
+
+.portal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* ===== PORTAL CARDS ===== */
+.portal-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gray-100, #f7fafc);
+}
+
+.portal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.portal-card.coming-soon {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.portal-card.coming-soon:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-green, #05a65c) 0%, #048654 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-icon i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.card-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gray-800, #2d3748);
+    margin: 0 0 0.5rem 0;
+}
+
+.card-content p {
+    color: var(--gray-600, #718096);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.card-arrow {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: var(--primary-green, #05a65c);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.portal-card:hover .card-arrow {
+    transform: translateX(5px);
+}
+
+.card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gray-100, #f7fafc);
+    color: var(--gray-600, #718096);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ===== RECENT ACTIVITY ===== */
+.recent-activity {
+    background: white;
+    padding: 3rem 0;
+    border-top: 1px solid var(--gray-100, #f7fafc);
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--gray-50, #f9fafb);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-green, #05a65c);
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-green, #05a65c);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.activity-icon i {
+    color: white;
+    font-size: 1rem;
+}
+
+.activity-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-800, #2d3748);
+    margin: 0 0 0.25rem 0;
+}
+
+.activity-content p {
+    color: var(--gray-600, #718096);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5;
+}
+
+.activity-time {
+    font-size: 0.9rem;
+    color: var(--gray-500, #a0aec0);
+    font-weight: 500;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .portal-hero {
+        padding: 2rem 0 1.5rem 0;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .portal-title {
+        font-size: 2.2rem;
+    }
+    
+    .portal-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .portal-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .portal-card {
+        padding: 1.5rem;
+    }
+    
+    .card-arrow {
+        display: none;
+    }
+    
+    .activity-item {
+        padding: 1rem;
+    }
+    
+    .activity-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portal-title {
+        font-size: 1.8rem;
+    }
+    
+    .user-welcome {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .logout-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+}

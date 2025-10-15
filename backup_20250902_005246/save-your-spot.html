@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Save Your Spot - People First Urgent Care</title>
+    <meta name="description" content="Save your spot online at People First Urgent Care and reduce your wait time. Quick and easy scheduling for urgent care and primary care visits.">
+    <meta name="theme-color" content="#1aa060">
+    <link rel="canonical" href="https://www.peoplefirsturgentcare.com/save-your-spot.html">
+    <meta property="og:title" content="Save Your Spot - People First Urgent Care">
+    <meta property="og:description" content="Save your spot online at People First Urgent Care and reduce your wait time. Quick and easy scheduling for urgent care and primary care visits.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.peoplefirsturgentcare.com/save-your-spot.html">
+    <meta property="og:image" content="https://www.peoplefirsturgentcare.com/assets/images/appointment-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Save Your Spot - People First Urgent Care">
+    <meta name="twitter:description" content="Save your spot online at People First Urgent Care and reduce your wait time. Quick and easy scheduling for urgent care and primary care visits.">
+    <meta name="twitter:image" content="https://www.peoplefirsturgentcare.com/assets/images/appointment-image.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "People First Urgent Care",
+      "url": "https://www.peoplefirsturgentcare.com",
+      "logo": "https://www.peoplefirsturgentcare.com/assets/images/logo_peoplefirst-01.svg"
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    
+    
+    
+    
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+    <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <style>
+        /* Page-scoped fix: ensure location cards are visible on mobile */
+        @media (max-width: 1024px) {
+            .page-save-your-spot .locations-grid .location-card {
+                opacity: 1 !important;
+                transform: none !important;
+                max-height: none !important;
+                pointer-events: auto !important;
+            }
+        }
+
+        /* Ensure NextPatient widgets render full width and have minimum space */
+        .page-save-your-spot [id^="nextpatient-widget"] {
+            display: block;
+            width: 100% !important;
+            min-height: 100px;
+        }
+
+        /* Simple loader placeholder while NextPatient injects content */
+        .np-loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            min-height: 100px;
+            color: var(--medium-gray);
+            background: var(--gray-50);
+            border: 1px dashed var(--gray-200);
+            border-radius: 8px;
+        }
+        .np-spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--gray-300);
+            border-top-color: var(--primary-green);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Appointment tabs are no longer used on this page */
+        .appointment-tabs, .tab-buttons, .tab-content { display: none !important; }
+
+        /* Modernized Save Your Spot card styles (page-scoped) */
+        .page-save-your-spot .locations-grid {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-md);
+        }
+        .page-save-your-spot .location-card {
+            border: 1px solid var(--bg-green-20);
+            border-left: none;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-md);
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            background: var(--white);
+        }
+        .page-save-your-spot .location-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-card-hover);
+        }
+        .page-save-your-spot .location-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: var(--spacing-xs);
+            margin-bottom: var(--spacing-xs);
+            border-bottom: 1px solid var(--bg-green-20);
+        }
+        .page-save-your-spot .location-header h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark-gray);
+            font-size: 1.25rem;
+        }
+        .page-save-your-spot .location-header h3::before {
+            content: "\f3c5"; /* fa-location-dot */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--primary-green);
+            font-size: 1rem;
+        }
+        .page-save-your-spot .location-address p {
+            color: var(--medium-gray);
+            line-height: 1.5;
+        }
+        .page-save-your-spot .location-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-sm);
+        }
+        .page-save-your-spot .wait-time-section h4,
+        .page-save-your-spot .appointment-section h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xxs);
+            color: var(--modern-slate);
+        }
+        .page-save-your-spot .wait-time-section {
+            border: 1px solid var(--bg-green-20);
+            background: var(--bg-soft-mint);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm);
+        }
+        .page-save-your-spot .appointment-section {
+            border: 1px solid var(--bg-soft-slate);
+            background: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-sm);
+        }
+        .page-save-your-spot .schedule-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            font-weight: 700;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: var(--border-radius-md);
+            width: 100%;
+            box-shadow: var(--shadow-button);
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium), filter var(--transition-medium);
+        }
+        .page-save-your-spot .schedule-btn::before {
+            content: "\f274"; /* fa-calendar-check */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        .page-save-your-spot .schedule-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-button-hover);
+            filter: saturate(1.05);
+        }
+        .page-save-your-spot .wait-times-note {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+            background: var(--bg-soft-navy);
+            border: 1px solid var(--bg-soft-slate);
+            border-radius: var(--border-radius-md);
+            padding: 0.75rem 1rem;
+        }
+        @media (min-width: 720px) {
+            .page-save-your-spot .location-content { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* Tabs a11y roles baseline */
+        .tab-buttons { display: flex; gap: 0.5rem; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+ <body class="page-save-your-spot">
+     <div data-include="header"></div>
+<main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Save Your Spot</h1>
+                <p>Skip the wait and schedule your visit online</p>
+            </div>
+        </section>
+
+        <!-- Save Your Spot Section -->
+        <section class="section">
+            <div class="container">
+                <div class="content-wrapper">
+                    <div class="intro-text">
+                        <p>At People First Urgent Care, we value your time. Our online scheduling system allows you to reserve your spot in line before you arrive, reducing your wait time and making your visit more convenient. Simply select your preferred location, choose a time slot, and provide some basic information. We'll be ready for you when you arrive!</p>
+                    </div>
+
+                    <div class="wait-times-container">
+                        <h2>Current Wait Times</h2>
+                        <div class="locations-grid">
+                            <!-- Collierville -->
+                            <div class="location-card">
+                                <div class="location-header">
+                                    <h3>Collierville, TN</h3>
+                                </div>
+                                <div class="location-address">
+                                    <p>853 West Poplar Ave<br>Germantown, TN 38138<br>901-673-1240</p>
+                                </div>
+                                <div class="location-content">
+                                    <div class="wait-time-section">
+                                        <h4>Walk-Ins Save Your Spot</h4>
+                                        <div id="nextpatient-widget.4858" style="margin:auto"></div>
+                                        <script src="https://nextpatient.co/p/4858/widget.js?id=4858" async></script>
+                                    </div>
+                                    <div class="appointment-section">
+                                        <h4>Or Make an Appointment</h4>
+                                        <a class="schedule-btn" href="https://nextpatient.co/p/4858/appointments" target="_blank" rel="noopener">Schedule Appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Southaven -->
+                            <div class="location-card">
+                                <div class="location-header">
+                                    <h3>Southaven, MS Clinic</h3>
+                                </div>
+                                <div class="location-address">
+                                    <p>176 Goodman Rd W<br>Southaven, MS 38671<br>662-683-1440</p>
+                                </div>
+                                <div class="location-content">
+                                    <div class="wait-time-section">
+                                        <h4>Walk-Ins Save Your Spot</h4>
+                                        <div id="nextpatient-widget.5058" style="margin:auto"></div>
+                                        <script src="https://nextpatient.co/p/5058/widget.js?id=5058" async></script>
+                                    </div>
+                                    <div class="appointment-section">
+                                        <h4>Or Make an Appointment</h4>
+                                        <a class="schedule-btn" href="https://nextpatient.co/p/5058/appointments" target="_blank" rel="noopener">Schedule Appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Millington -->
+                            <div class="location-card">
+                                <div class="location-header">
+                                    <h3>Millington, TN Clinic</h3>
+                                </div>
+                                <div class="location-address">
+                                    <p>4772 Navy Rd<br>Millington, TN 38053<br>901-873-0930</p>
+                                </div>
+                                <div class="location-content">
+                                    <div class="wait-time-section">
+                                        <h4>Walk-Ins Save Your Spot</h4>
+                                        <div id="nextpatient-widget.4859" style="margin:auto"></div>
+                                        <script src="https://nextpatient.co/p/4859/widget.js?id=4859" async></script>
+                                    </div>
+                                    <div class="appointment-section">
+                                        <h4>Or Make an Appointment</h4>
+                                        <a class="schedule-btn" href="https://nextpatient.co/p/4859/appointments" target="_blank" rel="noopener">Schedule Appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Germantown -->
+                            <div class="location-card">
+                                <div class="location-header">
+                                    <h3>Germantown, TN</h3>
+                                </div>
+                                <div class="location-address">
+                                    <p>9301 Poplar Ave.<br>Germantown, TN 38138<br>901-587-6100</p>
+                                </div>
+                                <div class="location-content">
+                                    <div class="wait-time-section">
+                                        <h4>Walk-Ins Save Your Spot</h4>
+                                        <div id="nextpatient-widget.2771" style="margin:auto"></div>
+                                        <script src="https://nextpatient.co/p/2771/widget.js?id=2771" async></script>
+                                    </div>
+                                    <div class="appointment-section">
+                                        <h4>Or Make an Appointment</h4>
+                                        <a class="schedule-btn" href="https://nextpatient.co/p/2771/appointments" target="_blank" rel="noopener">Schedule Appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bartlett -->
+                            <div class="location-card">
+                                <div class="location-header">
+                                    <h3>Bartlett, TN Clinic</h3>
+                                </div>
+                                <div class="location-address">
+                                    <p>6490 Memphis Arlington Rd<br>Bartlett, TN 38135<br>901-762-1531</p>
+                                </div>
+                                <div class="location-content">
+                                    <div class="wait-time-section">
+                                        <h4>Walk-Ins Save Your Spot</h4>
+                                        <div id="nextpatient-widget.4857" style="margin:auto"></div>
+                                        <script src="https://nextpatient.co/p/4857/widget.js?id=4857" async></script>
+                                    </div>
+                                    <div class="appointment-section">
+                                        <h4>Or Make an Appointment</h4>
+                                        <a class="schedule-btn" href="https://nextpatient.co/p/4857/appointments" target="_blank" rel="noopener">Schedule Appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cordova -->
+                            <div class="location-card">
+                                <div class="location-header">
+                                    <h3>Cordova, TN</h3>
+                                </div>
+                                <div class="location-address">
+                                    <p>1645 N. Germantown Prkwy.<br>Cordova, TN 38016<br>901-625-5360</p>
+                                </div>
+                                <div class="location-content">
+                                    <div class="wait-time-section">
+                                        <h4>Walk-Ins Save Your Spot</h4>
+                                        <div id="nextpatient-widget.5563" style="margin:auto"></div>
+                                        <script src="https://nextpatient.co/p/5563/widget.js?id=5563" async></script>
+                                    </div>
+                                    <div class="appointment-section">
+                                        <h4>Or Make an Appointment</h4>
+                                        <a class="schedule-btn" href="https://nextpatient.co/p/5563/appointments" target="_blank" rel="noopener">Schedule Appointment</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="wait-times-note">* Wait times are provided by NextPatient and update in real-time.</p>
+                    </div>
+
+                    <div class="appointment-tabs">
+                        <div class="tab-buttons" role="tablist" aria-label="Appointment Types">
+                            <button class="tab-button active" role="tab" aria-selected="true" aria-controls="urgent-care" id="tab-urgent-care" data-tab="urgent-care">Urgent Care</button>
+                            <button class="tab-button" role="tab" aria-selected="false" aria-controls="primary-care" id="tab-primary-care" data-tab="primary-care">Primary Care</button>
+                            <button class="tab-button" role="tab" aria-selected="false" aria-controls="telemedicine" id="tab-telemedicine" data-tab="telemedicine">Telemedicine</button>
+                        </div>
+
+                        <div class="tab-content active" role="tabpanel" aria-labelledby="tab-urgent-care" id="urgent-care" tabindex="0">
+                            <h2>Urgent Care Appointment</h2>
+                            <p>For non-life-threatening illnesses and injuries that need immediate attention. Same-day appointments available.</p>
+
+                            <form class="appointment-form" id="urgent-care-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="uc-location">Select Location</label>
+                                        <select id="uc-location" name="location" required>
+                                            <option value="">Choose a location</option>
+                                            <option value="Collierville">Collierville</option>
+                                            <option value="Southaven">Southaven</option>
+                                            <option value="Millington">Millington</option>
+                                            <option value="Germantown">Germantown</option>
+                                            <option value="Bartlett">Bartlett</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="uc-date">Preferred Date</label>
+                                        <input type="date" id="uc-date" name="date" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="uc-time">Preferred Time</label>
+                                        <select id="uc-time" name="time" required>
+                                            <option value="">Select a time</option>
+                                            <option value="8:00 AM">8:00 AM</option>
+                                            <option value="9:00 AM">9:00 AM</option>
+                                            <option value="10:00 AM">10:00 AM</option>
+                                            <option value="11:00 AM">11:00 AM</option>
+                                            <option value="12:00 PM">12:00 PM</option>
+                                            <option value="1:00 PM">1:00 PM</option>
+                                            <option value="2:00 PM">2:00 PM</option>
+                                            <option value="3:00 PM">3:00 PM</option>
+                                            <option value="4:00 PM">4:00 PM</option>
+                                            <option value="5:00 PM">5:00 PM</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="uc-reason">Reason for Visit</label>
+                                        <select id="uc-reason" name="reason" required>
+                                            <option value="">Select a reason</option>
+                                            <option value="Illness">Illness (cold, flu, etc.)</option>
+                                            <option value="Injury">Injury (sprain, cut, etc.)</option>
+                                            <option value="Pain">Pain (back, joint, etc.)</option>
+                                            <option value="Infection">Infection</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="uc-name">Full Name</label>
+                                        <input type="text" id="uc-name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="uc-dob">Date of Birth</label>
+                                        <input type="date" id="uc-dob" name="dob" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="uc-phone">Phone Number</label>
+                                        <input type="tel" id="uc-phone" name="phone" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="uc-email">Email Address</label>
+                                        <input type="email" id="uc-email" name="email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="uc-notes">Additional Notes</label>
+                                    <textarea id="uc-notes" name="notes" rows="3"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Save My Spot</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-content" role="tabpanel" aria-labelledby="tab-primary-care" id="primary-care" tabindex="0">
+                            <h2>Primary Care Appointment</h2>
+                            <p>For routine check-ups, chronic disease management, and preventive care. Schedule your appointment in advance.</p>
+
+                            <form class="appointment-form" id="primary-care-form">
+                                <!-- Similar form structure as urgent care, with different ID prefixes -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="pc-location">Select Location</label>
+                                        <select id="pc-location" name="location" required>
+                                            <option value="">Choose a location</option>
+                                            <option value="Collierville">Collierville</option>
+                                            <option value="Southaven">Southaven</option>
+                                            <option value="Millington">Millington</option>
+                                            <option value="Germantown">Germantown</option>
+                                            <option value="Bartlett">Bartlett</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pc-date">Preferred Date</label>
+                                        <input type="date" id="pc-date" name="date" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="pc-time">Preferred Time</label>
+                                        <select id="pc-time" name="time" required>
+                                            <option value="">Select a time</option>
+                                            <option value="8:00 AM">8:00 AM</option>
+                                            <option value="9:00 AM">9:00 AM</option>
+                                            <option value="10:00 AM">10:00 AM</option>
+                                            <option value="11:00 AM">11:00 AM</option>
+                                            <option value="12:00 PM">12:00 PM</option>
+                                            <option value="1:00 PM">1:00 PM</option>
+                                            <option value="2:00 PM">2:00 PM</option>
+                                            <option value="3:00 PM">3:00 PM</option>
+                                            <option value="4:00 PM">4:00 PM</option>
+                                            <option value="5:00 PM">5:00 PM</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pc-reason">Reason for Visit</label>
+                                        <select id="pc-reason" name="reason" required>
+                                            <option value="">Select a reason</option>
+                                            <option value="Annual Physical">Annual Physical</option>
+                                            <option value="Follow-up">Follow-up Visit</option>
+                                            <option value="Chronic Condition">Chronic Condition Management</option>
+                                            <option value="Preventive Care">Preventive Care</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="pc-name">Full Name</label>
+                                        <input type="text" id="pc-name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pc-dob">Date of Birth</label>
+                                        <input type="date" id="pc-dob" name="dob" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="pc-phone">Phone Number</label>
+                                        <input type="tel" id="pc-phone" name="phone" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pc-email">Email Address</label>
+                                        <input type="email" id="pc-email" name="email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pc-notes">Additional Notes</label>
+                                    <textarea id="pc-notes" name="notes" rows="3"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-content" role="tabpanel" aria-labelledby="tab-telemedicine" id="telemedicine" tabindex="0">
+                            <h2>Telemedicine Appointment</h2>
+                            <p>Virtual visits from the comfort of your home. Connect with our providers through secure video conferencing.</p>
+
+                            <form class="appointment-form" id="telemedicine-form">
+                                <!-- Similar form structure as urgent care, with different ID prefixes -->
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tm-date">Preferred Date</label>
+                                        <input type="date" id="tm-date" name="date" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tm-time">Preferred Time</label>
+                                        <select id="tm-time" name="time" required>
+                                            <option value="">Select a time</option>
+                                            <option value="8:00 AM">8:00 AM</option>
+                                            <option value="9:00 AM">9:00 AM</option>
+                                            <option value="10:00 AM">10:00 AM</option>
+                                            <option value="11:00 AM">11:00 AM</option>
+                                            <option value="12:00 PM">12:00 PM</option>
+                                            <option value="1:00 PM">1:00 PM</option>
+                                            <option value="2:00 PM">2:00 PM</option>
+                                            <option value="3:00 PM">3:00 PM</option>
+                                            <option value="4:00 PM">4:00 PM</option>
+                                            <option value="5:00 PM">5:00 PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tm-reason">Reason for Visit</label>
+                                        <select id="tm-reason" name="reason" required>
+                                            <option value="">Select a reason</option>
+                                            <option value="Illness">Illness (cold, flu, etc.)</option>
+                                            <option value="Follow-up">Follow-up Visit</option>
+                                            <option value="Medication Refill">Medication Refill</option>
+                                            <option value="Consultation">Consultation</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tm-insurance">Insurance Provider</label>
+                                        <input type="text" id="tm-insurance" name="insurance">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tm-name">Full Name</label>
+                                        <input type="text" id="tm-name" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tm-dob">Date of Birth</label>
+                                        <input type="date" id="tm-dob" name="dob" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tm-phone">Phone Number</label>
+                                        <input type="tel" id="tm-phone" name="phone" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tm-email">Email Address</label>
+                                        <input type="email" id="tm-email" name="email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tm-notes">Additional Notes</label>
+                                    <textarea id="tm-notes" name="notes" rows="3"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Schedule Telemedicine Visit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="appointment-info">
+                        <h2>What to Expect</h2>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fa-solid fa-check-circle"></i>
+                                </div>
+                                <h3>Confirmation</h3>
+                                <p>After reserving your time via NextPatient, you'll receive a confirmation with your appointment details.</p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                </div>
+                                <h3>Check-In</h3>
+                                <p>Arrive 15 minutes before your scheduled time to complete any necessary paperwork.</p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fa-solid fa-id-card"></i>
+                                </div>
+                                <h3>What to Bring</h3>
+                                <p>Please bring your ID, insurance card, and a list of current medications.</p>
+                            </div>
+
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <h3>Wait Times</h3>
+                                <p>While we strive to see patients at their scheduled time, wait times may vary based on patient volume and acuity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- Fixed Save Your Spot Button for Mobile -->
+    <a href="save-your-spot.html" class="fixed-cta-button">
+        <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+    </a>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/core/custom.js"></script>
+    <script src="assets/js/mobile/mobile-enhancements.js"></script>
+    <script src="assets/js/core/main.js"></script>
+    <script>
+        // Optimized tab functionality for better performance
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Pre-cache tab content elements by ID for faster access
+            const tabContentMap = {};
+            tabContents.forEach(content => {
+                tabContentMap[content.id] = content;
+            });
+
+            // Use event delegation for better performance
+            const tabContainer = document.querySelector('.tab-buttons');
+            if (tabContainer) {
+                tabContainer.addEventListener('click', function(e) {
+                    // Check if a tab button was clicked
+                    const button = e.target.closest('.tab-button');
+                    if (button) {
+                        // Get currently active elements
+                        const activeButton = document.querySelector('.tab-button.active');
+                        const activeContent = document.querySelector('.tab-content.active');
+
+                        // Only update if clicking a different tab
+                        if (button !== activeButton) {
+                            // Get the target tab ID
+                            const tabId = button.getAttribute('data-tab');
+                            const targetContent = tabContentMap[tabId];
+
+                            // Update active states efficiently
+                            if (activeButton) activeButton.classList.remove('active');
+                            if (activeContent) activeContent.classList.remove('active');
+
+                            // Set new active elements
+                            button.classList.add('active');
+                            button.setAttribute('aria-selected', 'true');
+                            if (targetContent) {
+                                // Use requestAnimationFrame for smoother rendering
+                                requestAnimationFrame(() => {
+                                    targetContent.classList.add('active');
+                                    targetContent.focus();
+                                });
+                            }
+                        }
+                    }
+                });
+            } else {
+                // Fallback to direct event listeners if container not found
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        // Get currently active elements
+                        const activeButton = document.querySelector('.tab-button.active');
+                        const activeContent = document.querySelector('.tab-content.active');
+
+                        // Only update if clicking a different tab
+                        if (this !== activeButton) {
+                            // Get the target tab ID
+                            const tabId = this.getAttribute('data-tab');
+                            const targetContent = tabContentMap[tabId];
+
+                            // Update active states efficiently
+                            if (activeButton) activeButton.classList.remove('active');
+                            if (activeContent) activeContent.classList.remove('active');
+
+                            // Set new active elements
+                            this.classList.add('active');
+                            this.setAttribute('aria-selected', 'true');
+                            if (targetContent) {
+                                // Use requestAnimationFrame for smoother rendering
+                                requestAnimationFrame(() => {
+                                    targetContent.classList.add('active');
+                                    targetContent.focus();
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Pre-select the first tab if none is active
+            if (!document.querySelector('.tab-button.active') && tabButtons.length > 0) {
+                const firstButton = tabButtons[0];
+                const firstTabId = firstButton.getAttribute('data-tab');
+                const firstContent = tabContentMap[firstTabId];
+
+                firstButton.classList.add('active');
+                if (firstContent) firstContent.classList.add('active');
+                firstButton.setAttribute('aria-selected', 'true');
+            }
+
+            // Ensure location cards are visible on mobile and when resizing
+            const revealLocationCards = () => {
+                const grid = document.querySelector('.locations-grid');
+                const cards = document.querySelectorAll('.location-card');
+                if (grid) grid.classList.add('has-visible-card');
+                cards.forEach(card => card.classList.add('visible'));
+            };
+            revealLocationCards();
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(revealLocationCards, 150);
+            });
+
+            // Add lightweight loaders to NextPatient containers and remove after content appears
+            const npContainers = document.querySelectorAll('[id^="nextpatient-widget"]');
+            npContainers.forEach(container => {
+                // Insert loader if empty
+                if (!container.firstChild) {
+                    const loader = document.createElement('div');
+                    loader.className = 'np-loader';
+                    loader.innerHTML = '<span class="np-spinner" aria-hidden="true"></span> <span>Loading availability…</span>';
+                    container.parentElement.insertBefore(loader, container);
+
+                    // Observe for injected content and then remove loader
+                    const obs = new MutationObserver(() => {
+                        if (container.childElementCount > 0) {
+                            loader.remove();
+                            obs.disconnect();
+                        }
+                    });
+                    obs.observe(container, { childList: true });
+
+                    // Safety timeout to remove loader after 10s
+                    setTimeout(() => {
+                        if (document.body.contains(loader)) loader.remove();
+                    }, 10000);
+                }
+            });
+        });
+    </script>
+    <!-- Core + Page JS -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/core/main.js" defer></script>
+    <script src="assets/js/mobile/mobile-enhancements.js" defer></script>
+
+    <!-- Header System JavaScript -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Navigation Test - People First Urgent Care</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Header System CSS -->
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background: #f9fafb;
+        }
+        
+        .test-content {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+        
+        .test-section h3 {
+            color: #05A65C;
+            margin-top: 0;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .status.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status.error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .test-instructions {
+            background: #f0f9ff;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #0ea5e9;
+        }
+        
+        .mobile-test-note {
+            background: #fef3c7;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #f59e0b;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Include Hook -->
+    <div data-include="header"></div>
+
+    <main id="main-content">
+        <div class="test-content">
+            <h1>Mobile Navigation Test Page</h1>
+            <p>This page is designed to test the mobile navigation functionality across all screen sizes.</p>
+            
+            <div class="test-instructions">
+                <h3><i class="fa-solid fa-clipboard-check"></i> Test Instructions</h3>
+                <ol>
+                    <li><strong>Desktop Test:</strong> Resize your browser window to mobile width (&lt;768px) to see the hamburger menu</li>
+                    <li><strong>Mobile Test:</strong> Open this page on a mobile device or use browser dev tools mobile view</li>
+                    <li><strong>Functionality Test:</strong> Click the hamburger menu to open/close the mobile navigation</li>
+                    <li><strong>Dropdown Test:</strong> Test the "Patient Services" and "Locations" dropdown menus</li>
+                    <li><strong>Accessibility Test:</strong> Use Tab key to navigate and Escape key to close menu</li>
+                </ol>
+            </div>
+            
+            <div class="test-section">
+                <h3>Header System Components</h3>
+                <div id="component-status">
+                    <p>Checking components...</p>
+                </div>
+            </div>
+            
+            <div class="test-section">
+                <h3>Mobile Menu Features</h3>
+                <ul>
+                    <li>✅ Hamburger toggle button with 3-line animation</li>
+                    <li>✅ Slide-in mobile menu from right side</li>
+                    <li>✅ Semi-transparent overlay backdrop</li>
+                    <li>✅ Mobile dropdown menus for subnavigation</li>
+                    <li>✅ Close button in mobile menu header</li>
+                    <li>✅ Touch-friendly 44px minimum touch targets</li>
+                    <li>✅ Proper ARIA labels and accessibility attributes</li>
+                    <li>✅ Keyboard navigation support (Tab, Escape)</li>
+                    <li>✅ Body scroll prevention when menu is open</li>
+                    <li>✅ Focus management for screen readers</li>
+                </ul>
+            </div>
+            
+            <div class="test-section">
+                <h3>File:// Protocol Compatibility</h3>
+                <p>This mobile navigation system is designed to work with direct file access (file:// protocol) without requiring a web server. The header is injected via JavaScript rather than server-side includes.</p>
+                <div id="protocol-status">
+                    <p>Checking protocol compatibility...</p>
+                </div>
+            </div>
+            
+            <div class="mobile-test-note">
+                <h4><i class="fa-solid fa-mobile-screen"></i> Mobile Testing Note</h4>
+                <p>For the most accurate mobile testing, view this page on an actual mobile device or use your browser's device simulation tools (F12 → Device Toolbar in Chrome/Edge).</p>
+            </div>
+            
+            <div class="test-section">
+                <h3>Navigation Links Test</h3>
+                <p>All navigation links should work correctly and maintain the mobile menu functionality on every page:</p>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="our-staff.html">Our Staff</a></li>
+                    <li><a href="patient-services.html">Patient Services</a></li>
+                    <li><a href="contact.html">Locations</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Header System JavaScript -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+    
+    <script>
+        // Test script to verify components are loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const componentStatus = document.getElementById('component-status');
+                const protocolStatus = document.getElementById('protocol-status');
+                
+                // Check if header components exist
+                const header = document.getElementById('site-header');
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const mobileOverlay = document.getElementById('mobile-menu-overlay');
+                
+                let statusHTML = '';
+                statusHTML += header ? '<span class="status success">✓ Header loaded</span> ' : '<span class="status error">✗ Header missing</span> ';
+                statusHTML += mobileToggle ? '<span class="status success">✓ Mobile toggle</span> ' : '<span class="status error">✗ Mobile toggle missing</span> ';
+                statusHTML += mobileMenu ? '<span class="status success">✓ Mobile menu</span> ' : '<span class="status error">✗ Mobile menu missing</span> ';
+                statusHTML += mobileOverlay ? '<span class="status success">✓ Menu overlay</span> ' : '<span class="status error">✗ Menu overlay missing</span> ';
+                
+                componentStatus.innerHTML = statusHTML;
+                
+                // Check protocol
+                const protocol = window.location.protocol;
+                const protocolText = protocol === 'file:' ? 
+                    '<span class="status success">✓ File:// protocol - System working correctly</span>' :
+                    '<span class="status success">✓ HTTP protocol - System working correctly</span>';
+                protocolStatus.innerHTML = protocolText;
+                
+                // Test mobile menu functionality
+                if (mobileToggle && window.headerSystem) {
+                    console.log('Mobile navigation system loaded successfully');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

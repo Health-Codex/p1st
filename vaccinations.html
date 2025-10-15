@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Vaccination Services - People First Urgent Care</title>
+    <meta name="description" content="People First Urgent Care offers comprehensive vaccination services for all ages. Protect yourself and your family with our convenient immunization options.">
+    <meta name="theme-color" content="#1aa060">
+    <link rel="canonical" href="https://www.peoplefirsturgentcare.com/vaccinations.html">
+    <meta property="og:title" content="Vaccination Services - People First Urgent Care">
+    <meta property="og:description" content="People First Urgent Care offers comprehensive vaccination services for all ages. Protect yourself and your family with our convenient immunization options.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.peoplefirsturgentcare.com/vaccinations.html">
+    <meta property="og:image" content="https://www.peoplefirsturgentcare.com/assets/images/vaccine.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vaccination Services - People First Urgent Care">
+    <meta name="twitter:description" content="People First Urgent Care offers comprehensive vaccination services for all ages. Protect yourself and your family with our convenient immunization options.">
+    <meta name="twitter:image" content="https://www.peoplefirsturgentcare.com/assets/images/vaccine.jpg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "People First Urgent Care",
+      "url": "https://www.peoplefirsturgentcare.com",
+      "logo": "https://www.peoplefirsturgentcare.com/assets/images/logo_peoplefirst-01.svg"
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    
+    
+    
+    
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+    <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+    <link rel="stylesheet" href="assets/css/components/buttons/action-buttons.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+    
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Page-specific styles */
+        .vaccination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .vaccination-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .vaccination-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .vaccination-card-header {
+            background: linear-gradient(135deg, #016938, #0a8a4a);
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .vaccination-card-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .vaccination-card-header .icon {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        .vaccination-card-content {
+            padding: 1.5rem;
+        }
+
+        .vaccination-card-content p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .vaccination-card-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .vaccination-card-content ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .vaccination-card-content ul li::before {
+            content: "•";
+            color: #016938;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .vaccination-card-footer {
+            padding: 1rem 1.5rem;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vaccination-card-footer .btn {
+            padding: 0.5rem 1.25rem;
+        }
+
+        .vaccination-info-banner {
+            background: #f8f8f8 !important;
+            background-image: none !important;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            border-left: 5px solid #016938;
+        }
+
+        .vaccination-info-banner h3 {
+            color: #016938;
+            margin-top: 0;
+        }
+
+        .vaccination-info-banner p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-section {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            background: #fff;
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            background: #f9f9f9;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f0f0f0;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background: #e8f5ef;
+            color: #016938;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.25rem;
+            max-height: 500px;
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, #016938, #0a8a4a);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .vaccination-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+ </head>
+ <body>
+     <div data-include="header"></div>
+<main id="main-content">
+        <!-- Hero Section -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Vaccination Services</h1>
+                <p>Protecting your health through preventive care</p>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Comprehensive Vaccination Services</h2>
+                    <p>Protecting individuals and communities through immunization</p>
+                </div>
+                <div class="content-wrapper">
+                    <p>At People First Urgent Care, we offer a wide range of vaccination services to help protect you and your family from preventable diseases. Our experienced healthcare providers can administer vaccines for all age groups, from infants to seniors, in a comfortable and convenient setting.</p>
+                    <p>Vaccinations are one of the most effective ways to prevent serious illnesses and their complications. By staying up-to-date with recommended immunizations, you're not only protecting yourself but also helping to prevent the spread of contagious diseases in your community.</p>
+                </div>
+
+                <!-- Vaccination Types Grid -->
+                <div class="vaccination-grid">
+                    <div class="vaccination-card animate-on-scroll fade-up">
+                        <div class="vaccination-card-header">
+                            <h3>Seasonal Flu Vaccines</h3>
+                            <i class="fa-solid fa-shield-virus icon"></i>
+                        </div>
+                        <div class="vaccination-card-content">
+                            <p>Annual flu vaccines are recommended for everyone 6 months and older to protect against seasonal influenza viruses.</p>
+                            <ul>
+                                <li>Standard-dose flu shots</li>
+                                <li>High-dose vaccines for seniors</li>
+                                <li>Protection against multiple flu strains</li>
+                            </ul>
+                        </div>
+                        <div class="vaccination-card-footer">
+                            <span>Available for ages 6+ months</span>
+                            <a href="save-your-spot.html" class="btn btn-primary">Get Vaccinated</a>
+                        </div>
+                    </div>
+
+                    <div class="vaccination-card animate-on-scroll fade-up">
+                        <div class="vaccination-card-header">
+                            <h3>COVID-19 Vaccines</h3>
+                            <i class="fa-solid fa-virus-covid icon"></i>
+                        </div>
+                        <div class="vaccination-card-content">
+                            <p>COVID-19 vaccines help protect against severe illness, hospitalization, and death from COVID-19.</p>
+                            <ul>
+                                <li>Primary series vaccines</li>
+                                <li>Booster doses</li>
+                                <li>Updated formulations for new variants</li>
+                            </ul>
+                        </div>
+                        <div class="vaccination-card-footer">
+                            <span>Available for eligible ages</span>
+                            <a href="save-your-spot.html" class="btn btn-primary">Get Vaccinated</a>
+                        </div>
+                    </div>
+
+                    <div class="vaccination-card animate-on-scroll fade-up">
+                        <div class="vaccination-card-header">
+                            <h3>Travel Vaccines</h3>
+                            <i class="fa-solid fa-plane icon"></i>
+                        </div>
+                        <div class="vaccination-card-content">
+                            <p>Protect yourself from diseases that are common in other parts of the world before you travel.</p>
+                            <ul>
+                                <li>Hepatitis A & B</li>
+                                <li>Typhoid</li>
+                                <li>Yellow Fever</li>
+                                <li>Travel health consultation</li>
+                            </ul>
+                        </div>
+                        <div class="vaccination-card-footer">
+                            <span>Plan 4-6 weeks before travel</span>
+                            <a href="save-your-spot.html" class="btn btn-primary">Get Vaccinated</a>
+                        </div>
+                    </div>
+
+                    <div class="vaccination-card animate-on-scroll fade-up">
+                        <div class="vaccination-card-header">
+                            <h3>Adult Vaccines</h3>
+                            <i class="fa-solid fa-user-shield icon"></i>
+                        </div>
+                        <div class="vaccination-card-content">
+                            <p>Stay protected with recommended adult vaccines and boosters.</p>
+                            <ul>
+                                <li>Tdap (Tetanus, Diphtheria, Pertussis)</li>
+                                <li>Shingles (Herpes Zoster)</li>
+                                <li>Pneumococcal</li>
+                                <li>HPV (Human Papillomavirus)</li>
+                            </ul>
+                        </div>
+                        <div class="vaccination-card-footer">
+                            <span>Recommended for adults</span>
+                            <a href="save-your-spot.html" class="btn btn-primary">Get Vaccinated</a>
+                        </div>
+                    </div>
+
+                    <div class="vaccination-card animate-on-scroll fade-up">
+                        <div class="vaccination-card-header">
+                            <h3>Childhood Vaccines</h3>
+                            <i class="fa-solid fa-child icon"></i>
+                        </div>
+                        <div class="vaccination-card-content">
+                            <p>Keep your children protected with recommended childhood immunizations.</p>
+                            <ul>
+                                <li>DTaP (Diphtheria, Tetanus, Pertussis)</li>
+                                <li>MMR (Measles, Mumps, Rubella)</li>
+                                <li>Polio</li>
+                                <li>Varicella (Chickenpox)</li>
+                            </ul>
+                        </div>
+                        <div class="vaccination-card-footer">
+                            <span>Following CDC schedule</span>
+                            <a href="save-your-spot.html" class="btn btn-primary">Get Vaccinated</a>
+                        </div>
+                    </div>
+
+                    <div class="vaccination-card animate-on-scroll fade-up">
+                        <div class="vaccination-card-header">
+                            <h3>Occupational Vaccines</h3>
+                            <i class="fa-solid fa-briefcase-medical icon"></i>
+                        </div>
+                        <div class="vaccination-card-content">
+                            <p>Vaccines required for certain occupations and workplace settings.</p>
+                            <ul>
+                                <li>Hepatitis B for healthcare workers</li>
+                                <li>Tetanus for construction workers</li>
+                                <li>Documentation for employers</li>
+                                <li>Compliance with OSHA requirements</li>
+                            </ul>
+                        </div>
+                        <div class="vaccination-card-footer">
+                            <span>For workplace requirements</span>
+                            <a href="save-your-spot.html" class="btn btn-primary">Get Vaccinated</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vaccination Info Banner -->
+                <div class="vaccination-info-banner animate-on-scroll fade-in" style="background: #f8f8f8 !important; background-image: none !important;">
+                    <h3><i class="fa-solid fa-info-circle"></i> Why Vaccinations Matter</h3>
+                    <p>Vaccines work with your body's natural defenses to build protection against specific diseases. When you get vaccinated, your immune system responds by:</p>
+                    <ul>
+                        <li>Recognizing the invading germ (virus or bacteria)</li>
+                        <li>Producing antibodies to fight the infection</li>
+                        <li>Remembering the disease and how to fight it</li>
+                    </ul>
+                    <p>This process helps your body develop immunity without having to get the disease first. Vaccines are thoroughly tested for safety and effectiveness before they're approved for use.</p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <div class="section-header">
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Common questions about our vaccination services</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do I need an appointment for vaccinations?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>While walk-ins are welcome, we recommend scheduling an appointment for vaccinations to minimize wait times. You can easily save your spot online or call our office to schedule a convenient time.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are vaccines covered by insurance?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Most vaccines are covered by insurance plans, including Medicare and Medicaid. The coverage amount depends on your specific plan. We recommend contacting your insurance provider to verify coverage before your visit. For those without insurance, we offer affordable self-pay options.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I receive multiple vaccines in one visit?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, in many cases, multiple vaccines can be administered during the same visit. Our healthcare providers will evaluate your specific needs and medical history to determine if it's appropriate for you. This approach can save you time and reduce the number of office visits needed to complete your immunizations.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What should I bring to my vaccination appointment?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Please bring your photo ID, insurance card (if applicable), and any vaccination records you may have. If you're receiving a follow-up dose of a vaccine, it's helpful to bring documentation of your previous dose. For children, please bring their immunization records.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- Fixed Save Your Spot Button for Mobile -->
+    <a href="save-your-spot.html" class="fixed-cta-button">
+        <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+    </a>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/mobile/mobile-enhancements.js" defer></script>
+    <script src="assets/js/core/main.js" defer></script>
+
+    <!-- Page-specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+            function checkIfInView() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+
+            // Initial check
+            checkIfInView();
+
+            // Check on scroll
+            window.addEventListener('scroll', checkIfInView);
+        });
+    </script>
+    <!-- Header System JavaScript -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,689 @@
+/*
+People First Urgent Care - Advanced Visual Effects
+Version: 2.0.0
+Description: Enhanced modern, professional visual effects for all pages
+*/
+
+/* ===== ADVANCED ANIMATIONS ===== */
+
+/* Fade In Animation - Enhanced with slight scale */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Slide In Animations - Enhanced with smoother curves */
+@keyframes slideInLeft {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInDown {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slide-in-down {
+  animation: slideInDown 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Staggered Animation for Multiple Elements - Enhanced with smoother transitions */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.stagger-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delay classes - Refined timing */
+.stagger-delay-1 { transition-delay: 0.1s; }
+.stagger-delay-2 { transition-delay: 0.2s; }
+.stagger-delay-3 { transition-delay: 0.3s; }
+.stagger-delay-4 { transition-delay: 0.4s; }
+.stagger-delay-5 { transition-delay: 0.5s; }
+.stagger-delay-6 { transition-delay: 0.6s; }
+.stagger-delay-7 { transition-delay: 0.7s; }
+
+/* Pulse Animation - More subtle and professional */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.pulse {
+  animation: pulse 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Floating Animation - More subtle for professional look */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.float {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+/* Shimmer Effect - Enhanced for better visual appeal */
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.25) 50%,
+    rgba(255,255,255,0) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+  will-change: background-position;
+}
+
+/* Fade Up Animation - New subtle entrance animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Fade Scale Animation - New subtle entrance with scale */
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.fade-scale {
+  animation: fadeScale 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Attention Animation - Subtle highlight for important elements */
+@keyframes attention {
+  0% { transform: scale(1); }
+  5% { transform: scale(1.05); }
+  10% { transform: scale(1); }
+  15% { transform: scale(1.03); }
+  20% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+.attention {
+  animation: attention 5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Advanced Animations */
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-bottom {
+  animation: slideInBottom 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Reveal Animation */
+@keyframes reveal {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.reveal-right {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.reveal-right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-green);
+  transform-origin: left;
+  transform: scaleX(1);
+  animation: reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards 0.2s;
+}
+
+.reveal-right > * {
+  opacity: 0;
+  animation: fadeIn 0.1s linear forwards 0.8s;
+}
+
+/* Text Reveal Animation */
+.text-reveal {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.text-reveal span {
+  display: block;
+  transform: translateY(100%);
+  animation: textReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes textReveal {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Staggered Text Reveal */
+.text-reveal-1 span { animation-delay: 0.1s; }
+.text-reveal-2 span { animation-delay: 0.2s; }
+.text-reveal-3 span { animation-delay: 0.3s; }
+.text-reveal-4 span { animation-delay: 0.4s; }
+.text-reveal-5 span { animation-delay: 0.5s; }
+
+/* Parallax Effect */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-element {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* 3D Hover Effect */
+.hover-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+}
+
+.hover-3d-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* Magnetic Effect */
+.magnetic {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll delay classes */
+.scroll-delay-1 { transition-delay: 0.1s; }
+.scroll-delay-2 { transition-delay: 0.2s; }
+.scroll-delay-3 { transition-delay: 0.3s; }
+.scroll-delay-4 { transition-delay: 0.4s; }
+.scroll-delay-5 { transition-delay: 0.5s; }
+
+/* ===== ADVANCED VISUAL EFFECTS ===== */
+
+/* Glassmorphism - Enhanced for more modern look */
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.glass-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.glass-dark {
+  background: rgba(45, 55, 72, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+/* Neumorphism - Refined for more subtle effect */
+.neumorphic {
+  background: var(--bg-light-gray);
+  border-radius: 16px;
+  box-shadow:
+    6px 6px 12px rgba(0, 0, 0, 0.03),
+    -6px -6px 12px rgba(255, 255, 255, 0.8);
+  transition: box-shadow var(--transition-medium);
+}
+
+.neumorphic:hover {
+  box-shadow:
+    8px 8px 16px rgba(0, 0, 0, 0.04),
+    -8px -8px 16px rgba(255, 255, 255, 0.9);
+}
+
+.neumorphic-inset {
+  background: var(--bg-light-gray);
+  border-radius: 16px;
+  box-shadow:
+    inset 6px 6px 12px rgba(0, 0, 0, 0.03),
+    inset -6px -6px 12px rgba(255, 255, 255, 0.8);
+}
+
+/* Gradient Text - Enhanced with better fallbacks */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  position: relative;
+  font-weight: 600;
+}
+
+.gradient-text-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  position: relative;
+  font-weight: 600;
+}
+
+.gradient-text-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  position: relative;
+  font-weight: 600;
+}
+
+/* Gradient Borders - Enhanced with smoother transitions */
+.gradient-border {
+  position: relative;
+  border-radius: var(--border-radius-md);
+  padding: 4px;
+  background: var(--gradient-primary);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.gradient-border:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.gradient-border-content {
+  background: var(--white);
+  border-radius: calc(var(--border-radius-md) - 2px);
+  padding: var(--spacing-md);
+}
+
+/* Hover Effects - Enhanced for smoother transitions */
+.hover-scale {
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  will-change: transform;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-md);
+}
+
+.hover-lift {
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+  will-change: transform;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-medium);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(5, 166, 92, 0.4);
+}
+
+.hover-glow-accent {
+  transition: box-shadow var(--transition-medium);
+}
+
+.hover-glow-accent:hover {
+  box-shadow: 0 0 20px rgba(43, 108, 176, 0.4);
+}
+
+/* Image Effects - Enhanced for smoother transitions */
+.image-zoom-container {
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+}
+
+.image-zoom {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.image-zoom:hover {
+  transform: scale(1.08);
+}
+
+.image-overlay {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+}
+
+.image-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  transition: opacity 0.3s ease;
+}
+
+/* Advanced Shadows - Refined for more depth */
+.shadow-soft {
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.04),
+    0 5px 10px rgba(0, 0, 0, 0.02);
+  transition: box-shadow var(--transition-medium);
+}
+
+.shadow-soft:hover {
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.06),
+    0 7px 15px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-sharp {
+  box-shadow:
+    5px 5px 0 rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.shadow-sharp:hover {
+  transform: translate(-2px, -2px);
+  box-shadow:
+    7px 7px 0 rgba(0, 0, 0, 0.08);
+}
+
+.shadow-layered {
+  box-shadow:
+    0 5px 10px rgba(0, 0, 0, 0.03),
+    0 15px 25px rgba(0, 0, 0, 0.02),
+    0 30px 50px rgba(0, 0, 0, 0.01);
+  transition: box-shadow var(--transition-medium), transform var(--transition-medium);
+}
+
+.shadow-layered:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.04),
+    0 20px 35px rgba(0, 0, 0, 0.03),
+    0 40px 65px rgba(0, 0, 0, 0.02);
+}
+
+/* New Effect: Spotlight Hover */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  transform: scale(0.5);
+}
+
+.spotlight:hover::before {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* New Effect: Subtle Border Glow */
+.border-glow {
+  position: relative;
+  z-index: 1;
+}
+
+.border-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 rgba(5, 166, 92, 0);
+  transition: box-shadow 0.5s ease;
+  z-index: -1;
+}
+
+.border-glow:hover::after {
+  box-shadow: 0 0 0 3px rgba(5, 166, 92, 0.2);
+}
+
+/* Advanced Card Effects */
+.card-premium {
+  position: relative;
+  overflow: visible;
+}
+
+.card-premium::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-green), var(--accent-navy), var(--primary-green));
+  z-index: -1;
+  border-radius: calc(var(--border-radius-lg) + 2px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card-premium:hover::before {
+  opacity: 1;
+}
+
+/* Morphing Background */
+.morphing-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.morphing-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(5, 166, 92, 0.1) 0%,
+    rgba(43, 108, 176, 0.1) 25%,
+    rgba(5, 166, 92, 0.1) 50%,
+    rgba(43, 108, 176, 0.1) 75%,
+    rgba(5, 166, 92, 0.1) 100%
+  );
+  animation: morphingGradient 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes morphingGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Frosted Glass Card */
+.frosted-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated Border */
+.animated-border {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+}
+
+.animated-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--primary-green), var(--accent-navy), var(--primary-green));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background-size: 300% 300%;
+  animation: animatedBorder 4s linear infinite;
+}
+
+@keyframes animatedBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glowing Accent */
+.glow-accent {
+  position: relative;
+}
+
+.glow-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, var(--primary-green-light) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  transform: scale(0.8);
+}
+
+.glow-accent:hover::before {
+  opacity: 1;
+  transform: scale(1.2);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+  .stagger-item {
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card, .neumorphic {
+    border-radius: 12px;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-3px);
+  }
+}

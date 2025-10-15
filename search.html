@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - People First Urgent Care</title>
+  <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+  <link rel="stylesheet" href="assets/css/header-system-complete.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .search-page { padding: 1.25rem 0 3rem; }
+    .search-hero { padding: 1.25rem 0 0.5rem; border-bottom: 1px solid var(--gray-200); background: linear-gradient(180deg, #ffffff 0%, #f7fff9 100%); }
+    .search-hero .container { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .search-input { flex:1; display:flex; align-items:center; gap:10px; background:#fff; border:1px solid var(--gray-200); border-radius:14px; padding:12px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .search-input input { border:none; outline:none; width:100%; font-size:1rem; }
+    .nearest-btn { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--gray-200); background:#fff; border-radius:12px; padding:10px 12px; font-weight:700; color:var(--gray-800); text-decoration:none; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .nearest-btn:hover { border-color: var(--primary-green); color: var(--primary-green); }
+    .search-results { padding-top: 1rem; }
+    .results-grid { display:grid; gap:12px; }
+    .result-card { border:1px solid var(--gray-200); border-radius:14px; background:#fff; padding:14px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .result-card a { text-decoration:none; color:inherit; }
+    .result-title { font-weight:800; margin-bottom:6px; color:var(--gray-900); }
+    .result-desc { color:var(--gray-600); font-size:.95rem; line-height:1.45; }
+    .result-meta { margin-top:8px; font-size:.85rem; color:var(--gray-500); }
+    .no-results { text-align:center; color:var(--gray-600); padding:2rem 0; }
+    mark { background:#e6fff3; border-radius:4px; padding:0 2px; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1rem; }
+  </style>
+</head>
+<body>
+  <div data-include="header"></div>
+  <main id="main-content" class="search-page">
+    <div class="search-hero">
+      <div class="container">
+        <div class="search-input">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="q" type="search" placeholder="Search the site" aria-label="Search the site" autocomplete="off" />
+        </div>
+        <a href="#" id="nearest" class="nearest-btn"><i class="fa-solid fa-location-crosshairs"></i> Nearest Location</a>
+      </div>
+    </div>
+    <div class="container search-results">
+      <div id="results" class="results-grid" aria-live="polite"></div>
+      <div id="empty" class="no-results" style="display:none;">No matches found</div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div data-include="footer"></div>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+  <script src="assets/js/core/custom.js" defer></script>
+  <!-- Header System JavaScript -->
+  <script src="assets/js/header-inline.js" defer></script>
+  <script src="assets/js/footer-inline.js" defer></script>
+  <script src="assets/js/core/header-system-new.js" defer></script>
+  <script>
+    (function(){
+      function getParam(name){
+        const u=new URL(location.href); return u.searchParams.get(name)||'';
+      }
+      function mark(text,q){
+        if(!q) return text; try{const esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');const re=new RegExp('('+esc+')','ig');return text.replace(re,'<mark>$1</mark>');}catch(_){return text;}
+      }
+      async function run(q){
+        const box=document.getElementById('results');
+        const empty=document.getElementById('empty');
+        box.innerHTML=''; empty.style.display='none';
+        if(!q||q.length<2){ empty.style.display='block'; empty.textContent='Type at least 2 characters'; return; }
+        const items = await (window.PFSearch?.search(q) || []);
+        if(!items || !items.length){ empty.style.display='block'; return; }
+        items.forEach(it=>{
+          const card=document.createElement('div'); card.className='result-card';
+          card.innerHTML=`<a href="${it.url}"><div class="result-title">${mark(it.title,q)}</div>${it.description?`<div class=\"result-desc\">${mark(it.description,q)}</div>`:''}<div class="result-meta">${it.url}</div></a>`;
+          box.appendChild(card);
+        });
+      }
+      function renderNearestCard(container, info){
+        if(!info||!info.loc) return;
+        // Remove any existing nearest card to avoid duplicates
+        Array.from(container.querySelectorAll('.result-card-nearest')).forEach(n=>n.remove());
+        const c=document.createElement('div');
+        c.className='result-card result-card-nearest';
+        c.innerHTML=`
+          <div class="result-title"><i class=\"fa-solid fa-location-crosshairs\"></i> Nearest: ${info.loc.name}</div>
+          <div class="result-desc">~${info.mi.toFixed(1)} miles away</div>
+          <div class="result-meta"><a href=\"contact.html#${info.loc.slug}\" class=\"btn btn-primary btn-sm\"><i class=\"fa-solid fa-location-dot\"></i> View Location</a> &nbsp; <a class=\"btn btn-secondary btn-sm directions-btn\" data-address=\"${info.loc.address}\"><i class=\"fa-solid fa-map\"></i> Open in Maps</a></div>
+        `;
+        container.prepend(c);
+      }
+      function init(){
+        const input=document.getElementById('q');
+        const q=getParam('q');
+        if(q){ input.value=q; run(q); }
+        let t=null; input.addEventListener('input',()=>{ const v=input.value.trim(); if(t) clearTimeout(t); t=setTimeout(()=>run(v), 150); });
+        const nearest=document.getElementById('nearest');
+        nearest.addEventListener('click', async (e)=>{
+          e.preventDefault();
+          try{
+            const box=document.getElementById('results');
+            const info=await window.PFSearch.nearestFromBrowser();
+            renderNearestCard(box, info);
+          }catch(_){
+            const empty=document.getElementById('empty');
+            empty.textContent='Unable to access your location';
+            empty.style.display='block';
+          }
+        });
+      }
+      if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init); else init();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,708 @@
+/*
+ * Layout Fixes for People First Urgent Care
+ * Addresses header and hero section positioning issues
+ */
+
+/* ===== HEADER LAYOUT FIXES ===== */
+
+/* Body padding handled by mobile-optimizations.css for fixed header */
+
+.site-header {
+    margin-top: 0 !important;
+    /* Ensure header stays on top */
+    z-index: 1020;
+}
+
+/* Fix header container layout */
+.header-container {
+    /* Ensure grid layout works properly */
+    display: grid !important;
+    grid-template-columns: 200px 1fr 320px;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Ensure logo section works */
+.logo {
+    justify-self: start;
+}
+
+/* Desktop header save spot section with both buttons */
+@media (min-width: 769px) {
+    .header-save-spot {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.75rem !important;
+        justify-self: end !important;
+    }
+
+    .header-save-spot .btn-save-spot {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1.2rem !important;
+        min-height: 42px !important;
+        width: auto !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .header-save-spot .btn-urgent-care {
+        font-size: 0.85rem !important;
+        padding: 0.55rem 1.1rem !important;
+        min-height: 40px !important;
+        background: #d32f2f !important;
+        color: white !important;
+        border: 2px solid #d32f2f !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 4px rgba(211, 47, 47, 0.2) !important;
+        transition: all 0.3s ease !important;
+        text-decoration: none !important;
+        width: 100% !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .header-save-spot .btn-urgent-care:hover,
+    .header-save-spot .btn-urgent-care:focus {
+        background: #b71c1c !important;
+        border-color: #b71c1c !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 8px rgba(211, 47, 47, 0.3) !important;
+    }
+
+    .header-save-spot .btn-urgent-care:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 4px rgba(211, 47, 47, 0.2) !important;
+    }
+
+    /* Pay Now button styling for desktop - side by side layout */
+    .header-save-spot .btn-pay-now {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1.2rem !important;
+        min-height: 42px !important;
+        width: auto !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        background: #d32f2f !important;
+        color: var(--white) !important;
+        border: 2px solid #d32f2f !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 4px rgba(211, 47, 47, 0.2) !important;
+        transition: all 0.3s ease !important;
+        text-decoration: none !important;
+    }
+
+    .header-save-spot .btn-pay-now:hover,
+    .header-save-spot .btn-pay-now:focus {
+        background: #b71c1c !important;
+        border-color: #b71c1c !important;
+        color: var(--white) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 8px rgba(211, 47, 47, 0.3) !important;
+    }
+
+    .header-save-spot .btn-pay-now:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 4px rgba(211, 47, 47, 0.2) !important;
+    }
+}
+
+/* Ensure navigation is centered */
+.nav-container {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure action buttons are right-aligned */
+.action-buttons {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== HERO SECTION FIXES ===== */
+
+/* Ensure hero section is properly positioned */
+.hero-carousel {
+    /* Remove any negative margins that might cause issues */
+    margin-top: 0 !important;
+    /* Ensure hero content is visible */
+    position: relative;
+    z-index: 1;
+    /* Add top padding to ensure content is below header */
+    padding-top: 2rem;
+}
+
+/* Fix hero content positioning */
+.hero-content {
+    /* Ensure content is properly centered and visible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 2rem 0;
+    /* Ensure content starts below sticky header */
+    margin-top: 0;
+}
+
+.hero-text {
+    /* Ensure text doesn't get cut off */
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+}
+
+/* Improve contrast of emphasis words in hero (PEOPLE, CARE, LOCATIONS) */
+.hero-carousel .gradient-text,
+.hero-carousel .people-emphasis.gradient-text {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.45), 0 1px 2px rgba(0,0,0,0.6) !important;
+}
+
+/* Desktop hero tuning: reduce overall scale and polish controls */
+@media (min-width: 992px) {
+    /* Make the hero a bit shorter on desktops */
+    .hero-carousel {
+        height: 500px !important;
+    }
+
+    /* Reduce heading scale for better balance */
+    .hero-text h1 {
+        font-size: 2.8rem !important;
+        line-height: 1.15 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .hero-text h1.heading-compact {
+        font-size: 2.6rem !important;
+    }
+
+    .hero-text p,
+    .hero-text p.text-compact {
+        font-size: 1.05rem !important;
+        opacity: 0.95;
+    }
+
+    /* Trim the size of the navigation selector so it's not huge */
+    .hero-nav {
+        bottom: 36px !important;
+        padding: 0.35rem 0.6rem !important;
+        gap: 0.5rem !important;
+        background: rgba(0, 0, 0, 0.25) !important;
+        border-radius: 9999px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+    }
+
+    /* Override generic glass-card styles applied to arrows */
+    .hero-nav .glass-card,
+    .hero-nav-arrow {
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+        background: rgba(255,255,255,0.35) !important;
+        border: 1px solid rgba(255,255,255,0.6) !important;
+        box-shadow: none !important;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        color: #fff !important;
+    }
+
+    .hero-indicator {
+        width: 10px !important;
+        height: 10px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* Keep desktop hero modest even on large screens */
+    .hero-carousel { height: 520px !important; }
+    .hero-text h1 { font-size: 3rem !important; }
+    .hero-text h1.heading-compact { font-size: 2.8rem !important; }
+}
+
+@media (min-width: 1400px) {
+    .hero-carousel { height: 540px !important; }
+}
+
+/* Specific fix for main content after header */
+main#main-content {
+    /* Ensure main content doesn't overlap with header */
+    position: relative;
+    z-index: 1;
+}
+
+/* Additional safety margin for hero section */
+.hero-carousel .hero-slide {
+    /* Ensure slides have proper top spacing */
+    padding-top: 1rem;
+}
+/* Hero subtitle stacking and alignment fix */
+.hero-text .text-reveal {
+    display: block !important; /* stack heading and subtitle vertically */
+    width: 100% !important;
+}
+.hero-text .text-reveal > span {
+    display: block !important; /* maintain animation while ensuring block flow */
+}
+.hero-text .text-reveal + .text-reveal {
+    margin-top: 0.25rem; /* small spacing between heading and subtitle */
+}
+
+/* Remove restrictive width on subtitle across desktop breakpoints */
+@media (min-width: 1024px) {
+    .hero-text p,
+    .hero-text p.text-compact {
+        max-width: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        text-align: left; /* align with heading */
+    }
+}
+
+
+/* ===== RESPONSIVE FIXES ===== */
+
+@media (max-width: 1200px) {
+    .header-container {
+        grid-template-columns: 160px 1fr 260px;
+        padding: 0 0.5rem;
+    }
+}
+
+/* ===== Location Card Polishing ===== */
+/* Reduce top spacing under the map header and tighten content */
+.location-card .location-hero + .location-details {
+    padding-top: 0.5rem !important;
+}
+
+/* Ensure no unintended gap between header and content blocks */
+.location-card .location-details .location-header {
+    margin-top: 0 !important;
+}
+
+/* Remove any stray margins from the first child in details */
+.location-card .location-details > *:first-child {
+    margin-top: 0 !important;
+}
+
+/* Ensure the locations section allows sticky child and no clipping */
+.locations-section,
+.locations-section .container {
+    overflow: visible !important;
+}
+
+/* Sticky selector: maintain visibility and avoid header overlap */
+.map-controls {
+    scroll-margin-top: 80px;
+}
+
+/* Disable floating/sticky behavior of clinic selector on homepage */
+.locations-section .map-controls,
+.map-controls.sticky,
+.map-controls.fixed {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    z-index: auto !important;
+}
+
+/* Ensure no spacer is added when JS inserts a placeholder */
+.map-controls-placeholder {
+    height: 0 !important;
+}
+
+/* Improve visibility of wait time pill on home page */
+.location-card .location-wait-time {
+    background: var(--primary-green) !important;
+    color: var(--white) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+}
+.location-card .location-wait-time i,
+.location-card .location-wait-time span {
+    color: inherit !important;
+}
+
+/* Homepage tabbed locations: hide inactive panels */
+.locations-grid .location-card[hidden] {
+    display: none !important;
+}
+
+.locations-grid[data-view="tabbed"] .location-card {
+    display: none;
+}
+
+.locations-grid[data-view="tabbed"] .location-card.visible {
+    display: block;
+}
+
+@media (min-width: 1024px) {
+    .locations-grid[data-view="tabbed"] {
+        max-width: 1140px;
+        margin-inline: auto;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-card.visible {
+        display: grid;
+        grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1fr);
+        gap: var(--spacing-md);
+        padding: calc(var(--spacing-md) + 0.25rem);
+        border-radius: 28px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 255, 248, 0.92));
+        border: 1px solid rgba(36, 124, 82, 0.12);
+        box-shadow: 0 22px 45px -22px rgba(20, 80, 52, 0.45);
+        backdrop-filter: blur(14px);
+        position: relative;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-card.visible::after {
+        content: '';
+        position: absolute;
+        inset: 1.5px;
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        pointer-events: none;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-hero {
+        border-radius: 22px;
+        overflow: hidden;
+        position: relative;
+        min-height: 280px;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .locations-grid[data-view="tabbed"] .location-hero-map,
+    .locations-grid[data-view="tabbed"] .location-hero-map iframe {
+        height: 100%;
+        min-height: 280px;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-status {
+        position: absolute;
+        inset: auto 16px 16px 16px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-details {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 22px;
+        padding: var(--spacing-md) calc(var(--spacing-md) + 0.25rem);
+        display: grid;
+        gap: var(--spacing-sm);
+        border: 1px solid rgba(73, 178, 122, 0.1);
+        box-shadow: 0 14px 30px -24px rgba(16, 68, 44, 0.6);
+    }
+
+    .locations-grid[data-view="tabbed"] .location-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: var(--spacing-md);
+        margin-bottom: 0;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-header h3 {
+        font-size: 1.4rem;
+        color: var(--primary-green-dark, #0f6b3d);
+    }
+
+    .locations-grid[data-view="tabbed"] .location-wait-time {
+        background: linear-gradient(135deg, var(--primary-green), #3cb588);
+        border-radius: 999px;
+        padding: 0.4rem 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 12px 20px -12px rgba(24, 105, 66, 0.6);
+    }
+
+    .locations-grid[data-view="tabbed"] .location-info-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    .locations-grid[data-view="tabbed"] .location-info-col address {
+        font-style: normal;
+        color: var(--dark-gray);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .locations-grid[data-view="tabbed"] .hours {
+        background: rgba(248, 255, 251, 0.85);
+        border-radius: 18px;
+        padding: 0.85rem 1.1rem;
+        border: 1px solid rgba(56, 163, 105, 0.15);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    }
+
+    .locations-grid[data-view="tabbed"] .location-services {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-service-tag {
+        background: rgba(238, 249, 243, 0.95);
+        color: var(--primary-green-dark, #0f6b3d);
+        border: 1px solid rgba(58, 153, 105, 0.25);
+        border-radius: 999px;
+        padding: 0.35rem 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-buttons {
+        display: flex;
+        gap: var(--spacing-sm);
+        justify-content: flex-start;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-buttons .btn {
+        flex: 0 0 auto;
+        min-width: 160px;
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    .locations-grid[data-view="tabbed"] .location-buttons .btn-outline {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(27, 102, 62, 0.25);
+        color: var(--primary-green-dark, #0f6b3d);
+    }
+
+    .locations-grid[data-view="tabbed"] .location-buttons .btn-outline:hover {
+        background: var(--primary-green);
+        color: #fff;
+        border-color: transparent;
+    }
+}
+
+/* Tighten spacing in Locations section */
+.locations-section {
+    padding-bottom: 0 !important; /* remove trailing white space */
+}
+
+.locations-section .container {
+    padding-bottom: 0 !important;
+}
+
+.locations-section .locations-grid { margin-top: 0.5rem !important; }
+
+.locations-section .location-card.visible { margin-bottom: 0 !important; }
+
+.locations-section .location-details { padding-bottom: 0.5rem !important; }
+
+.locations-section .location-buttons { padding-top: 0.5rem !important; margin-bottom: 0 !important; }
+
+.locations-section .view-all-locations {
+    margin-top: -1.5rem !important; /* pull link closer to card */
+    margin-bottom: 0 !important;
+    text-align: center;
+}
+
+.locations-section .view-all-locations .btn {
+    margin: 0 auto;
+}
+
+
+@media (max-width: 992px) {
+    .header-container {
+        grid-template-columns: 140px 1fr 240px;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Body padding handled by mobile-optimizations.css for fixed header */
+
+    /* Switch to flex layout on mobile */
+    .header-container {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 0.5rem;
+        grid-template-columns: none;
+    }
+
+    .nav-container {
+        display: none; /* Hide main nav on mobile */
+    }
+
+    .action-buttons {
+        display: none !important; /* Hide action buttons on mobile */
+    }
+
+    .logo {
+        order: 1; /* Position first */
+        flex-shrink: 0;
+    }
+
+    /* Ensure mobile toggle is visible and positioned correctly */
+    .mobile-toggle {
+        display: flex !important;
+        order: 2; /* Position after logo */
+        margin-left: auto;
+        margin-right: 0.5rem;
+        width: 44px;
+        height: 44px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1021;
+        flex-shrink: 0; /* Prevent shrinking */
+    }
+
+    .mobile-toggle span {
+        width: 24px;
+        height: 2px;
+        background: var(--gray-700, #374151);
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+}
+
+/* Additional mobile optimizations for smaller screens */
+@media (max-width: 480px) {
+    .header-container {
+        padding: 0 0.25rem !important; /* Even smaller padding for very small screens */
+    }
+
+    .mobile-toggle {
+        width: 36px !important; /* Reduced size for very small screens */
+        height: 36px !important;
+        margin-right: 0.25rem !important; /* Smaller margin */
+    }
+
+    .mobile-toggle span {
+        width: 20px !important; /* Reduced from 24px */
+        height: 2px;
+    }
+
+    .logo {
+        flex-shrink: 0;
+    }
+
+    .action-buttons {
+        display: none !important; /* Hide action buttons on mobile */
+    }
+
+    .logo {
+        order: 1; /* Position first */
+        flex-shrink: 0;
+    }
+
+    .hero-carousel {
+        /* Ensure hero fits properly on mobile */
+        min-height: 450px;
+    }
+
+    .hero-content {
+        /* More padding on mobile for better spacing */
+        padding: 1.5rem 0 3rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Body padding-top handled by mobile-optimizations.css */
+
+    .hero-carousel {
+        /* Smaller hero on very small screens */
+        min-height: 400px;
+    }
+}
+
+/* ===== MAIN CONTENT FIXES ===== */
+
+/* Ensure main content doesn't overlap with header */
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix any potential overflow issues */
+.container,
+.container-compact {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* ===== ACCESSIBILITY FIXES ===== */
+
+/* Ensure skip link works properly with new layout */
+.skip-to-content:focus {
+    top: calc(var(--header-height, 140px) + 6px);
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    body {
+        padding-top: 0 !important;
+    }
+
+    .site-header {
+        margin-top: 0 !important;
+        position: static !important;
+    }
+}
+
+
+/* ===== FOOTER CALL BUTTONS (COMPACT) ===== */
+.site-footer .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem; /* tight spacing to reduce vertical size */
+    margin: 0.25rem 0;
+}
+
+.site-footer .footer-call-button {
+    padding: 0.3rem 0.6rem; /* smaller padding */
+    font-size: 0.85rem;     /* smaller text for compact look */
+    line-height: 1.2;
+    min-height: 32px;       /* smaller than default button heights */
+    box-shadow: none;       /* avoid bulky button shadow in footer */
+    border-radius: 6px;     /* slightly tighter radius */
+    gap: 0.35rem;           /* smaller icon gap */
+}
+
+.site-footer .footer-call-button i {
+    font-size: 0.9em;
+}
+
+.site-footer .footer-call-button:hover,
+.site-footer .footer-call-button:focus {
+    transform: translateY(-1px); /* subtler hover movement for compact buttons */
+}
+
+
+/* Footer Contact CTA hover contrast fix */
+.site-footer .footer-contact-cta {
+  color: #ffffff; /* ensure white text by default */
+}
+.site-footer .footer-contact-cta:hover,
+.site-footer .footer-contact-cta:focus {
+  color: #ffffff; /* keep white text on hover */
+  background-image: linear-gradient(135deg, #0e3a2b 0%, #0a2537 100%); /* darker hover gradient for contrast */
+}

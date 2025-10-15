@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Inline Header System - People First Urgent Care</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .test-content {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .status {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Include -->
+    <div data-include="header"></div>
+    
+    <main class="test-content">
+        <h1>Header System Test Page</h1>
+        
+        <div id="status" class="status error">
+            ❌ Header not loaded yet...
+        </div>
+        
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Open this file directly in your browser (double-click or drag to browser)</li>
+            <li>If you see the People First header above, the inline system is working!</li>
+            <li>The status should change to green when the header loads</li>
+        </ol>
+        
+        <h2>What this tests:</h2>
+        <ul>
+            <li>✅ File:// protocol compatibility</li>
+            <li>✅ Header injection without fetch requests</li>
+            <li>✅ JavaScript functionality</li>
+            <li>✅ CSS styling</li>
+        </ul>
+    </main>
+    
+    <!-- Header Inline System (File:// Compatible) -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/header-inline.js" defer></script>
+    
+    <script>
+        // Test script to verify header loaded
+        function checkHeaderLoaded() {
+            const header = document.querySelector('.site-header');
+            const statusDiv = document.getElementById('status');
+            
+            if (header) {
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = '✅ Header loaded successfully! The inline system is working.';
+            } else {
+                setTimeout(checkHeaderLoaded, 100);
+            }
+        }
+        
+        // Start checking after a short delay
+        setTimeout(checkHeaderLoaded, 500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2025-09-04T06:40:38.347Z",
+    "totalStaff": 1
+  },
+  "staff": [
+    {
+      "id": "staff_1756966282382",
+      "name": "test",
+      "title": "test",
+      "type": "medical",
+      "specialty": "",
+      "credentials": "",
+      "bio": "",
+      "image": "assets/images/staff-1756968038337-IMG_2923.png",
+      "dateAdded": "2025-09-04T06:11:22.401Z",
+      "updatedAt": "2025-09-04T06:40:38.344Z"
+    }
+  ]
+}

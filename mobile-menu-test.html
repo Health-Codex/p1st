@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test - People First Urgent Care</title>
+    
+    <!-- CSS in correct order -->
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+    <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+    <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Test content styling */
+        .test-content {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .test-box {
+            background: white;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .z-index-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            z-index: 999;
+        }
+        @media (max-width: 768px) {
+            .z-index-info {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Include -->
+    <div data-include="header"></div>
+    
+    <main class="test-content">
+        <div class="test-box">
+            <h1>Mobile Menu Test Page</h1>
+            <p>This page tests the mobile hamburger menu functionality, logo positioning, and z-index stacking.</p>
+
+            <div style="background: #e8f5e8; padding: 1rem; border-radius: 4px; margin: 1rem 0;">
+                <strong>✅ LOGO FIX APPLIED:</strong> The mobile menu logo now supports both <code>.mobile-menu-logo img</code> and <code>.mobile-logo</code> class implementations for maximum compatibility.
+            </div>
+            
+            <h2>Test Instructions:</h2>
+            <ol>
+                <li>Resize your browser to mobile width (< 1024px)</li>
+                <li>Click the hamburger menu button (☰)</li>
+                <li>Verify the menu slides in from the right</li>
+                <li>Verify the overlay covers the entire page including the header</li>
+                <li>Verify the menu is fully visible (not clipped)</li>
+                <li><strong>Check logo positioning:</strong> People First logo should appear in top-left of mobile menu</li>
+                <li><strong>Check close button:</strong> X button should be in top-right, opposite the logo</li>
+                <li>Test dropdown menus within the mobile menu</li>
+                <li>Test at different widths: 320px, 375px, 414px, 768px</li>
+                <li>Click overlay or press Escape to close</li>
+            </ol>
+            
+            <h2>Expected Behavior:</h2>
+            <ul>
+                <li>Menu appears above all content (z-index: 1050)</li>
+                <li>Overlay appears behind menu but above content (z-index: 1049)</li>
+                <li>Header has z-index: 1020 (should be covered by overlay)</li>
+                <li><strong>Logo positioning:</strong> People First logo in top-left corner of mobile menu</li>
+                <li><strong>Close button:</strong> X button in top-right corner, properly aligned with logo</li>
+                <li><strong>Responsive sizing:</strong> Logo scales appropriately (35px → 28px → 24px)</li>
+                <li>Body scroll is disabled when menu is open</li>
+                <li>Focus management works correctly</li>
+            </ul>
+        </div>
+        
+        <div class="test-box">
+            <h2>Z-Index Stack Test</h2>
+            <p>This content should be covered by the mobile menu overlay when the menu is open.</p>
+            <p>The header should also be covered by the overlay, ensuring the mobile menu appears above everything.</p>
+        </div>
+        
+        <div class="test-box">
+            <h2>Scroll Test</h2>
+            <p>This is additional content to test scrolling behavior.</p>
+            <p>When the mobile menu is open, this content should not be scrollable.</p>
+            <p>The mobile menu itself should be scrollable if it contains many items.</p>
+        </div>
+    </main>
+    
+    <div class="z-index-info">
+        <strong>Z-Index Reference:</strong><br>
+        Mobile Menu: 1050<br>
+        Menu Overlay: 1049<br>
+        Header: 1020<br>
+        Content: 1
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/header-inline.js" defer></script>
+    
+    <script>
+        // Additional test functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Mobile Menu Test Page Loaded');
+            
+            // Log when mobile menu opens/closes
+            const body = document.body;
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                        if (body.style.overflow === 'hidden') {
+                            console.log('✅ Mobile menu opened - body scroll disabled');
+                        } else if (body.style.overflow === '') {
+                            console.log('✅ Mobile menu closed - body scroll restored');
+                        }
+                    }
+                });
+            });
+            
+            observer.observe(body, { attributes: true });
+        });
+    </script>
+</body>
+</html>

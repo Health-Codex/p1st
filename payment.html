@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Make a Payment - People First Urgent Care</title>
+    <meta name="description" content="Make a secure online payment for your People First Urgent Care services. Choose your location and pay securely through our trusted payment partners.">
+    <meta name="theme-color" content="#05A65C">
+    <link rel="canonical" href="https://www.peoplefirsturgentcare.com/payment.html">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Make a Payment - People First Urgent Care">
+    <meta property="og:description" content="Make a secure online payment for your People First Urgent Care services. Choose your location and pay securely through our trusted payment partners.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.peoplefirsturgentcare.com/payment.html">
+    <meta property="og:image" content="https://www.peoplefirsturgentcare.com/assets/images/hero-4.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Make a Payment - People First Urgent Care">
+    <meta name="twitter:description" content="Make a secure online payment for your People First Urgent Care services. Choose your location and pay securely through our trusted payment partners.">
+    <meta name="twitter:image" content="https://www.peoplefirsturgentcare.com/assets/images/hero-4.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "People First Urgent Care",
+      "url": "https://www.peoplefirsturgentcare.com",
+      "logo": "https://www.peoplefirsturgentcare.com/assets/images/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-901-762-1531",
+        "contactType": "customer service"
+      }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/base/variables.css">
+    <link rel="stylesheet" href="assets/css/core/critical.css">
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/buttons/action-buttons.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+    <!-- Load header-system-complete.css LAST for proper CSS cascade -->
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    
+    <!-- Modern Payment Page Styles -->
+    <style>
+        /* ===== MODERN PAYMENT PAGE DESIGN SYSTEM ===== */
+
+        /* Advanced CSS Variables for Modern Design */
+        .page-payment {
+            --gradient-primary: linear-gradient(135deg, #05A65C 0%, #038B4D 100%);
+            --gradient-secondary: linear-gradient(135deg, #2E86AB 0%, #1F5F7A 100%);
+            --gradient-accent: linear-gradient(135deg, #E41E3F 0%, #C01835 100%);
+            --gradient-soft: linear-gradient(135deg, rgba(5, 166, 92, 0.1) 0%, rgba(3, 139, 77, 0.05) 100%);
+            --gradient-hero: linear-gradient(135deg, #05A65C 0%, #038B4D 50%, #2E86AB 100%);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-button: 0 4px 15px rgba(5, 166, 92, 0.3);
+            --shadow-button-hover: 0 6px 20px rgba(5, 166, 92, 0.4);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --border-radius-xl: 20px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            --bg-glass-dark: rgba(255, 255, 255, 0.95);
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+        }
+
+        /* Let header system handle body padding - removed override */
+
+        /* Modern Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(5, 166, 92, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(5, 166, 92, 0.5); }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Modern Hero Section with Glassmorphism */
+        .payment-hero {
+            background: var(--gradient-hero);
+            color: var(--white);
+            padding: 4rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(46, 134, 171, 0.1) 0%, transparent 50%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.6;
+            animation: gradientShift 8s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        .payment-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .payment-hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            width: 100%;
+        }
+
+        .payment-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ffffff, #f0f9ff, #e0f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .payment-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+            border-radius: 2px;
+        }
+
+        .payment-hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg);
+            line-height: 1.7;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Modern Hero Badges with Glassmorphism */
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-badge:nth-child(1) { animation-delay: 0s; }
+        .hero-badge:nth-child(2) { animation-delay: 0.5s; }
+        .hero-badge:nth-child(3) { animation-delay: 1s; }
+        .hero-badge:nth-child(4) { animation-delay: 1.5s; }
+
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .hero-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-card-hover);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .hero-badge:hover::before {
+            left: 100%;
+        }
+
+        .hero-badge i {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-badge:hover i {
+            transform: scale(1.1);
+            color: var(--primary-green-dark);
+        }
+
+        .hero-badge span {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        /* Modern Clinic Selector Section */
+        .clinic-selector-section {
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clinic-selector-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(5,166,92,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .clinic-selector-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .selector-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .selector-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+            position: relative;
+        }
+
+        .selector-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .selector-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .selection-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-green-light), var(--primary-green));
+            color: var(--white);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .selection-status.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+        .selection-status i {
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+
+        /* Modern Clinic Selector Grid */
+        .clinic-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* Enhanced Clinic Selector Buttons */
+        .clinic-selector-btn {
+            background: var(--bg-glass-dark);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(5, 166, 92, 0.2);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .clinic-selector-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .clinic-selector-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(5, 166, 92, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .clinic-selector-btn:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .clinic-selector-btn:hover::before {
+            transform: scaleX(1);
+        }
+
+        .clinic-selector-btn:hover::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        .clinic-selector-btn.active {
+            border-color: var(--primary-green);
+            background: var(--gradient-primary);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-button-hover);
+        }
+
+        .clinic-selector-btn.active::before {
+            transform: scaleX(1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .clinic-selector-btn h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-xs);
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 2;
+        }
+
+        .clinic-selector-btn p {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin: 0;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 2;
+            color: var(--text-secondary);
+        }
+
+        .clinic-selector-btn.active p {
+            opacity: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .clinic-selector-btn::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .clinic-selector-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        /* Loading state for clinic selector */
+        .clinic-selector-btn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .clinic-selector-btn.loading::after {
+            content: '\f110';
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Payment Card Reveal Container */
+        .payment-card-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+            margin-top: 1rem;
+            transform: translateY(-10px);
+        }
+
+        .payment-card-container.active {
+            max-height: 800px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth reveal animation */
+        .payment-card-container.active .clinic-payment-card {
+            animation: slideInUp 0.5s ease-out 0.1s both;
+        }
+
+        /* Modern Payment Cards with Glassmorphism */
+        .clinic-payment-card {
+            background: var(--bg-glass-dark);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-card);
+            text-align: center;
+            transition: var(--transition-smooth);
+            border: 2px solid rgba(5, 166, 92, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        .clinic-payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-primary);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .clinic-payment-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(5, 166, 92, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.8s ease, height 0.8s ease;
+        }
+
+        .clinic-payment-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: var(--shadow-card-hover);
+            border-color: var(--primary-green);
+        }
+
+        .clinic-payment-card:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Enhanced Payment Card Animation */
+        .clinic-payment-card.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .clinic-payment-card.loading::before {
+            animation: shimmer 1.5s infinite, gradientShift 3s ease infinite;
+        }
+        
+        /* Enhanced Clinic Card Content */
+        .clinic-info {
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            z-index: 2;
+        }
+
+        .clinic-info h3 {
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+        }
+
+        .clinic-info h3::before {
+            content: '\f3c5';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary-green);
+            margin-right: var(--spacing-xs);
+            font-size: 1.2rem;
+        }
+
+        .clinic-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        /* Modern Address Styling */
+        .clinic-address {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            border-left: 4px solid var(--primary-green);
+            border: 1px solid rgba(5, 166, 92, 0.2);
+            position: relative;
+        }
+
+        .clinic-address::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* Enhanced Phone Link */
+        .clinic-phone {
+            color: var(--primary-green);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 0.875rem 1.75rem;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            transition: var(--transition-bounce);
+            border: 2px solid rgba(5, 166, 92, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clinic-phone::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .clinic-phone:hover {
+            color: var(--white);
+            background: var(--gradient-primary);
+            border-color: var(--primary-green-dark);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-button);
+        }
+
+        .clinic-phone:hover::before {
+            left: 100%;
+        }
+
+        .clinic-phone i {
+            font-size: 1.2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .clinic-phone:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Modern Payment Button with Advanced Effects */
+        .payment-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1.5rem 3rem;
+            border-radius: var(--border-radius-lg);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition-bounce);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-button);
+            position: relative;
+            overflow: hidden;
+            min-width: 220px;
+            background-size: 200% 100%;
+        }
+
+        .payment-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .payment-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .payment-btn:hover {
+            background: var(--gradient-primary);
+            background-position: 100% 0;
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-button-hover);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .payment-btn:hover::before {
+            left: 100%;
+        }
+
+        .payment-btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .payment-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .payment-btn i {
+            font-size: 1.3rem;
+            transition: var(--transition-smooth);
+        }
+
+        .payment-btn:hover i {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* Loading State for Payment Button */
+        .payment-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .payment-btn.loading i {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Payment Method Icons */
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .payment-method-icon {
+            width: 40px;
+            height: 25px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            font-weight: 600;
+        }
+        
+        /* Combined Security Info in Hero */
+        .hero-security-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-security-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+
+
+
+        
+        /* Loading States */
+        .loading-skeleton {
+            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+            background-size: 200px 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        .clinic-payment-card.loading {
+            pointer-events: none;
+        }
+
+        .clinic-payment-card.loading .payment-btn {
+            background: var(--gray-300);
+            color: var(--gray-500);
+            cursor: not-allowed;
+        }
+
+        /* Enhanced Mobile Responsive Design */
+        @media (min-width: 1200px) {
+            .clinic-selector-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--spacing-lg);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .payment-hero {
+                padding: 3rem 0 2.5rem;
+                min-height: 50vh;
+            }
+
+            .payment-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .selector-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .clinic-selector-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-md);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .payment-hero {
+                padding: 2.5rem 0 2rem;
+                min-height: 40vh;
+            }
+
+            .payment-hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .payment-hero p {
+                font-size: 1.1rem;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .hero-badges {
+                gap: var(--spacing-sm);
+                margin-top: var(--spacing-md);
+            }
+
+            .hero-badge {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .clinic-selector-section {
+                padding: var(--spacing-lg) 0;
+            }
+
+            .clinic-selector-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            .clinic-selector-btn {
+                padding: var(--spacing-md);
+            }
+
+            .clinic-selector-btn h3 {
+                font-size: 1.2rem;
+            }
+
+            .clinic-payment-card {
+                padding: var(--spacing-md);
+            }
+
+            .clinic-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .clinic-phone {
+                font-size: 1.1rem;
+                padding: 0.75rem 1.25rem;
+            }
+
+            .payment-btn {
+                padding: 1.2rem 2rem;
+                font-size: 1rem;
+                min-width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .payment-hero {
+                padding: 2rem 0 1.5rem;
+                min-height: 35vh;
+                /* Adjust margin for small mobile header height */
+                margin-top: 70px;
+            }
+
+            .payment-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .payment-hero p {
+                font-size: 1rem;
+            }
+
+            .hero-badges {
+                gap: var(--spacing-xs);
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-badge {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+                flex: 0 1 auto;
+                min-width: fit-content;
+            }
+
+            .clinic-selector-section {
+                padding: var(--spacing-md) 0;
+            }
+
+            .clinic-selector-btn {
+                padding: var(--spacing-sm);
+            }
+
+            .clinic-selector-btn h3 {
+                font-size: 1.1rem;
+            }
+
+            .clinic-payment-card {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .clinic-info h3 {
+                font-size: 1.3rem;
+            }
+
+            .clinic-address {
+                font-size: 1rem;
+                padding: var(--spacing-sm);
+            }
+
+            .payment-btn {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+                min-width: 180px;
+            }
+        }
+
+        /* Touch-Friendly Enhancements */
+        @media (hover: none) and (pointer: coarse) {
+            .clinic-selector-btn,
+            .payment-btn,
+            .clinic-phone {
+                min-height: 48px;
+            }
+
+            .clinic-selector-btn:active {
+                transform: scale(0.98);
+            }
+
+            .payment-btn:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Accessibility and Performance Optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            .clinic-payment-card {
+                border: 3px solid var(--text-primary);
+            }
+
+            .payment-btn {
+                border: 2px solid var(--white);
+            }
+        }
+
+        /* Loading States and Animations */
+        .loading-skeleton {
+            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+            background-size: 200px 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Stagger Animation Delays */
+        .clinic-selector-btn:nth-child(1) { animation-delay: 0s; }
+        .clinic-selector-btn:nth-child(2) { animation-delay: 0.1s; }
+        .clinic-selector-btn:nth-child(3) { animation-delay: 0.2s; }
+        .clinic-selector-btn:nth-child(4) { animation-delay: 0.3s; }
+        .clinic-selector-btn:nth-child(5) { animation-delay: 0.4s; }
+        .clinic-selector-btn:nth-child(6) { animation-delay: 0.5s; }
+
+        /* Animation Delays for Staggered Loading */
+        .clinic-payment-card:nth-child(1) { --delay: 0s; }
+        .clinic-payment-card:nth-child(2) { --delay: 0.1s; }
+        .clinic-payment-card:nth-child(3) { --delay: 0.2s; }
+        .clinic-payment-card:nth-child(4) { --delay: 0.3s; }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            .clinic-payment-card {
+                border: 2px solid var(--gray-800);
+            }
+
+            .payment-btn {
+                border: 2px solid var(--white);
+            }
+        }
+    </style>
+</head>
+<body class="page-payment">
+    <!-- Header Include Hook -->
+    <div data-include="header"></div>
+
+    <main id="main-content">
+        <!-- Payment Hero Section -->
+        <section class="payment-hero">
+            <div class="container">
+                <h1>Make a Payment Online</h1>
+                <p>Choose your clinic location below to make a secure payment through our trusted payment partners. All transactions are encrypted and processed through industry-leading payment systems.</p>
+
+                <div class="hero-badges">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-shield-check"></i>
+                        <span>SSL Encrypted</span>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>PCI Compliant</span>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <span>Bank-Level Security</span>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>24/7 Available</span>
+                    </div>
+                </div>
+
+                <div class="hero-security-info">
+                    <h3><i class="fa-solid fa-info-circle"></i> Payment Providers</h3>
+                    <p><strong>Bartlett:</strong> Clover • <strong>Other Locations:</strong> Breeze with CareCloud</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clinic Selector Section -->
+        <section class="clinic-selector-section">
+            <div class="clinic-selector-container">
+                <div class="selector-header">
+                    <h2>Select Your Clinic</h2>
+                    <p>Click on your clinic location to access the payment portal</p>
+                    <div class="selection-status" id="selection-status">
+                        <i class="fa-solid fa-arrow-down"></i>
+                        <span>Choose your clinic below to continue</span>
+                    </div>
+                </div>
+
+                <div class="clinic-selector-grid">
+                    <!-- Bartlett Clinic Selector -->
+                    <div class="clinic-selector-btn" data-clinic="bartlett">
+                        <h3>Bartlett, TN</h3>
+                        <p>6490 Memphis Arlington Road #106</p>
+                    </div>
+
+                    <!-- Millington Clinic Selector -->
+                    <div class="clinic-selector-btn" data-clinic="millington">
+                        <h3>Millington, TN</h3>
+                        <p>4772 Navy Road</p>
+                    </div>
+
+                    <!-- Germantown Clinic Selector -->
+                    <div class="clinic-selector-btn" data-clinic="germantown">
+                        <h3>Germantown, TN</h3>
+                        <p>9301 Poplar Avenue</p>
+                    </div>
+
+                    <!-- Collierville Clinic Selector -->
+                    <div class="clinic-selector-btn" data-clinic="collierville">
+                        <h3>Collierville, TN</h3>
+                        <p>853 West Poplar Avenue</p>
+                    </div>
+
+                    <!-- Southaven Clinic Selector -->
+                    <div class="clinic-selector-btn" data-clinic="southaven">
+                        <h3>Southaven, MS</h3>
+                        <p>176 Goodman Road W</p>
+                    </div>
+
+                    <!-- Cordova Clinic Selector -->
+                    <div class="clinic-selector-btn" data-clinic="cordova">
+                        <h3>Cordova, TN</h3>
+                        <p>1645 N Germantown Parkway</p>
+                    </div>
+                </div>
+
+                <!-- Payment Card Containers (Hidden by default) -->
+                <div id="bartlett-payment" class="payment-card-container">
+                    <div class="clinic-payment-card">
+                        <div class="clinic-info">
+                            <h3>Bartlett, TN Clinic</h3>
+                            <div class="clinic-address">
+                                6490 Memphis Arlington Road #106<br>
+                                Bartlett, TN 38135
+                            </div>
+                            <a href="tel:901-762-1531" class="clinic-phone">
+                                <i class="fa-solid fa-phone"></i> 901-762-1531
+                            </a>
+                        </div>
+                        <div class="payment-button-container">
+                            <a href="https://link.clover.com/urlshortener/3hNDwX"
+                               class="payment-btn"
+                               title="Make a Payment - Bartlett Clinic"
+                               target="_blank">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Make a Payment
+                            </a>
+
+                            <div class="payment-methods">
+                                <div class="payment-method-icon">VISA</div>
+                                <div class="payment-method-icon">MC</div>
+                                <div class="payment-method-icon">AMEX</div>
+                                <div class="payment-method-icon">DISC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="millington-payment" class="payment-card-container">
+                    <div class="clinic-payment-card">
+                        <div class="clinic-info">
+                            <h3>Millington, TN Clinic</h3>
+                            <div class="clinic-address">
+                                4772 Navy Road<br>
+                                Millington, TN 38053
+                            </div>
+                            <a href="tel:901-873-0930" class="clinic-phone">
+                                <i class="fa-solid fa-phone"></i> 901-873-0930
+                            </a>
+                        </div>
+                        <div class="payment-button-container">
+                            <a href="https://web.gobreeze.com/guest/guestPayNoCode?practice_id=3bd26b38-26a5-41bc-81aa-eb263f3ec1d4&practice_mgmt=carecloud"
+                               class="payment-btn"
+                               title="Make a Payment - Millington Clinic"
+                               target="_blank">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Make a Payment
+                            </a>
+
+                            <div class="payment-methods">
+                                <div class="payment-method-icon">VISA</div>
+                                <div class="payment-method-icon">MC</div>
+                                <div class="payment-method-icon">AMEX</div>
+                                <div class="payment-method-icon">DISC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="germantown-payment" class="payment-card-container">
+                    <div class="clinic-payment-card">
+                        <div class="clinic-info">
+                            <h3>Germantown, TN</h3>
+                            <div class="clinic-address">
+                                9301 Poplar Avenue<br>
+                                Germantown, TN 38138
+                            </div>
+                            <a href="tel:901-567-6100" class="clinic-phone">
+                                <i class="fa-solid fa-phone"></i> 901-567-6100
+                            </a>
+                        </div>
+                        <div class="payment-button-container">
+                            <a href="https://web.gobreeze.com/guest/guestPayNoCode?practice_id=ef7be141-57c7-4ead-87b7-b9c49fe6a8ca&practice_mgmt=carecloud"
+                               class="payment-btn"
+                               title="Make a Payment - Germantown Clinic"
+                               target="_blank">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Make a Payment
+                            </a>
+
+                            <div class="payment-methods">
+                                <div class="payment-method-icon">VISA</div>
+                                <div class="payment-method-icon">MC</div>
+                                <div class="payment-method-icon">AMEX</div>
+                                <div class="payment-method-icon">DISC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="collierville-payment" class="payment-card-container">
+                    <div class="clinic-payment-card">
+                        <div class="clinic-info">
+                            <h3>Collierville, TN</h3>
+                            <div class="clinic-address">
+                                853 West Poplar Avenue<br>
+                                Collierville, TN 38017
+                            </div>
+                            <a href="tel:901-673-1240" class="clinic-phone">
+                                <i class="fa-solid fa-phone"></i> 901-673-1240
+                            </a>
+                        </div>
+                        <div class="payment-button-container">
+                            <a href="https://web.gobreeze.com/guest/guestPayNoCode?practice_id=ef7be141-57c7-4ead-87b7-b9c49fe6a8ca&practice_mgmt=carecloud"
+                               class="payment-btn"
+                               title="Make a Payment - Collierville Clinic"
+                               target="_blank">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Make a Payment
+                            </a>
+
+                            <div class="payment-methods">
+                                <div class="payment-method-icon">VISA</div>
+                                <div class="payment-method-icon">MC</div>
+                                <div class="payment-method-icon">AMEX</div>
+                                <div class="payment-method-icon">DISC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="southaven-payment" class="payment-card-container">
+                    <div class="clinic-payment-card">
+                        <div class="clinic-info">
+                            <h3>Southaven, MS Clinic</h3>
+                            <div class="clinic-address">
+                                176 Goodman Road W<br>
+                                Southaven, MS 38671
+                            </div>
+                            <a href="tel:662-683-1440" class="clinic-phone">
+                                <i class="fa-solid fa-phone"></i> 662-683-1440
+                            </a>
+                        </div>
+                        <div class="payment-button-container">
+                            <a href="https://web.gobreeze.com/guest/guestPayNoCode?practice_id=ef7be141-57c7-4ead-87b7-b9c49fe6a8ca&practice_mgmt=carecloud"
+                               class="payment-btn"
+                               title="Make a Payment - Southaven Clinic"
+                               target="_blank">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Make a Payment
+                            </a>
+
+                            <div class="payment-methods">
+                                <div class="payment-method-icon">VISA</div>
+                                <div class="payment-method-icon">MC</div>
+                                <div class="payment-method-icon">AMEX</div>
+                                <div class="payment-method-icon">DISC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cordova-payment" class="payment-card-container">
+                    <div class="clinic-payment-card">
+                        <div class="clinic-info">
+                            <h3>Cordova, TN</h3>
+                            <div class="clinic-address">
+                                1645 N Germantown Parkway<br>
+                                Cordova, TN 38016
+                            </div>
+                            <a href="tel:901-625-5360" class="clinic-phone">
+                                <i class="fa-solid fa-phone"></i> 901-625-5360
+                            </a>
+                        </div>
+                        <div class="payment-button-container">
+                            <a href="https://web.gobreeze.com/guest/guestPayNoCode?practice_id=ef7be141-57c7-4ead-87b7-b9c49fe6a8ca&practice_mgmt=carecloud"
+                               class="payment-btn"
+                               title="Make a Payment - Cordova Clinic"
+                               target="_blank">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Make a Payment
+                            </a>
+
+                            <div class="payment-methods">
+                                <div class="payment-method-icon">VISA</div>
+                                <div class="payment-method-icon">MC</div>
+                                <div class="payment-method-icon">AMEX</div>
+                                <div class="payment-method-icon">DISC</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- Fixed Save Your Spot Button for Mobile -->
+    <a href="save-your-spot.html" class="fixed-cta-button">
+        <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+    </a>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/header-inline.js"></script>
+    <script src="assets/js/core/header-system-new.js"></script>
+    <script src="assets/js/core/custom.js"></script>
+
+    <!-- Advanced Payment Page JavaScript -->
+    <script>
+        // Advanced Payment Page Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page animations and interactions
+            initializePaymentPage();
+
+            // Initialize clinic selector functionality
+            initializeClinicSelector();
+
+            // Track payment button clicks for analytics
+            const paymentButtons = document.querySelectorAll('.payment-btn');
+
+            paymentButtons.forEach((button, index) => {
+                // Add loading state functionality
+                button.addEventListener('click', function(e) {
+                    const clinicName = this.closest('.clinic-payment-card').querySelector('h3').textContent;
+                    const clinicCard = this.closest('.clinic-payment-card');
+
+                    // Add loading state
+                    this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Redirecting...';
+                    this.style.pointerEvents = 'none';
+                    clinicCard.classList.add('loading');
+
+                    // Log for analytics
+                    console.log('Payment initiated for:', clinicName);
+
+                    // Optional: Add analytics tracking here
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'payment_initiated', {
+                            'clinic_location': clinicName,
+                            'payment_provider': clinicName.includes('Bartlett') ? 'Clover' : 'Breeze'
+                        });
+                    }
+
+                    // Reset button after a delay (in case user comes back)
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fa-solid fa-credit-card"></i> Make a Payment';
+                        this.style.pointerEvents = 'auto';
+                        clinicCard.classList.remove('loading');
+                    }, 3000);
+                });
+
+                // Add hover sound effect (optional)
+                button.addEventListener('mouseenter', function() {
+                    // Optional: Add subtle hover sound
+                    // playHoverSound();
+                });
+            });
+
+            // Enhanced phone number interactions
+            const phoneLinks = document.querySelectorAll('.clinic-phone');
+            phoneLinks.forEach(phone => {
+                phone.addEventListener('click', function(e) {
+                    const phoneNumber = this.textContent.trim();
+                    console.log('Phone call initiated:', phoneNumber);
+
+                    // Optional: Track phone calls
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'phone_call', {
+                            'phone_number': phoneNumber
+                        });
+                    }
+                });
+            });
+
+            // Smooth scroll for better UX
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.clinic-payment-card, .security-feature').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add keyboard navigation support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    document.body.classList.add('keyboard-navigation');
+                }
+            });
+
+            document.addEventListener('mousedown', function() {
+                document.body.classList.remove('keyboard-navigation');
+            });
+        });
+
+        // Initialize clinic selector functionality
+        function initializeClinicSelector() {
+            const selectorButtons = document.querySelectorAll('.clinic-selector-btn');
+            const paymentContainers = document.querySelectorAll('.payment-card-container');
+            const selectionStatus = document.getElementById('selection-status');
+
+            selectorButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const clinicId = this.getAttribute('data-clinic');
+                    const targetContainer = document.getElementById(`${clinicId}-payment`);
+                    const clickedButton = this;
+
+                    // Prevent multiple clicks
+                    if (clickedButton.classList.contains('loading')) return;
+
+                    // Add loading state
+                    clickedButton.classList.add('loading');
+
+                    // Remove active class from all buttons
+                    selectorButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn !== clickedButton) {
+                            btn.classList.remove('loading');
+                        }
+                    });
+
+                    // Hide all payment containers with animation
+                    paymentContainers.forEach(container => {
+                        container.classList.remove('active');
+                    });
+
+                    // Short delay for better UX
+                    setTimeout(() => {
+                        // Remove loading state and add active state
+                        clickedButton.classList.remove('loading');
+                        clickedButton.classList.add('active');
+
+                        // Hide selection status and show success message
+                        if (selectionStatus) {
+                            selectionStatus.classList.add('hidden');
+
+                            // Show brief success message
+                            const clinicName = clickedButton.querySelector('h3').textContent;
+                            selectionStatus.innerHTML = `<i class="fa-solid fa-check-circle"></i><span>${clinicName} selected - Payment portal ready!</span>`;
+                            selectionStatus.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+
+                            setTimeout(() => {
+                                selectionStatus.classList.remove('hidden');
+                            }, 100);
+
+                            setTimeout(() => {
+                                selectionStatus.classList.add('hidden');
+                            }, 3000);
+                        }
+
+                        // Show target payment container
+                        if (targetContainer) {
+                            targetContainer.classList.add('active');
+
+                            // Smooth scroll to the payment card after animation starts
+                            setTimeout(() => {
+                                targetContainer.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'nearest'
+                                });
+                            }, 200);
+                        }
+                    }, 300);
+
+                    // Analytics tracking
+                    const clinicName = this.querySelector('h3').textContent;
+                    console.log('Clinic selected:', clinicName);
+
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'clinic_selected', {
+                            'clinic_location': clinicName
+                        });
+                    }
+                });
+
+                // Add keyboard navigation
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+
+                // Add ARIA attributes for accessibility
+                button.setAttribute('role', 'button');
+                button.setAttribute('tabindex', '0');
+                button.setAttribute('aria-expanded', 'false');
+
+                const clinicName = button.querySelector('h3').textContent;
+                button.setAttribute('aria-label', `Select ${clinicName} for payment`);
+            });
+
+            // Update ARIA attributes when buttons are activated
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        const button = mutation.target;
+                        const isActive = button.classList.contains('active');
+                        button.setAttribute('aria-expanded', isActive.toString());
+                    }
+                });
+            });
+
+            selectorButtons.forEach(button => {
+                observer.observe(button, { attributes: true });
+            });
+        }
+
+        // Initialize payment page functionality
+        function initializePaymentPage() {
+            // Add staggered animation delays
+            const cards = document.querySelectorAll('.clinic-payment-card');
+            cards.forEach((card, index) => {
+                card.style.setProperty('--delay', `${index * 0.1}s`);
+            });
+
+            // Initialize accessibility features
+            enhanceAccessibility();
+
+            console.log('Payment page initialized successfully');
+        }
+
+        // Enhance accessibility
+        function enhanceAccessibility() {
+            // Add ARIA labels for better screen reader support
+            const paymentButtons = document.querySelectorAll('.payment-btn');
+            paymentButtons.forEach(button => {
+                const clinicName = button.closest('.clinic-payment-card').querySelector('h3').textContent;
+                button.setAttribute('aria-label', `Make a payment for ${clinicName}`);
+            });
+
+            // Add focus indicators
+            const focusableElements = document.querySelectorAll('a, button, [tabindex]');
+            focusableElements.forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.outline = '3px solid var(--primary-green)';
+                    this.style.outlineOffset = '2px';
+                });
+
+                el.addEventListener('blur', function() {
+                    this.style.outline = '';
+                    this.style.outlineOffset = '';
+                });
+            });
+        }
+
+        // Optional: Simulate loading state
+        function simulateLoading() {
+            const cards = document.querySelectorAll('.clinic-payment-card');
+            cards.forEach(card => {
+                card.classList.add('loading');
+                setTimeout(() => {
+                    card.classList.remove('loading');
+                }, 1000 + Math.random() * 500);
+            });
+        }
+
+        // Error handling for payment redirects
+        window.addEventListener('error', function(e) {
+            console.error('Payment page error:', e.error);
+            // Optional: Show user-friendly error message
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            console.log(`Payment page loaded in ${loadTime.toFixed(2)}ms`);
+
+            // Optional: Send performance data to analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_load_time', {
+                    'load_time': Math.round(loadTime),
+                    'page': 'payment'
+                });
+            }
+        });
+    </script>
+</body>
+</html>

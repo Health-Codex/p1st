@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Empty Prescriptions</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#048749" offset="0%"></stop>
+            <stop stop-color="#036b3a" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Empty-Prescriptions" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Background" fill="#F8F8F8" x="0" y="0" width="200" height="200" rx="8"></rect>
+        <g id="Prescription-Bottle" transform="translate(60.000000, 40.000000)">
+            <path d="M20,0 L60,0 C64.418278,-8.11624501e-16 68,3.581722 68,8 L68,20 L12,20 L12,8 C12,3.581722 15.581722,8.11624501e-16 20,0 Z" id="Bottle-Cap" fill="url(#linearGradient-1)"></path>
+            <rect id="Bottle-Body" fill="#FFFFFF" x="0" y="20" width="80" height="100" rx="8"></rect>
+            <rect id="Label" fill="#EEEEEE" x="10" y="40" width="60" height="60" rx="4"></rect>
+            <g id="Label-Lines" transform="translate(20.000000, 50.000000)" fill="#CCCCCC">
+                <rect id="Line-1" x="0" y="0" width="40" height="3" rx="1.5"></rect>
+                <rect id="Line-2" x="0" y="10" width="40" height="3" rx="1.5"></rect>
+                <rect id="Line-3" x="0" y="20" width="40" height="3" rx="1.5"></rect>
+                <rect id="Line-4" x="0" y="30" width="30" height="3" rx="1.5"></rect>
+                <rect id="Line-5" x="0" y="40" width="20" height="3" rx="1.5"></rect>
+            </g>
+            <g id="Rx-Symbol" transform="translate(25.000000, 110.000000)" fill="#EEEEEE">
+                <path d="M0,0 L8,0 C12.418278,-8.11624501e-16 16,3.581722 16,8 L16,16 L0,16 L0,0 Z" id="R-Shape"></path>
+                <path d="M16,8 L30,20" id="X-Line-1" stroke="#CCCCCC" stroke-width="3" stroke-linecap="round"></path>
+                <path d="M16,20 L30,8" id="X-Line-2" stroke="#CCCCCC" stroke-width="3" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>

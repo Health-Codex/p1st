@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Editor Demo - People First Urgent Care</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+    <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+    <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+    <link rel="stylesheet" href="assets/css/components/buttons/action-buttons.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Header System CSS - MUST be last -->
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/layout-fixes.css">
+    
+    <style>
+        .demo-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #05A65C 0%, #048A4F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-subtitle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .demo-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #05A65C 0%, #048A4F 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .demo-card h3 {
+            color: #2D3748;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .demo-card p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .demo-actions {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #05A65C 0%, #048A4F 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(5, 166, 92, 0.3);
+            margin: 0 1rem 1rem 0;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(5, 166, 92, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .demo-btn.secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            box-shadow: 0 4px 20px rgba(108, 117, 125, 0.3);
+        }
+        
+        .demo-btn.secondary:hover {
+            box-shadow: 0 6px 25px rgba(108, 117, 125, 0.4);
+        }
+        
+        .instructions {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #05A65C;
+        }
+        
+        .instructions h4 {
+            color: #05A65C;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .instructions ol {
+            color: #495057;
+            line-height: 1.8;
+        }
+        
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .key-combo {
+            background: #f8f9fa;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #495057;
+            border: 1px solid #dee2e6;
+        }
+
+        .features-showcase {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #05A65C;
+        }
+
+        .features-showcase h4 {
+            color: #05A65C;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-category {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 1px solid #e9ecef;
+        }
+
+        .feature-category h5 {
+            color: #2D3748;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .feature-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-category li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+            color: #495057;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-category li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-category li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #05A65C;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .demo-title {
+                font-size: 2.5rem;
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-btn {
+                display: flex;
+                justify-content: center;
+                margin: 0 0 1rem 0;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .demo-actions {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="header"></div>
+
+    <main id="main-content">
+        <!-- Demo Section -->
+        <section class="demo-section">
+            <div class="demo-container">
+                <div class="demo-header">
+                    <h1 class="demo-title">
+                        <i class="fa-solid fa-tools"></i>
+                        Admin Editor System
+                    </h1>
+                    <p class="demo-subtitle">
+                        A comprehensive website management system that allows you to edit any page content, 
+                        manage staff and providers, and configure site settings - all from one powerful interface.
+                    </p>
+                </div>
+
+                <div class="demo-grid">
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-edit"></i>
+                        </div>
+                        <h3>Page Content Editor</h3>
+                        <p>Edit any page with visual WYSIWYG editor, HTML/CSS code editors, smart content extraction,
+                        and real-time preview. Download pages or apply bulk changes across the site.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3>Global Site Editor</h3>
+                        <p>Find and replace text across all pages, perform bulk operations, update headers/footers
+                        site-wide, and validate all pages for issues.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h3>Template Editor</h3>
+                        <p>Edit shared components like headers, footers, navigation menus, and reusable sections.
+                        Apply template changes to all pages instantly.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-bars"></i>
+                        </div>
+                        <h3>Navigation Editor</h3>
+                        <p>Visually edit the website navigation menu structure. Add, remove, or reorder menu items
+                        with drag-and-drop interface and live preview.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <h3>Staff Management</h3>
+                        <p>Comprehensive staff and provider management with photo uploads, specialty organization,
+                        credentials tracking, and integration with the main website.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </div>
+                        <h3>Content & Media Manager</h3>
+                        <p>Upload, organize, and manage all website media. Drag-and-drop file uploads,
+                        image optimization, and content replacement across pages.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-puzzle-piece"></i>
+                        </div>
+                        <h3>Component Library</h3>
+                        <p>Pre-built, customizable components for hero sections, service cards, contact forms,
+                        testimonials, and call-to-action blocks. Insert with one click.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-shield-alt"></i>
+                        </div>
+                        <h3>Backup Manager</h3>
+                        <p>Create, manage, and restore complete website backups. Export/import functionality
+                        with selective backup options for pages, images, settings, and staff data.</p>
+                    </div>
+
+                    <div class="demo-card">
+                        <div class="demo-card-icon">
+                            <i class="fa-solid fa-cog"></i>
+                        </div>
+                        <h3>Site Settings</h3>
+                        <p>Configure global site settings including theme colors, contact information,
+                        site metadata, and other preferences from a centralized control panel.</p>
+                    </div>
+                </div>
+
+                <div class="demo-actions">
+                    <a href="admin-editor.html" class="demo-btn">
+                        <i class="fa-solid fa-rocket"></i>
+                        Launch Admin Editor
+                    </a>
+                    <a href="test-admin-features.html" class="demo-btn">
+                        <i class="fa-solid fa-flask"></i>
+                        Test All Features
+                    </a>
+                    <a href="provider-page.html" class="demo-btn secondary">
+                        <i class="fa-solid fa-user-doctor"></i>
+                        Provider Management
+                    </a>
+                </div>
+
+                <div class="instructions">
+                    <h4>
+                        <i class="fa-solid fa-info-circle"></i>
+                        How to Access Admin Features
+                    </h4>
+                    <ol>
+                        <li><strong>Direct Access:</strong> Click the "Launch Admin Editor" button above to open the main admin interface.</li>
+                        <li><strong>Provider Page Access:</strong> On the provider management page, use <span class="key-combo">Ctrl + Shift + A</span> to reveal the admin button.</li>
+                        <li><strong>Alternative Access:</strong> Triple-click on the page title on the provider page to show admin controls.</li>
+                        <li><strong>Security:</strong> Admin features are hidden by default to prevent patient access during normal website use.</li>
+                        <li><strong>Functionality:</strong> All changes are saved locally and can be exported for backup or deployment.</li>
+                    </ol>
+                </div>
+
+                <div class="features-showcase">
+                    <h4>
+                        <i class="fa-solid fa-star"></i>
+                        Complete Feature Set
+                    </h4>
+                    <div class="features-grid">
+                        <div class="feature-category">
+                            <h5><i class="fa-solid fa-edit"></i> Content Editing</h5>
+                            <ul>
+                                <li>Visual WYSIWYG editor with formatting tools</li>
+                                <li>HTML/CSS code editors with syntax highlighting</li>
+                                <li>Smart content extraction and block editing</li>
+                                <li>Real-time preview and live editing</li>
+                                <li>Find and replace across all pages</li>
+                                <li>Bulk text replacement with regex support</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-category">
+                            <h5><i class="fa-solid fa-layer-group"></i> Template Management</h5>
+                            <ul>
+                                <li>Edit headers, footers, and shared components</li>
+                                <li>Apply template changes to all pages</li>
+                                <li>Navigation menu visual editor</li>
+                                <li>Component library with pre-built blocks</li>
+                                <li>Custom component creation and insertion</li>
+                                <li>Template preview and testing</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-category">
+                            <h5><i class="fa-solid fa-users"></i> Staff Management</h5>
+                            <ul>
+                                <li>Add medical providers and support staff</li>
+                                <li>Photo upload with drag-and-drop</li>
+                                <li>Specialty and credential management</li>
+                                <li>Staff statistics and overview</li>
+                                <li>Export/import staff data</li>
+                                <li>Integration with main website display</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-category">
+                            <h5><i class="fa-solid fa-shield-alt"></i> Backup & Security</h5>
+                            <ul>
+                                <li>Complete site backup creation</li>
+                                <li>Selective backup options</li>
+                                <li>Backup restore functionality</li>
+                                <li>Export/import for deployment</li>
+                                <li>Change tracking and version history</li>
+                                <li>Hidden admin access for security</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-category">
+                            <h5><i class="fa-solid fa-tools"></i> Advanced Tools</h5>
+                            <ul>
+                                <li>Site-wide validation and optimization</li>
+                                <li>Image optimization and management</li>
+                                <li>Keyboard shortcuts for efficiency</li>
+                                <li>Mobile-responsive admin interface</li>
+                                <li>File system integration</li>
+                                <li>Browser compatibility (Safari file:// support)</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-category">
+                            <h5><i class="fa-solid fa-palette"></i> Customization</h5>
+                            <ul>
+                                <li>Theme color customization</li>
+                                <li>Global site settings management</li>
+                                <li>Contact information updates</li>
+                                <li>SEO metadata editing</li>
+                                <li>Custom CSS injection</li>
+                                <li>Component styling and branding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+    <!-- JavaScript -->
+    <script src="assets/js/core/custom.js" defer></script>
+    <script src="assets/js/core/main.js" defer></script>
+    <script src="assets/js/mobile/mobile-enhancements.js" defer></script>
+
+    <!-- Header System JavaScript -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+</body>
+</html>

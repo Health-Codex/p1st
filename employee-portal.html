@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal - People First Urgent Care</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/base/variables.css">
+    <link rel="stylesheet" href="assets/css/core/critical.css">
+    <link rel="stylesheet" href="assets/css/header-system-complete.css">
+    <link rel="stylesheet" href="assets/css/employee-portal.css">
+</head>
+<body>
+    <!-- Header -->
+    <div data-include="header"></div>
+
+    <!-- Main Content -->
+    <main class="employee-portal-main">
+        <!-- Hero Section -->
+        <section class="portal-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="portal-title">Employee Portal</h1>
+                    <p class="portal-subtitle">Your central hub for tools, resources, and information</p>
+                    <div class="user-welcome" id="userWelcome">
+                        <i class="fa-solid fa-user-circle"></i>
+                        <span>Welcome back!</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="logout-btn" onclick="window.StaffAuth.logout()">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portal Navigation -->
+        <section class="portal-navigation">
+            <div class="container">
+                <h2 class="section-title">Quick Access</h2>
+                <div class="portal-grid">
+                    <!-- Tools & Resources (Available to All) -->
+                    <div class="portal-card coming-soon">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-tools"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Tools & Resources</h3>
+                            <p>Access helpful tools and documentation</p>
+                        </div>
+                        <div class="card-badge">
+                            <span>Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <!-- Communication (Available to All) -->
+                    <div class="portal-card coming-soon">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Communication</h3>
+                            <p>Team messaging and announcements</p>
+                        </div>
+                        <div class="card-badge">
+                            <span>Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <!-- Staff Management (Provider/Admin Only) -->
+                    <div class="portal-card provider-admin-only" onclick="navigateToPage('provider-page.html')" style="display: none;">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-users-gear"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Staff Management</h3>
+                            <p>Manage provider profiles and staff information</p>
+                        </div>
+                        <div class="card-arrow">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <!-- Reports (Provider/Admin Only) -->
+                    <div class="portal-card coming-soon provider-admin-only" style="display: none;">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Reports</h3>
+                            <p>View analytics and performance reports</p>
+                        </div>
+                        <div class="card-badge">
+                            <span>Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <!-- Settings (Provider/Admin Only) -->
+                    <div class="portal-card coming-soon provider-admin-only" style="display: none;">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-cog"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Settings</h3>
+                            <p>Configure your account and preferences</p>
+                        </div>
+                        <div class="card-badge">
+                            <span>Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <!-- Training (Provider/Admin Only) -->
+                    <div class="portal-card coming-soon provider-admin-only" style="display: none;">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Training</h3>
+                            <p>Access training materials and courses</p>
+                        </div>
+                        <div class="card-badge">
+                            <span>Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <div class="container">
+                <h2 class="section-title">Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Staff Member Added</h4>
+                            <p>Amanda Johnson was added to the nursing team</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fa-solid fa-edit"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Profile Updated</h4>
+                            <p>Dr. Sarah Johnson's profile was updated</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fa-solid fa-sign-in-alt"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>Login</h4>
+                            <p>You logged into the employee portal</p>
+                            <span class="activity-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div data-include="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/staff-login.js"></script>
+    <script>
+        // Require authentication before loading page
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.StaffAuth.requireAuth()) {
+                return; // Will redirect to login
+            }
+
+            // Show user info if logged in
+            const session = window.StaffAuth.getSession();
+            if (session) {
+                console.log(`Welcome ${session.name} to Employee Portal (${session.userType})`);
+
+                // Update welcome message
+                const userWelcome = document.getElementById('userWelcome');
+                if (userWelcome) {
+                    userWelcome.innerHTML = `
+                        <i class="fa-solid fa-user-circle"></i>
+                        <span>Welcome back, ${session.name}!</span>
+                    `;
+                }
+
+                // Show/hide cards based on user role
+                const providerAdminOnlyCards = document.querySelectorAll('.provider-admin-only');
+
+                if (session.userType === 'provider-admin') {
+                    // Provider/Admin sees everything
+                    providerAdminOnlyCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                } else {
+                    // Scribes and regular providers only see Tools & Resources and Communication
+                    providerAdminOnlyCards.forEach(card => {
+                        card.style.display = 'none';
+                    });
+                }
+            }
+        });
+
+        // Navigation function
+        function navigateToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+    
+    <!-- Header System JavaScript -->
+    <script src="assets/js/header-inline.js" defer></script>
+    <script src="assets/js/footer-inline.js" defer></script>
+    <script src="assets/js/core/header-system-new.js" defer></script>
+</body>
+</html>

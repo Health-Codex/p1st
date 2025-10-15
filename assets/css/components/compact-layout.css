@@ -1,0 +1,537 @@
+/*
+People First Urgent Care - Compact Layout Framework
+This file contains styles to make the website more compact and modern
+*/
+
+/* ===== COMPACT SPACING VARIABLES ===== */
+:root {
+    /* Compact Spacing */
+    --compact-spacing-xxs: 0.15rem;
+    --compact-spacing-xs: 0.35rem;
+    --compact-spacing-sm: 0.75rem;
+    --compact-spacing-md: 1.25rem;
+    --compact-spacing-lg: 2rem;
+    --compact-spacing-xl: 3rem;
+
+    /* Compact Typography */
+    --compact-line-height: 1.4;
+    --compact-heading-line-height: 1.1;
+
+    /* Compact Card Sizes */
+    --card-padding: 0.75rem;
+    --card-gap: 0.75rem;
+
+    /* Compact Button Sizes */
+    --btn-padding-y: 0.5rem;
+    --btn-padding-x: 1rem;
+}
+
+/* ===== COMPACT LAYOUT CLASSES ===== */
+
+/* Compact Containers */
+.container-compact {
+    padding: 0 var(--compact-spacing-md);
+}
+
+/* Compact Sections */
+.section-compact {
+    padding: var(--compact-spacing-lg) 0;
+}
+
+.section-compact-sm {
+    padding: var(--compact-spacing-md) 0;
+}
+
+/* Compact Headers */
+.section-header-compact {
+    margin-bottom: var(--compact-spacing-md);
+}
+
+.section-header-compact h2 {
+    margin-bottom: var(--compact-spacing-xs);
+    font-size: 1.75rem;
+}
+
+.section-header-compact p {
+    font-size: 0.95rem;
+    line-height: var(--compact-line-height);
+}
+
+.section-header-compact::after {
+    margin: var(--compact-spacing-xs) auto 0;
+    width: 60px;
+}
+
+/* Compact Typography */
+.text-compact {
+    line-height: var(--compact-line-height);
+}
+
+.heading-compact {
+    line-height: var(--compact-heading-line-height);
+    margin-bottom: var(--compact-spacing-xs);
+}
+
+/* Compact Cards */
+.card-compact {
+    padding: var(--card-padding);
+    margin-bottom: var(--card-gap);
+}
+
+/* Compact Buttons */
+.btn-compact {
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    font-size: 0.9rem;
+}
+
+/* Compact Grids */
+.grid-compact {
+    gap: var(--card-gap);
+}
+
+/* Compact Lists */
+.list-compact li {
+    margin-bottom: var(--compact-spacing-xs);
+    line-height: var(--compact-line-height);
+}
+
+/* Compact Form Elements */
+.form-group-compact {
+    margin-bottom: var(--compact-spacing-sm);
+}
+
+.form-group-compact label {
+    margin-bottom: var(--compact-spacing-xxs);
+    font-size: 0.9rem;
+}
+
+.form-group-compact input,
+.form-group-compact select,
+.form-group-compact textarea {
+    padding: 0.5rem;
+}
+
+/* ===== INFORMATION DENSITY UTILITIES ===== */
+
+/* Horizontal Layout Utilities */
+.flex-row-compact {
+    display: flex;
+    align-items: center;
+    gap: var(--compact-spacing-sm);
+}
+
+.flex-between-compact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Advanced Grid Layouts */
+.grid-compact-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--card-gap);
+}
+
+.grid-compact-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+}
+
+.grid-compact-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--card-gap);
+}
+
+/* Auto-fit grid for responsive layouts */
+.grid-compact-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--card-gap);
+}
+
+/* Advanced Flex Layouts */
+.flex-wrap-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--compact-spacing-md);
+    margin: 1.5rem 0;
+}
+
+.flex-column-compact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--compact-spacing-xs);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+    .grid-compact-2,
+    .grid-compact-3,
+    .grid-compact-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-compact-auto {
+        grid-template-columns: 1fr;
+    }
+
+    .mobile-stack {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Collapsible Sections */
+.collapsible-section {
+    margin-bottom: var(--compact-spacing-sm);
+}
+
+.collapsible-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--compact-spacing-sm);
+    cursor: pointer;
+    background-color: var(--bg-green-10);
+    border-radius: var(--border-radius-sm);
+    transition: background-color var(--transition-fast);
+}
+
+.collapsible-header:hover {
+    background-color: var(--bg-green-20);
+}
+
+.collapsible-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-medium);
+}
+
+.collapsible-section.active .collapsible-content {
+    max-height: 1000px;
+}
+
+.collapsible-section.active .collapsible-toggle i {
+    transform: rotate(180deg);
+}
+
+.collapsible-toggle i {
+    transition: transform var(--transition-medium);
+}
+
+/* Inline Information */
+.inline-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--compact-spacing-sm);
+    align-items: center;
+}
+
+.inline-info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--compact-spacing-xxs);
+}
+
+/* Compact Badges */
+.badge-compact {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--bg-green-20);
+    color: var(--primary-green);
+}
+
+/* Advanced Animations and Transitions */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.5s ease forwards;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideInLeft 0.5s ease forwards;
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideInRight 0.5s ease forwards;
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: scaleIn 0.5s ease forwards;
+}
+
+/* Staggered animations */
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* Hover effects */
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.03);
+}
+
+.hover-glow {
+    transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 15px rgba(4, 135, 73, 0.3);
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+    /* Layout adjustments */
+    .flex-row-compact {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-compact {
+        padding: var(--compact-spacing-md) 0;
+    }
+
+    .container-compact {
+        padding: 0 var(--compact-spacing-sm);
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .section-header-compact {
+        margin-bottom: var(--compact-spacing-sm);
+    }
+
+    .section-header-compact h2 {
+        font-size: 1.4rem;
+        margin-bottom: var(--compact-spacing-xxs);
+    }
+
+    .section-header-compact p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+
+    /* Typography scaling for mobile */
+    .heading-compact.h1,
+    h1.heading-compact {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: var(--compact-spacing-xs);
+    }
+
+    .heading-compact.h2,
+    h2.heading-compact {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        margin-bottom: var(--compact-spacing-xs);
+    }
+
+    .heading-compact.h3,
+    h3.heading-compact {
+        font-size: 1.3rem;
+        line-height: 1.3;
+        margin-bottom: var(--compact-spacing-xxs);
+    }
+
+    .text-compact {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: var(--compact-spacing-xs);
+    }
+
+    /* Grid adjustments */
+    .grid-compact-2,
+    .grid-compact-3,
+    .grid-compact-4,
+    .grid-compact-auto {
+        gap: var(--compact-spacing-sm);
+    }
+
+    /* Card adjustments */
+    .card-compact {
+        padding: var(--compact-spacing-sm);
+        margin-bottom: var(--compact-spacing-sm);
+        border-radius: var(--border-radius-sm);
+    }
+
+    /* Horizontal card layout for mobile */
+    .card-horizontal-mobile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--compact-spacing-sm);
+    }
+
+    .card-horizontal-mobile .card-image {
+        width: 40%;
+        flex-shrink: 0;
+    }
+
+    .card-horizontal-mobile .card-content {
+        width: 60%;
+    }
+
+    /* Touch-friendly buttons */
+    .btn-compact {
+        padding: 0.6rem 1.2rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Compact location cards for mobile */
+    .location-card.card-compact {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .location-card.card-compact .location-image {
+        height: 150px;
+    }
+
+    .location-card.card-compact .location-details {
+        padding: var(--compact-spacing-sm);
+    }
+
+    .location-card.card-compact .location-buttons {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: var(--compact-spacing-xs);
+    }
+
+    .location-card.card-compact .location-buttons .btn {
+        flex: 1;
+        padding: 0.5rem;
+        font-size: 0.85rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Optimize forms for mobile */
+    .form-group-compact {
+        margin-bottom: var(--compact-spacing-sm);
+    }
+
+    .form-group-compact input,
+    .form-group-compact textarea,
+    .form-group-compact select {
+        padding: 0.8rem;
+        min-height: 44px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    /* Optimize spacing for mobile */
+    .spacing-compact-mobile {
+        margin-bottom: var(--compact-spacing-sm);
+    }
+
+    .no-margin-mobile {
+        margin: 0 !important;
+    }
+
+    .no-padding-mobile {
+        padding: 0 !important;
+    }
+
+    /* Touch-friendly hover effects */
+    .touch-device .hover-lift:active,
+    .touch-device .hover-scale:active {
+        transform: translateY(-3px);
+    }
+
+    .touch-device .hover-glow:active {
+        box-shadow: 0 0 15px rgba(4, 135, 73, 0.3);
+    }
+
+    /* Disable animations on mobile for performance */
+    .fade-in, .slide-up, .slide-in-left, .slide-in-right, .scale-in {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Enable selective animations on mobile */
+    .animate-mobile {
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    .animate-mobile.fade-in {
+        opacity: 0;
+        animation-name: fadeIn;
+    }
+
+    .animate-mobile.slide-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation-name: slideUp;
+    }
+}

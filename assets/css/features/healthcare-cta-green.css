@@ -1,0 +1,433 @@
+/* Green Healthcare CTA Card Styles */
+:root {
+    --cta-green-primary: #05A65C;
+    --cta-green-dark: #038B4D;
+    --cta-green-light: #7ED4A6;
+    --cta-green-gradient: linear-gradient(135deg, #05A65C 0%, #038B4D 100%);
+    --cta-text-color: #FFFFFF;
+    --cta-glass-bg: rgba(255, 255, 255, 0.15);
+    --cta-glass-border: rgba(255, 255, 255, 0.2);
+    --cta-icon-bg: rgba(255, 255, 255, 0.2);
+    --cta-icon-pulse: rgba(255, 255, 255, 0.3);
+}
+
+/* Main CTA Container */
+.healthcare-cta-green {
+    position: relative;
+    padding: 0;
+    margin: 3rem 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(135deg, #05A65C 0%, #038B4D 100%);
+    animation: subtleGradient 20s ease infinite alternate;
+}
+
+@keyframes subtleGradient {
+    0% {
+        background: linear-gradient(135deg, #05A65C 0%, #038B4D 100%);
+    }
+    100% {
+        background: linear-gradient(135deg, #038B4D 0%, #05A65C 100%);
+    }
+}
+
+/* Subtle Background Pattern */
+.healthcare-cta-green::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.08' fill-rule='evenodd'%3E%3Ccircle cx='10' cy='10' r='1'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 20px 20px;
+    z-index: 0;
+    animation: subtlePatternFloat 60s linear infinite;
+    opacity: 0.4;
+}
+
+@keyframes subtlePatternFloat {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
+}
+
+/* Floating Particles */
+.healthcare-cta-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.healthcare-cta-particle {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+/* Medical cross particle */
+.healthcare-cta-particle:nth-child(1) {
+    width: 30px;
+    height: 30px;
+    top: 15%;
+    left: 10%;
+    background: rgba(255, 255, 255, 0.3);
+    clip-path: polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%);
+    animation: simpleFloat1 40s linear infinite;
+}
+
+/* Heart particle */
+.healthcare-cta-particle:nth-child(2) {
+    width: 35px;
+    height: 35px;
+    top: 70%;
+    left: 75%;
+    background: rgba(255, 255, 255, 0.3);
+    clip-path: path('M17.5,8 C17.5,8 10,12 0,22 C0,32 10,38 17.5,42 C25,38 35,32 35,22 C25,12 17.5,8 17.5,8 Z');
+    animation: simpleFloat2 50s linear infinite;
+}
+
+/* Pill capsule particle */
+.healthcare-cta-particle:nth-child(3) {
+    width: 40px;
+    height: 16px;
+    top: 25%;
+    left: 85%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    transform: rotate(45deg);
+    animation: simpleFloat3 45s linear infinite;
+}
+
+/* Stethoscope-like particle */
+.healthcare-cta-particle:nth-child(4) {
+    width: 40px;
+    height: 40px;
+    top: 65%;
+    left: 15%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-bottom: 3px solid transparent;
+    animation: simpleFloat4 55s linear infinite;
+}
+
+/* Pulse line particle */
+.healthcare-cta-particle:nth-child(5) {
+    width: 50px;
+    height: 20px;
+    top: 10%;
+    left: 50%;
+    background: rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    clip-path: polygon(0% 100%, 20% 100%, 30% 30%, 40% 100%, 50% 100%, 60% 30%, 70% 100%, 80% 100%, 100% 100%, 100% 90%, 0% 90%);
+    animation: simpleFloat5 60s linear infinite;
+}
+
+@keyframes simpleFloat1 {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(100px, 50px);
+    }
+    50% {
+        transform: translate(200px, 0);
+    }
+    75% {
+        transform: translate(100px, -50px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes simpleFloat2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    33% {
+        transform: translate(-100px, -50px);
+    }
+    66% {
+        transform: translate(-200px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes simpleFloat3 {
+    0% {
+        transform: translate(0, 0) rotate(45deg);
+    }
+    50% {
+        transform: translate(-150px, 50px) rotate(45deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(45deg);
+    }
+}
+
+@keyframes simpleFloat4 {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(150px, -80px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes simpleFloat5 {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-150px, 100px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+/* Glass Card Content */
+.healthcare-cta-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: center;
+    color: var(--cta-text-color);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Header Styles */
+.healthcare-cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--cta-text-color);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+}
+
+.healthcare-cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--cta-text-color);
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* Icon Circle */
+.healthcare-cta-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #fff;
+    margin: 0 auto 2rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.healthcare-cta-icon::before,
+.healthcare-cta-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    animation: coolPulse 2s infinite;
+    z-index: -1;
+}
+
+.healthcare-cta-icon::after {
+    animation-delay: 0.5s;
+}
+
+.healthcare-cta-icon i {
+    animation: coolHeartbeat 1.2s ease-in-out infinite;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes coolPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+@keyframes coolHeartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(1.25);
+    }
+    30% {
+        transform: scale(1);
+    }
+    45% {
+        transform: scale(1.15);
+    }
+    60% {
+        transform: scale(1);
+    }
+}
+
+/* Feature Icons */
+.healthcare-cta-features {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.healthcare-cta-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.healthcare-cta-feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.healthcare-cta-feature span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Button Styles */
+.healthcare-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.btn-white-green {
+    background-color: #fff;
+    color: var(--cta-green-dark);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.btn-white-green:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-white-green i {
+    font-size: 0.9rem;
+}
+
+.btn-outline-white {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-outline-white:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-outline-white i {
+    font-size: 0.9rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .healthcare-cta-content {
+        padding: 2rem;
+        margin: 2rem 1rem;
+    }
+
+    .healthcare-cta-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .healthcare-cta-content p {
+        font-size: 1rem;
+    }
+
+    .healthcare-cta-features {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+
+    .healthcare-cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-white-green, .btn-outline-white {
+        width: 100%;
+    }
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Our Clinics - People First Urgent Care</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core CSS (match site's load order; keep header-system-complete.css last) -->
+  <link rel="stylesheet" href="assets/css/core/mobile-optimizations.css">
+  <link rel="stylesheet" href="assets/css/components/compact-layout.css">
+  <link rel="stylesheet" href="assets/css/components/advanced-effects.css">
+  <link rel="stylesheet" href="assets/css/components/splash-screen.css">
+  <link rel="stylesheet" href="assets/css/features/urgent-care-assessment.css">
+  <link rel="stylesheet" href="assets/css/features/urgent-care-assessment-modal.css">
+  <link rel="stylesheet" href="assets/css/features/cta-enhanced.css">
+  <link rel="stylesheet" href="assets/css/features/healthcare-cta-green.css">
+  <link rel="stylesheet" href="assets/css/core/custom-redesign.css">
+  <link rel="stylesheet" href="assets/css/header-system-complete.css">
+  <link rel="stylesheet" href="assets/css/layout-fixes.css">
+
+  <style>
+    /* Page-specific modern styling for call hub */
+    :root {
+      --callhub-bg:
+        radial-gradient(1200px 800px at -10% -20%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.05) 55%, transparent 70%),
+        linear-gradient(135deg, #173b6e 0%, #137b74 45%, #23a36a 100%);
+      --callhub-card-bg: rgba(255, 255, 255, 0.12);
+      --callhub-card-border: rgba(255, 255, 255, 0.24);
+      --callhub-text: #ffffff;
+      --callhub-subtle: rgba(255,255,255,0.92);
+      --callhub-glow: 0 10px 34px rgba(16, 185, 129, 0.28);
+    }
+
+    body.callhub {
+      background: var(--callhub-bg);
+      color: var(--callhub-text);
+    }
+
+    /* Ensure proper spacing from fixed header */
+    @media (max-width: 1199px) {
+      /* Override any conflicting body padding and ensure proper spacing */
+      body.callhub {
+        padding-top: 100px !important; /* Increased to accommodate header height */
+      }
+
+      #main-content {
+        margin-top: 0;
+        padding-top: 0.5rem;
+      }
+
+      /* Ensure callhub hero doesn't get cut off by fixed header */
+      .callhub-hero {
+        padding-top: 0.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body.callhub {
+        padding-top: 100px !important; /* Increased to accommodate header height */
+      }
+
+      .callhub-hero {
+        padding-top: 0.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body.callhub {
+        padding-top: 100px !important; /* Increased to accommodate header height */
+      }
+
+      .callhub-hero {
+        padding-top: 0.25rem;
+      }
+    }
+
+    .callhub-hero {
+      text-align: center;
+      padding: 1rem 1rem 1.5rem;
+      margin-top: 0;
+    }
+    .callhub-hero h1 {
+      font-family: var(--heading-font, 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Open Sans');
+      font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+      line-height: 1.1;
+      margin: 0 0 0.35rem;
+      letter-spacing: 0.4px;
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    }
+    .callhub-hero p {
+      color: var(--callhub-subtle);
+      margin: 0 auto;
+      max-width: 720px;
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    }
+
+    .callhub-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1rem 2rem;
+    }
+
+    .callhub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .callhub-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .callhub-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    .call-card {
+      background: var(--callhub-card-bg);
+      border: 1px solid var(--callhub-card-border);
+      border-radius: 14px;
+      padding: 0.9rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .call-card:hover { transform: translateY(-2px); box-shadow: var(--callhub-glow), 0 6px 20px rgba(0,0,0,0.18); border-color: rgba(255,255,255,0.28); }
+
+    .call-title {
+      display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;
+      font-weight: 700; font-size: 1.05rem;
+    }
+    .call-title i { color: #a7f3d0; text-shadow: 0 1px 2px rgba(0,0,0,0.25);}
+
+    .call-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .call-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; min-height: 50px; border-radius: 9999px;
+      color: #fff; text-decoration: none; font-weight: 800; letter-spacing: .2px;
+      background-image: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+      transition: transform .15s ease, box-shadow .2s ease, background-position .3s ease;
+      background-size: 200% 100%;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    }
+    .call-btn:hover, .call-btn:focus { color: #ffffff; background-image: linear-gradient(135deg, #0e3a2b 0%, #0a2537 100%); transform: translateY(-2px); box-shadow: var(--callhub-glow); }
+    .call-btn:active { transform: translateY(-1px); }
+
+    .call-btn small { opacity: .9; font-weight: 600; }
+
+    .callhub-back {
+      display: inline-flex; align-items: center; gap: .5rem; text-decoration: none;
+      color: #d1fae5; font-weight: 600; margin: 0.75rem 0 0.25rem; opacity: .9;
+    }
+    .callhub-back:hover { opacity: 1; text-decoration: underline; }
+  </style>
+</head>
+<body class="callhub">
+  <!-- Header Include Hook -->
+  <div data-include="header"></div>
+
+  <main id="main-content" class="container-compact">
+    <section class="callhub-hero">
+      <div class="callhub-container">
+        <a href="index.html" class="callhub-back" aria-label="Back to home"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <h1>Call Our Clinics</h1>
+        <p>Tap a location to call directly. Our friendly team is ready to help you with urgent care needs, appointments, and questions.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="callhub-heading" class="callhub-container">
+      <h2 id="callhub-heading" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Clinic Phone Numbers</h2>
+      <div class="callhub-grid" role="list">
+        <article class="call-card" role="listitem">
+          <div class="call-title"><i class="fa-solid fa-location-dot"></i> Collierville</div>
+          <div class="call-actions">
+            <a class="call-btn" href="tel:+19016731240" aria-label="Call Collierville clinic at 901-673-1240"><i class="fa-solid fa-phone"></i> (901) 673-1240 <small>&nbsp;Tap to call</small></a>
+          </div>
+        </article>
+        <article class="call-card" role="listitem">
+          <div class="call-title"><i class="fa-solid fa-location-dot"></i> Southaven</div>
+          <div class="call-actions">
+            <a class="call-btn" href="tel:+16626831440" aria-label="Call Southaven clinic at 662-683-1440"><i class="fa-solid fa-phone"></i> (662) 683-1440 <small>&nbsp;Tap to call</small></a>
+          </div>
+        </article>
+        <article class="call-card" role="listitem">
+          <div class="call-title"><i class="fa-solid fa-location-dot"></i> Millington</div>
+          <div class="call-actions">
+            <a class="call-btn" href="tel:+19018730930" aria-label="Call Millington clinic at 901-873-0930"><i class="fa-solid fa-phone"></i> (901) 873-0930 <small>&nbsp;Tap to call</small></a>
+          </div>
+        </article>
+        <article class="call-card" role="listitem">
+          <div class="call-title"><i class="fa-solid fa-location-dot"></i> Germantown</div>
+          <div class="call-actions">
+            <a class="call-btn" href="tel:+19015676100" aria-label="Call Germantown clinic at 901-567-6100"><i class="fa-solid fa-phone"></i> (901) 567-6100 <small>&nbsp;Tap to call</small></a>
+          </div>
+        </article>
+        <article class="call-card" role="listitem">
+          <div class="call-title"><i class="fa-solid fa-location-dot"></i> Bartlett</div>
+          <div class="call-actions">
+            <a class="call-btn" href="tel:+19017621531" aria-label="Call Bartlett clinic at 901-762-1531"><i class="fa-solid fa-phone"></i> (901) 762-1531 <small>&nbsp;Tap to call</small></a>
+          </div>
+        </article>
+        <article class="call-card" role="listitem">
+          <div class="call-title"><i class="fa-solid fa-location-dot"></i> Cordova</div>
+          <div class="call-actions">
+            <a class="call-btn" href="tel:+19016255360" aria-label="Call Cordova clinic at 901-625-5360"><i class="fa-solid fa-phone"></i> (901) 625-5360 <small>&nbsp;Tap to call</small></a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div data-include="footer"></div>
+
+  <!-- Back to Top Button -->
+  <a href="#" id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+  <!-- Fixed Save Your Spot Button for Mobile -->
+  <a href="save-your-spot.html" class="fixed-cta-button">
+    <i class="fa-solid fa-calendar-check"></i> Save Your Spot
+  </a>
+
+  <!-- JS (inline include systems) -->
+  <script src="assets/js/header-inline.js" defer></script>
+  <script src="assets/js/footer-inline.js" defer></script>
+  <script src="assets/js/core/custom.js" defer></script>
+  <script src="assets/js/core/header-system-new.js" defer></script>
+
+
+  <script>
+    // Enhance focus styles for accessibility on this page
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.call-btn, .callhub-back').forEach(el => {
+        el.addEventListener('keyup', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') el.classList.add('focus');
+        });
+        el.addEventListener('blur', () => el.classList.remove('focus'));
+      });
+    });
+  </script>
+</body>
+</html>

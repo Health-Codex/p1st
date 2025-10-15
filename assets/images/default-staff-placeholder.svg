@@ -1,0 +1,6 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="220" height="220" rx="16" fill="#f8f9fa"/>
+  <circle cx="110" cy="85" r="25" fill="#6c757d"/>
+  <path d="M70 160c0-22.091 17.909-40 40-40s40 17.909 40 40v20H70v-20z" fill="#6c757d"/>
+  <text x="110" y="200" text-anchor="middle" fill="#6c757d" font-family="Arial, sans-serif" font-size="12">Staff Photo</text>
+</svg>

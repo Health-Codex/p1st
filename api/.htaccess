@@ -1,0 +1,6 @@
+RewriteEngine On
+# Pretty endpoints under /p1st/api
+RewriteRule ^staff$ staff.php [L]
+RewriteRule ^upload$ upload.php [L]
+RewriteRule ^events$ events.php [L]
+

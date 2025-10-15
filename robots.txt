@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow:
+
+# Sitemap for search engines
+Sitemap: https://www.peoplefirsturgentcare.com/sitemap.xml

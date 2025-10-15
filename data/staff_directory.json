@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "last_updated": "2025-10-14T20:09:23",
+    "image_dir": "assets/images/staff",
+    "document_dir": "assets/files/staff"
+  },
+  "medical": [
+    {
+      "id": "dr-hamad-ahmad",
+      "name": "Dr. Hamad Ahmad",
+      "title": "Physician & CEO",
+      "credentials": [
+        "MD"
+      ],
+      "specialties": [],
+      "description": "",
+      "experience_years": null,
+      "locations": [],
+      "languages": [
+        "Spanish",
+        "Urdu"
+      ],
+      "education": "",
+      "email": "",
+      "phone": "",
+      "linkedin": "",
+      "image": "assets/images/staff/dr-hamad-ahmad.jpg",
+      "documents": [],
+      "tags": [],
+      "featured": false,
+      "last_modified": "2025-10-14T20:09:23"
+    }
+  ],
+  "support": []
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Quote Pattern</title>
+    <g id="Quote-Pattern" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M40,40 C40,28.954305 48.954305,20 60,20 L60,20 C71.045695,20 80,28.954305 80,40 L80,60 C80,71.045695 71.045695,80 60,80 L40,80 L40,40 Z" id="Quote-1" fill="#FFFFFF" fill-opacity="0.2"></path>
+        <path d="M20,100 C20,88.954305 28.954305,80 40,80 L40,80 C51.045695,80 60,88.954305 60,100 L60,120 C60,131.045695 51.045695,140 40,140 L20,140 L20,100 Z" id="Quote-2" fill="#FFFFFF" fill-opacity="0.2"></path>
+        <path d="M100,20 C100,8.954305 108.954305,0 120,0 L120,0 C131.045695,0 140,8.954305 140,20 L140,40 C140,51.045695 131.045695,60 120,60 L100,60 L100,20 Z" id="Quote-3" fill="#FFFFFF" fill-opacity="0.2"></path>
+        <path d="M140,80 C140,68.954305 148.954305,60 160,60 L160,60 C171.045695,60 180,68.954305 180,80 L180,100 C180,111.045695 171.045695,120 160,120 L140,120 L140,80 Z" id="Quote-4" fill="#FFFFFF" fill-opacity="0.2"></path>
+        <path d="M80,140 C80,128.954305 88.954305,120 100,120 L100,120 C111.045695,120 120,128.954305 120,140 L120,160 C120,171.045695 111.045695,180 100,180 L80,180 L80,140 Z" id="Quote-5" fill="#FFFFFF" fill-opacity="0.2"></path>
+        <path d="M160,140 C160,128.954305 168.954305,120 180,120 L180,120 C191.045695,120 200,128.954305 200,140 L200,160 C200,171.045695 191.045695,180 180,180 L160,180 L160,140 Z" id="Quote-6" fill="#FFFFFF" fill-opacity="0.2"></path>
+    </g>
+</svg>
